@@ -174,7 +174,7 @@ def evaluate_model(X_train,X_test,y_train,y_test,model):
 lr_pred = evaluate_model(X_train, X_test, y_train, y_test, lr)
 
 @app.route('/api/classify_text', methods=['POST'])
-def classify_text(X_train, y_train, model):
+def classify_text():
     data = request.json
     clean_data = clean_text(data)
     text = remove_stopwords(clean_data)
@@ -183,8 +183,7 @@ def classify_text(X_train, y_train, model):
     pred = model.predict(X_test)
 
     return jsonify(pred), 200
-
-pred = classify_text(X_train, y_train, lr)
+    
 
 
 if __name__ in "main":
