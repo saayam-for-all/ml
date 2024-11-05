@@ -15,6 +15,7 @@ nltk.download("stopwords")
 nltk.download("wordnet")
 nltk.download("punkt")
 nltk.download("omw-1.4")
+nltk.download("punkt_tab")
 from wordcloud import WordCloud
 from textblob import TextBlob
 
@@ -88,15 +89,6 @@ print(text.count("fucking"))
 print(text.count("love"))
 print(text.count("faggot"))
 
-hate_tweet = (tweet_data['sentiment'] == "Hate_Speech").astype('int32')
-neither = (tweet_data['sentiment'] == "Neither").astype('int32')
-
-sns.countplot(x = hate_tweet)
-plt.show()
-
-sns.countplot(x = neither)
-plt.show()
-
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 
@@ -151,6 +143,15 @@ lr = LogisticRegression()
 from sklearn.metrics import accuracy_score,classification_report
 
 X_train,X_test,y_train,y_test = create_data()
+
+# hate_tweet = (tweet_data['sentiment'] == "Hate_Speech").astype('int32')
+# neither = (tweet_data['sentiment'] == "Neither").astype('int32')
+
+# sns.countplot(x = hate_tweet)
+# plt.show()
+
+# sns.countplot(x = neither)
+# plt.show()
 
 @app.route('/api/evaluate_model', methods=['POST'])
 def evaluate_model(X_train,X_test,y_train,y_test,model):
