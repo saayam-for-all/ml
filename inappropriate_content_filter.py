@@ -30,9 +30,13 @@ def check_profanity():
 
     # Initialize the inflect engine
     p = inflect.engine()
+    singular_words = ['ass', 'dumbass', 'piss']
 
     for i, word, in enumerate(input_words):
-        
+
+        if word in singular_words:
+            continue
+
         if word.endswith("ies"):  # e.g., "babies" -> "baby"
             input_words[i] = word[:-3] + "y"
 
