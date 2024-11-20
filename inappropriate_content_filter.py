@@ -5,11 +5,11 @@ import sqlite3
 
 app = Flask(__name__)
 
-app.config.from_object(config)
-db.init_app(app)
+#app.config.from_object(config)
+#db.init_app(app)
 
-with app.app_context():
-        db.create_all()
+#with app.app_context():
+#        db.create_all()
 
 @app.route('/')
 def home():
@@ -20,33 +20,39 @@ def check_profanity():
     data = request.json
     text = data['text']
     input_words = text.split()
-    # connecting to the database
-    conn = sqlite3.connect("profane_words.db")
 
-    # cursor
+    # Connect to the database
+    conn = sqlite3.connect("profane_words.db")
     cursor = conn.cursor()
+
+    # Query for matching words
     query = """
         SELECT words
         FROM profane_words
-        WHERE words in input_words
-        """
-    cursor.execute(query)
+        WHERE words IN ({})
+    """.format(",".join("?" for _ in input_words))  # Use placeholders for each word
+
+    cursor.execute(query, input_words)
     profanity = cursor.fetchall()
 
-    if not profanity:
-        contains_profanity = False
+    # Close the connection
+    conn.close()
 
-    else:
-        contains_profanity = True
+    # Process results
+    profane_words = [row[0] for row in profanity]
+    contains_profanity = bool(profane_words)
+
     res_body = {
-                "contains_profanity": contains_profanity,
-                "profanity": profanity
-                }
-    http_res = {}
-    http_res['statusCode'] = 200
-    http_res['body'] = json.dumps(res_body)
+        "contains_profanity": contains_profanity,
+        "profanity": profane_words
+    }
+    http_res = {
+        "statusCode": 200,
+        "body": json.dumps(res_body)
+    }
 
-    return http_res
+    return jsonify(http_res)
+
 
 # New API for language detection and translation
 @app.route('/api/translate', methods=['POST'])
