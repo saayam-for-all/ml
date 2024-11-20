@@ -18,7 +18,7 @@ def home():
 @app.route('/api/check_profanity', methods=['POST'])
 def check_profanity():
     data = request.json
-    text = data['text']
+    text = data['text'].lower()
     input_words = text.split()
 
     # Connect to the database
