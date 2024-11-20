@@ -2,6 +2,8 @@ import json
 from flask import Flask, jsonify, request
 import pickle
 import sqlite3
+import string
+import inflect
 
 app = Flask(__name__)
 
@@ -18,8 +20,27 @@ def home():
 @app.route('/api/check_profanity', methods=['POST'])
 def check_profanity():
     data = request.json
-    text = data['text'].lower()
+    text = data['text']
+    translator = str.maketrans('', '', string.punctuation)
+    text = text.translate(translator)
+
+    # Make singular (this is a basic approach, may need refinement for complex cases)
+    text = text.lower()
     input_words = text.split()
+
+    # Initialize the inflect engine
+    p = inflect.engine()
+
+    for i, word, in enumerate(input_words):
+        
+        if word.endswith("ies"):  # e.g., "babies" -> "baby"
+            input_words[i] = word[:-3] + "y"
+
+        elif word.endswith("es") and len(word) > 2:  # e.g., "boxes" -> "box"
+            input_words[i] = word[:-2]
+
+        elif word.endswith("s") and len(word) > 1:  # e.g., "cats" -> "cat"
+            input_words[i] = word[:-1]
 
     # Connect to the database
     conn = sqlite3.connect("profane_words.db")
