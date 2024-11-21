@@ -4,6 +4,7 @@ import pickle
 import sqlite3
 import string
 import inflect
+from googletrans import Translator
 
 app = Flask(__name__)
 
@@ -94,7 +95,9 @@ def translate_request_content():
         return http_res
 
     # Translate the text to English
-    translated_content = translate_to_english(content)
+    translator = Translator()
+    translated = translator.translate(content, dest="en")
+    translated_content = translated.text
 
     res_body = {
         "original": content,
