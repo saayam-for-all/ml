@@ -1,0 +1,731 @@
+Org_ID,Name,city,state,country,URL,Category,Description
+1,"Les Brown Greatness Center, Inc.",Atlanta,GA,United States,https://lesbrown.com/,Education,"Les Brown Greatness Center is one of the largest charities in Georgia, United States. It empowers individuals to achieve personal and professional success through motivational programs, workshops, and resources inspired by the teachings of Les Brown."
+2,The Obama Foundation,Chicago,IL,United States,https://www.obama.org/,Education,The Obama Foundation is one of the largest charities in Illinois. Empowering global leaders and fostering civic engagement through programs and initiatives. Focused on community leadership and social change. It is a youth welfare nonprofit in Chicago.
+3,Girl Scouts Of The USA,New York,NY,United States,https://www.girlscouts.org/,Education,"Girl Scouts of the USA is one of the leading charity organizations in New York that empowers girls through leadership, skills development, and community service, fostering confidence and character-building."
+4,Khan Academy,Concord,CA,United States,https://www.khanacademy.org/,Education,"Khan Academy is an American non-profit educational organization created in 2006 by Sal Khan. They are on a mission to provide a free world-class education for anyone, anywhere."
+5,4-H Clubs & Affiliated 4-H Organizations,Kennewick,WA,United States,https://4-h.org/,Education,"4-H Clubs is a nonprofit in Washington that empowers youth through hands-on learning in agriculture, science, and leadership, promoting community engagement and personal development across Washington."
+6,The Ohio State University,Columbus,OH,United States,https://undergrad.osu.edu/cost-and-aid/merit-based-scholarships,Education,"The Ohio State University is a leading public university in Ohio, offering diverse academic programs, research opportunities, and community engagement initiatives, fostering education and innovation in Ohio."
+7,Greenpeace USA,Washington,DC,United States,https://www.greenpeace.org/usa/take-action/,Education,"Greenpeace USA is one of the largest nonprofits in Washington, DC. They lead global environmental campaigns focusing on climate change, deforestation, and pollution, advocating for sustainable practices and a green future."
+8,American Battlefield Trust,Washington,DC,United States,https://www.battlefields.org/,Education,"The American Battlefield Trust is a charity in Washington that preserves historic battlefields in the United States, educates the public about their significance, and promotes heritage tourism."
+9,K12 Entrepreneurship Career Pathway,Richmond,VA,United States,https://www.k12.com/career-and-college-prep/,Education,"K12 Entrepreneurship Career Pathway is one of the largest charities in Richmond, offering entrepreneurship education and career pathways for K-12 students. Inspiring innovation and business skills to prepare youth for future careers."
+10,Equal Justice Initiative,Montgomery,AL,United States,https://eji.org/,Education,"Equal Justice Initiative, one of the largest nonprofits in Alabama, provides legal representation to prisoners denied fair treatment, challenges excessive punishment, and works to end mass incarceration and racial injustice."
+11,Bloomberg Philanthropies,New York,NY,United States,https://www.bloomberg.org/about/contact/,Education,"Bloomberg Philanthropies invests in climate action and sustainability, supporting environmental projects to reduce global carbon footprints. It is an environment nonprofit in New York."
+12,Points Of Light,Atlanta,GA,United States,https://www.pointsoflight.org/,Education,Points of Light is a capacity-building nonprofit in Georgia. Inspiring volunteerism and civic engagement across Georgia. Empowering individuals to take action and make a difference in their communities through service.
+13,Al Clinton Charitable Foundation,New York,NY,United States,https://www.clintonfoundation.org/,Education,
+14,Globe Aware,Dallas,TX,United States,https://www.globeaware.org/,Education,"One of the largest charities in Dallas, Globe Aware, organizes volunteer vacations that promote cultural awareness and sustainability, working on community-driven projects in developing countries."
+15,The Moore Charitable Foundation,Denver,CO,United States,https://moorecharitable.org/what-we-do/future-generations/,Education,"The Moore Charitable Foundation is one of the top Colorado charities that provides ongoing support for education programs, from local early childhood institutions and youth groups to regional scholarships and postgraduate collaborations."
+16,Texas Public Policy Foundation,Austin,TX,United States,https://www.texaspolicy.com/,Education,"Texas Public Policy Foundation is a nonprofit in Austin, United States. It promotes free-market public policy solutions through research, advocacy, and education on issues like education reform, fiscal policy, and healthcare."
+17,Western Governors University Washington,Seattle,WA,United States,https://www.wgu.edu/,Education,"Western Governors University is an online nonprofit university in Seattle, Washington. Offering flexible, competency-based education tailored to adult learners, focusing on workforce readiness and lifelong learning."
+18,Greatmindzthinkalike,Jacksonville,FL,United States,https://www.facebook.com/greatmindzunited/,Education,"One of the largest charities in Jacksonville, Great minds think alike, engages youth in educational programs focused on leadership, critical thinking, and personal development to empower future leaders."
+19,Boys & Girls Clubs Of America,Atlanta,GA,United States,https://www.bgca.org/,Education,"Boys and Girls Clubs of America is providing safe spaces and programs for youth across Georgia. Focused on academic success, character development, and healthy lifestyles to empower the next generation. It is one of the largest charities in Atlanta."
+20,USBC Youth Ambassador,Arlington,TX,United States,https://bowl.com/youth/scholarships-and-awards/youth-ambassador,Education,"USBC is a nonprofit empowering youth in Arlington, TX, through bowling programs and leadership opportunities. Fostering skill development, sportsmanship, and community involvement among young bowlers."
+21,Faith And Freedom Comission Inc,Ocala,FL,United States,https://www.ffcoalition.com/,Education,"A non-profit in Ocala, the Faith and Freedom Commission promotes community engagement and outreach, empowering individuals through faith-based initiatives, social services, and programs that foster hope and healing."
+22,Multidisciplinary Association For Psychedelic Studies (MAPS),San Jose,CA,United States,https://maps.org/,Education,"The Multidisciplinary Association for Psychedelic Studies, one of the largest nonprofits in San Jose, advances research and clinical trials on psychedelic therapies for mental health conditions and promotes their medical use."
+23,Child Fund,Richmond,VA,United States,https://www.childfund.org/,Education,"Child Fund is a Richmond nonprofit that supports children in need globally through sponsorship, education, and health services to empower youth and reduce poverty."
+24,ADRA International,Silver Spring,MD,United States,https://adra.org/,Education,"ADRA International is a humanitarian organization in Silver Spring. They are providing disaster relief, sustainable development, and community support, focused on improving lives globally through education, health, and economic development."
+25,Goodwill Industries International,Rockville,MD,United States,https://www.goodwill.org/,Education,"Goodwill Industries International is a social enterprise in Rockville, Maryland, that provides job training, employment services, and community programs, empowering individuals with disabilities and disadvantages to achieve independence."
+26,Memphis Police Ambassadors Inc,Memphis,TN,United States,https://www.memphispolice.org/,Education,"One of the largest charities in Tennessee. Fostering community-police relationships in Memphis through outreach, education, and engagement initiatives. Promoting public safety and trust between law enforcement and residents."
+27,Native Hope,Pierre,SD,United States,https://www.nativehope.org/,Education,"Native Hope is a nonprofit for indigenous peoples. Empowering Native American communities in South Dakota through advocacy, education, and mental health support. Promoting cultural awareness and addressing social issues affecting Indigenous peoples."
+28,Democratic Socialists Of America Inc,New York,NY,United States,https://www.dsausa.org/,Education,
+29,Homeboy Industries,Los Angeles,CA,United States,https://homeboyindustries.org/,Education,
+30,Western Governors University Utah,Salt Lake City,UT,United States,https://www.wgu.edu/,Education,"Western Governors University is a nonprofit online university in Utah providing accessible, affordable education. Offering competency-based degree programs to empower students to succeed in their careers and contribute to the workforce."
+31,Americans United For Separation Of Church And State,Washington,DC,United States,https://www.au.org/,Education,
+32,Pro Start Scholarship Fund,Birmingham,AL,United States,https://chooserestaurants.org/programs/prostart/,Education,"Pro Start Scholarship Fund is one of the leading Alabama charities. They provide financial assistance for students in Birmingham to pursue careers in culinary arts and hospitality, supporting educational programs and skill development."
+33,"Active Minds, Inc.",Washington,DC,United States,https://www.activeminds.org/,Education,"Active Minds, Inc., an NGO in Washington, promotes mental health awareness and education among young adults, providing resources and support to reduce stigma and encourage open dialogue."
+34,"Love Laugh And Live Foundation, Inc. (Pediatric Brain Cancer)",Charlotte,NC,United States,https://www.thelivelovelaughfoundation.org/index.php/welcome,Education,"A North Carolina charity, Love Laugh and Live Foundation, Inc., supports families affected by pediatric brain cancer through financial assistance, emotional support, and advocacy for research."
+35,Students For Liberty,Washington,DC,United States,https://studentsforliberty.org/,Education,
+36,Western Governors University Texas,Austin,TX,United States,https://www.wgu.edu/,Education,"An online nonprofit university in Austin offering accessible, affordable education. Providing competency-based degree programs designed for working adults to enhance career opportunities and personal growth."
+37,Child Foundation,Portland,OR,United States,https://childfoundation.org/,Education,The Child Foundation is one of the largest charities in Portland. It supports underprivileged children worldwide through education sponsorships and basic needs assistance to help them achieve their full potential.
+38,Rock The Vote,Washington,DC,United States,https://www.rockthevote.org/,Education,
+39,Scholarship America,Minneapolis,MN,United States,https://scholarshipamerica.org/,Education,"Scholarship America is one of the leading scholarship nonprofits in Minneapolis that helps students access higher education through scholarships, financial aid programs, and advocacy, making college more affordable and attainable for all."
+40,Phi Theta Kappa Honor Society,Jackson,MS,United States,https://www.ptk.org/foundation/,Education,"One of the largest nonprofits in Mississippi, Phi Theta Kappa Honor Society recognizes and encourages the academic achievement of college students and provides opportunities for growth through honors, leadership, and service programs."
+41,Accountable Us,Washington,DC,United States,https://accountable.us/,Education,
+42,Stand Up Survivor,Orlando,FL,United States,https://www.standupsurvivor.net/,Education,
+43,Opportunity International,Chicago,IL,United States,https://opportunity.org/,Education,"Opportunity International is a Chicago charity that provides financial services and training to empower entrepreneurs in underserved areas worldwide, fostering sustainable economic growth and poverty reduction."
+44,Western Governors University Ohio,Columbus,OH,United States,https://www.wgu.edu/,Education,"Western Governors University Ohio is an accredited online university in Columbus providing flexible, competency-based education to empower adult learners with affordable degree options and career advancement opportunities."
+45,AmeriCorps,Washington,DC,United States,https://americorps.gov/,Education,
+46,James Madison Forum,Tucson,AZ,United States,https://www.jmu.edu/admissions/apply/scholarships/index.shtml,Education,
+47,FIRST,Nashua,NH,United States,https://www.firstinspires.org/,Education,"FIRST is a charity in New Hampshire that inspires young people to pursue careers in STEM through robotics competitions, mentorship, and educational programs."
+48,100 Black Men USA Scholars Of Perseverance And Social Justice Scholarship,Atlanta,GA,United States,https://100blackmen.org/four-for-the-future/education/national-scholarship-program/,Education,"It is an Atlanta nonprofit that provides scholarships and mentorship to empower Black students, supporting academic achievement, perseverance, and leadership in social justice throughout Atlanta and beyond."
+49,Progress Texas,Dallas,TX,United States,https://progresstexas.org/,Education,
+50,Center For American Progress,Washington,DC,United States,https://www.americanprogress.org/,Education,
+51,Civil Air Patrol Foundation Inc,Montgomery,AL,United States,https://www.gocivilairpatrol.com/programs/cadets/cadetinvest/academic-scholarships,Education,"Civil Air Patrol Foundation Inc. is a charity in Alabama. Supports the Civil Air Patrol’s mission of aerospace education, emergency services, and youth programs through fundraising and community engagement."
+52,"CRY America, Inc.",Boston,MA,United States,https://www.cryamerica.org/,Education,"CRY America, Inc., an NGO in Boston, ensures underprivileged children's rights to education, healthcare, and protection by supporting grassroots projects and raising awareness on child rights issues."
+53,The MOAA Scholarship Fund,Alexandria,VA,United States,https://www.moaa.org/content/about-moaa/scholarship-fund/scholarship-fund/,Education,
+54,"Missouri State University, International Programs",Springfield,MO,United States,https://www.missouristate.edu/,Education,"Based in Springfield, Missouri State University, International Programs promotes global education by providing study abroad opportunities, international student support, and cross-cultural programs."
+55,International Rescue Committee,Glendale,AZ,United States,https://www.rescue.org/,Education,"International Rescue Committee is one of the largest charities in Glendale that responds to the world’s worst humanitarian crises, providing health care, education, and economic empowerment to help refugees and displaced individuals rebuild their lives."
+56,The IRC In Salt Lake City,Salt Lake City,UT,United States,https://www.rescue.org/united-states/salt-lake-city-ut,Education,"IRC is one of the top international charities in Salt Lake City, providing support and services to refugees and immigrants. Offering resettlement assistance, education, and job training to help individuals and families integrate into their communities."
+57,SOS Children’s Villages USA,Washington,DC,United States,https://www.sos-usa.org/take-action/sponsor-a-child/hunger,Education,
+58,Piedmont Highrise Inc,Atlanta,GA,United States,https://www.piedmont.org/sixty-plus/,Education,
+59,United Negro College Fund - UNCF,Washington,DC,United States,https://uncf.org/,Education,
+60,Education Forward Arizona,Phoenix,AZ,United States,https://educationforwardarizona.org/innovate/attainment/scholarships/,Education,
+61,Step Up For Students,Jacksonville,FL,United States,https://www.stepupforstudents.org/,Education,
+62,BuildOn,Stamford,CT,United States,https://www.buildon.org/,Education,Build On ranks among the top nonprofits in Connecticut that empowers youth to break the cycle of poverty and illiteracy through community service and building schools in developing countries.
+63,Comm Workers Of Amer National Education And Training Tr,Washington,DC,United States,https://cwa-union.org/,Education,
+64,National Indian Education Association,Kennewick,WA,United States,https://www.niea.org/,Education,"The National Indian Education Association is one of the leading nonprofits in Kennewick, advocating for quality education for Native American students, promoting culturally relevant curricula, and empowering Indigenous communities in Kennewick and beyond."
+65,National Scholarships And Fellowships UND,Grand Forks,ND,United States,https://und.edu/academics/national-scholarships/index.html,Education,"It is a charity in North Dakota, that assists University of North Dakota students in securing national scholarships and fellowships, providing guidance and resources to enhance academic and professional opportunities."
+66,The Mom Project,Chicago,IL,United States,https://themomproject.com/,Education,"The Mom Project, a charity in Chicago, connects talented mothers with flexible job opportunities, supporting working mothers to thrive in their careers while balancing family life."
+67,The Horace Bushnell Memorial Hall Corporation,Hartford,CT,United States,https://bushnell.org/,Education,"The Horace Bushnell Memorial Hall Corporation is one of the largest nonprofits in Hartford that provides a premier performing arts venue, offering a diverse range of cultural, educational, and entertainment experiences to the community in Hartford."
+68,Entrepreneur Collaborative Center,Tampa,FL,United States,https://hcfl.gov/locations/entrepreneur-collaborative-center,Education,
+69,North Alabama Academic Foundation,Florence,AL,United States,https://catalog.una.edu/undergraduate/description-university/una-foundation/,Education,"North Alabama Academic Foundation is one of the largest nonprofits in Florence, Alabama. Enhances educational opportunities for students through scholarships, grants, and community partnerships, fostering academic excellence and success."
+70,Central Asia Institute,Bozeman,MT,United States,https://centralasiainstitute.org/,Education,"Central Asia Institute is one of the top nonprofits in Bozeman, Montana, that promotes education and empowerment in remote regions of Central Asia, building schools and supporting community-led initiatives."
+71,Montclair State University,Newark,NJ,United States,https://www.montclair.edu/red-hawk-central/financial-aid/scholarships/,Education,"Montclair State University is a leading public research university in Newark offering diverse academic programs, fostering innovation, and empowering students to succeed through education and community engagement."
+72,United Association Of Journeymen & Apprentices Of The Plumbing & Pipe,Wichita,KS,United States,https://ua.org/,Education,"United Association of Journeymen and Apprentices of the Plumbing and Pipe, provides training, education, and advocacy for plumbing and pipefitting professionals, promoting industry standards and worker rights. It is one of the top Kansas charities."
+73,Junior Achievement Usa,Colorado Springs,CO,United States,https://jausa.ja.org/,Education,"Junior Achievement USA is one of the top Colorado Springs charities. Equips youth with financial literacy, entrepreneurship, and career-readiness skills, fostering economic empowerment for future success."
+74,International Association For Montessori Education,Las Vegas,NV,United States,https://montessori-ami.org/,Education,
+75,Kids In Need Foundation,St. Paul,MN,United States,https://www.kinf.org/,Education,"Kids In Need Foundation is an educational nonprofit in Saint Paul, Minnesota. They provide free school supplies and resources to students in need, ensuring all children have the tools for academic success, regardless of their economic situation."
+76,Legacy Coaching Institute,Chicago,IL,United States,https://www.facebook.com/legacycoachinginst/,Education,"A non-profit in Chicago, Legacy Coaching Institute, provides coaching and mentoring services to help individuals and organizations achieve personal and professional growth."
+77,American Association Of University Women,Washington,DC,United States,https://www.aauw.org/resources/programs/fellowships-grants/,Education,
+78,Americas Promise,Washington,DC,United States,https://americaspromise.org/,Education,
+79,Civic Ventures,San Francisco,CA,United States,https://civic-ventures.com/,Education,
+80,UNIVERSITY OF WEST FLORIDA FOUNDATION INC,Pensacola,FL,United States,https://uwf.edu/,Education,
+81,Cuatrogatos Foundation Inc,Miami,FL,United States,https://www.cuatrogatos.org/,Education,
+82,"Child Protect, Inc.",Montgomery,AL,United States,http://www.childprotect.com/,Education,"Child Protect, Inc., one of the largest charities in Montgomery, Alabama, provides support and advocacy for child victims of abuse, offering forensic interviews, counseling, and community education to ensure safety and healing."
+83,Come Own It Now Inc,Lawrenceville,GA,United States,https://www.lawrencevillega.org/,Education,"It is a non-profit in Lawrenceville, Georgia, empowering individuals through financial education, entrepreneurship training, and resources for homeownership. Working to build stronger communities by helping people achieve financial independence."
+84,Coast Guard Foundation,Stamford,CT,United States,https://coastguardfoundation.org/news/announcing-our-2024-scholarship-awards#,Education,
+85,Native Forward Scholars Fund,Albuquerque,NM,United States,https://www.nativeforward.org/,Education,"A charity in New Mexico, Native Forward Scholars Fund, supports Native American students in higher education through scholarships, mentorship, and leadership development programs."
+86,Goodwill Of Central And Northern Arizona,Phoenix,AZ,United States,https://www.goodwillaz.org/,Education,
+87,National Center For Women And Information Technology,Boulder,CO,United States,https://ncwit.org/,Education,
+88,Phi Delta Theta Scholarship Trust,Columbus,OH,United States,https://phideltatheta.org/scholarships/,Education,"Phi Delta Theta Scholarship Trust is one of the largest nonprofits in Columbus, Ohio, that provides financial support and scholarships to members of the Phi Delta Theta fraternity, promoting academic excellence and leadership development among students."
+89,Mi Familia Vota Education Fund,Phoenix,AZ,United States,https://www.mifamiliavota.org/,Education,
+90,Fondation Forge Inc,Miami,FL,United States,https://fondationforge.org/ingles,Education,
+91,Firemens Association Of The State Of New York,Albany,NY,United States,https://fasny.com/,Education,
+92,Society For Industrial And Applied Mathematics,Philadelphia,PA,United States,https://siam.org/,Education,
+93,Alabama Education Association - AEA,Montgomery,AL,United States,https://myaea.org/,Education,"Alabama Education Association (AEA) is a charity in Montgomery. Advocates for educators’ rights, promoting quality education, professional growth, and student success across Alabama."
+94,Hope Scholarship Foundation,Los Angeles,CA,United States,https://www.bankofhope.com/hope-stories/hope-scholarship,Education,
+95,Hope Scholarship Foundation,Seattle,WA,United States,https://www.bankofhope.com/hope-stories/hope-scholarship,Education,
+96,Hope Scholarship Foundation,Montgomery,AL,United States,https://www.bankofhope.com/hope-stories/hope-scholarship,Education,"Hope Scholarship Foundation is one of the largest nonprofits in Montgomery, Alabama. Provides scholarships and financial aid to empower Alabama’s underserved students, supporting access to education and brighter futures."
+97,Hope Scholarship Foundation,Dallas,TX,United States,https://www.bankofhope.com/hope-stories/hope-scholarship,Education,
+98,Hope Scholarship Foundation,Fairfax,VA,United States,https://www.bankofhope.com/hope-stories/hope-scholarship,Education,"Hope Scholarship Foundation is one of the largest nonprofits in Fairfax, VA, providing scholarships to underserved students, supporting access to quality education, and empowering future leaders."
+99,Nepal Youth Foundation,San Francisco,CA,United States,https://www.nepalyouthfoundation.org/,Education,
+100,Ethiopia Skate,Los Angeles,CA,United States,https://www.ethiopiaskate.org/,Education,"Ethiopia Skate empowers children and youth through skateboarding, education, and community programs, providing school supplies and safe spaces to inspire creativity, resilience, and growth for underprivileged youth."
+101,International Cinematographers Guild Scholarship Fund Inc,Los Angeles,CA,United States,https://www.icg600.com/JOIN-THE-UNION/Why-Join,Education,
+102,Wildlife Madagascar,San Diego,CA,United States,https://www.wildlifemadagascar.org,Education,"Wildlife Madagascar is dedicated to protecting Madagascar’s unique wildlife and forests through scientific research, habitat restoration, education, and community-driven conservation and development initiatives."
+103,Young Womens Club Network - YWC,Vancouver,WA,United States,https://www.ywca.org/,Education,"YWC is a nonprofit for domestic violence in Vancouver that empowers young women in Vancouver through leadership development, mentorship, and networking opportunities, fostering personal and professional growth in a supportive community."
+104,Goodwill Central Oklahoma,Norman,OK,United States,https://okgoodwill.org/,Education,
+105,Year Up,Boston,MA,United States,https://www.yearup.org/,Education,
+106,HOSA Scholarships,Spring,TX,United States,https://hosa.org/scholarships,Education,HOSA Scholarships is a charitable organization in Texas. Supporting health science students by providing scholarships for educational opportunities. Encouraging the next generation of healthcare professionals through financial assistance and mentorship.
+107,Pratham USA,Houston,TX,United States,https://prathamusa.org/,Education,"Based in Houston, Pratham USA is a non-profit that works to improve literacy and education for children in India through innovative learning programs, teacher training, and community involvement."
+108,Cross Catholic Outreach,Boca Raton,FL,United States,https://crosscatholic.org/,Education,
+109,Hope College,Detroit,MI,United States,https://hope.edu/admissions/scholarships.html,Education,
+110,Lambda Chi Alpha Fraternity,Carmel,IN,United States,https://lambdachifoundation.org/commit/areas-of-support/scholarships/,Education,"A national fraternity based in Carmel, Indiana, focused on developing leadership, academic excellence, and brotherhood. Dedicated to community service, personal growth, and fostering lifelong bonds among its members."
+111,Young Americas Business Trust,Washington,DC,United States,https://yabt.net/,Education,
+112,Youth For Understanding USA - YFU USA (Saginaw),Flint,MI,United States,https://www.yfuusa.org/,Education,"Youth for Understanding is a youth welfare non-profit in Saginaw. Facilitates international student exchange programs, fostering cultural understanding and global citizenship through immersive educational experiences."
+113,"Groundtruth Project, Inc.",Boston,MA,United States,https://thegroundtruthproject.org/,Education,"GroundTruth Project, Inc. is a non-profit organization in Boston that supports a new generation of journalists through in-depth reporting projects that focus on social justice, climate change, and public health."
+114,GCC Equal Opportunity Network,Glendale,AZ,United States,https://www.glendale.edu/about-gcc/human-resources/,Education,"GCC Equal Opportunity Network is a nonprofit in Glendale, AZ, promoting equal access to education and career opportunities for underrepresented groups, offering mentorship, resources, and support to foster personal and professional growth."
+115,Idaho Youth Ranch,Boise,ID,United States,https://www.youthranch.org/,Education,"Idaho Youth Ranch is a charity in Boise. Supporting at-risk youth in Idaho through counseling, education, and mentoring programs. Committed to helping young people build brighter futures through empowerment and support."
+116,Scrapping Scholars,Glendale,AZ,United States,https://www.glendale.edu/academics/special-programs/scholars-program,Education,"Scrapping Scholars is a charity in Glendale, AZ, that provides educational support to students in need by recycling scrap materials to fund scholarships and resources, promoting sustainability and academic success."
+117,Skills For Chicagoland's Future,Chicago,IL,United States,https://www.skillsforchicagolandsfuture.com/,Education,"A charity in Chicago, Skills for Chicagoland's Future, partners with businesses to match unemployed job seekers with job opportunities, providing coaching and support to help them secure employment."
+118,The American Foundation For The Blind (AFB),Arlington,VA,United States,https://www.afb.org/,Education,
+119,Womens Audio Mission,San Francisco,CA,United States,https://womensaudiomission.org/,Education,
+120,Combined Jewish Philanthrophies - CJP,Boston,MA,United States,https://ma.cjp.org/,Education,
+121,Opportunity Village,Las Vegas,NV,United States,https://www.opportunityvillage.org/,Education,
+122,Palmetto Goodwill,Charleston,SC,United States,https://palmettogoodwill.org/,Education,
+123,Farmers Crafts Market Of Las Cruces Inc,Las Cruces,NM,United States,https://www.farmersandcraftsmarketoflascruces.com/,Education,
+124,Wit Initiative,Kennewick,WA,United States,http://witinitiative.org/,Education,"Wit Initiative is a nonprofit organization in Kennewick, dedicated to empowering women and youth through education, leadership training, and community engagement, fostering social change and personal development in Kennewick and surrounding areas."
+125,The Heritage Foundation,Washington,DC,United States,https://www.heritage.org/,Education,
+126,Air Force ROTC Scholarship,Montgomery,AL,United States,https://www.afrotc.com/scholarships/,Education,
+127,AISES,Albuquerque,NM,United States,https://www.aises.org/,Education,"Based in Albuquerque, AISES is a charity that promotes the education and advancement of Indigenous peoples in STEM fields through scholarships, internships, and professional development opportunities."
+128,Arizona Elk Society Annual Youth Scholarships,Phoenix,AZ,United States,https://www.arizonaelksociety.org/youth-scholarships,Education,
+129,Distinguished Young Women Of North Dakota,Mobile,AL,United States,https://distinguishedyw.org/north-dakota,Education,"Empowers young women in North Dakota with scholarships, life skills, and leadership development through national programs that celebrate talent, academics, and service. It is a charity in Mobile, Alabama."
+130,Lumina Foundation,Indianapolis,IN,United States,https://www.luminafoundation.org/our-work/,Education,
+131,Red Wine & Blue,Cleveland,OH,United States,https://redwine.blue/,Education,
+132,Crypto Kids,Chesapeake,VA,United States,https://cryptokid.com/,Education,"Crypto Kids is a Chesapeake nonprofit that inspires youth in STEM and cryptocurrency through educational programs, workshops, and mentoring to empower future tech innovators."
+133,International Order Of The Rainbow Girls,Chattanooga,TN,United States,https://gorainbow.org/,Education,
+134,International Order Of The Rainbow Girls,Mesa,AZ,United States,https://gorainbow.org/,Education,
+135,International Order Of The Rainbow Girls Supreme Assembly,Oklahoma City,OK,United States,https://gorainbow.org/,Education,
+136,International Order Of The Rainbow Girls The Supreme Assembly,Allentown,PA,United States,https://gorainbow.org/supreme-assembly/,Education,"A nonprofit in Allentown. Empowering young women through leadership and community service, the International Order of the Rainbow Girls promotes personal growth, friendship, and philanthropy in Allentown, Pennsylvania."
+137,International Order Of The Rainbow Girls The Supreme Assembly,Kennewick,WA,United States,https://gorainbow.org/,Education,
+138,Fair Vote,Washington,DC,United States,https://fairvote.org/,Education,
+139,Future Thinkers Inc,Boca Raton,FL,United States,https://futurethinkers.org/,Education,
+140,Islamic Scholarship Fund,Antioch,CA,United States,https://islamicscholarshipfund.org/,Education,"The Islamic Scholarship Fund is a non-profit in Antioch, CA. They provide scholarships and mentorship to empower American Muslim students in higher education, fostering leadership and civic engagement."
+141,Rose Kapingen Foundation,Philadelphia,PA,United States,https://sianchorage.org/programs/rose-kapingen-scholarship/,Education,
+142,Calhoun Scholarships,Huntsville,AL,United States,https://calhoun.edu/student-services/financial-aid/calhoun-scholarships/,Education,
+143,Concern Worldwide US,New York,NY,United States,https://concernusa.org/,Education,"Concern Worldwide US focuses on global poverty relief and environmental resilience, addressing climate change impacts in New York. They are believers in the concept that eliminating the cycle of extreme poverty is possible."
+144,Food For The Hungry,Phoenix,AZ,United States,https://www.fh.org/give/strengthen-communities/,Education,
+145,Lancaster Stands Up,Lancaster,PA,United States,https://pastandsup.org/lancaster/,Education,
+146,Mercy Charitable Program,Overland Park,KS,United States,https://mwlimits.org/,Education,
+147,Michigan Regional Council Of Carpenters And Millwrights,Lansing,MI,United States,https://www.buildmifuture.com/,Education,"The Michigan Regional Council of Carpenters and Millwrights is a charity in Lansing that supports carpenters and millwrights in Michigan through advocacy, training, and collective bargaining."
+148,New Georgia Project Incorporated,Atlanta,GA,United States,https://newgeorgiaproject.org/,Education,
+149,Global Partnership For Education,Los Angeles,CA,United States,https://educationinthestorm.org/,Education,
+150,Stanislaus County Area Mfing & Maintenance Apprenticeship Committ,Modesto,CA,United States,https://www.mjc.edu/instruction/teched/apprenticeship.php,Education,"A charity organization in Modesto, California. They promote workforce development by providing vocational training and apprenticeship programs in manufacturing and maintenance, helping individuals gain skills for high-demand jobs."
+151,Fresno Housing,Fresno,CA,United States,https://fresnohousing.org/,Education,"Fresno is housing affordability non-profit in Fresno. They work to create affordable housing solutions and supportive services for low-income families in Fresno, CA, fostering community development and improving residents' quality of life."
+152,Good 360,Alexandria,VA,United States,https://good360.org/,Education,
+153,Heartspring,Wichita,KS,United States,https://www.heartspring.org/,Education,
+154,Human Relief International Inc,Brooklyn,NY,United States,https://humanreliefusa.com/,Education,
+155,Indy Reads,Indianapolis,IN,United States,https://www.facebook.com/IndyReads/,Education,
+156,Naomi H Truman Scholarship Foundation HABD,Birmingham,AL,United States,https://www.facebook.com/photo.php?fbid=3726579097402164&id=1053022138091220&set=a.2154105831316173,Education,
+157,Punahou School,Honolulu,HI,United States,https://www.punahou.edu/,Education,"Punahou School is an NGO in Honolulu that offers a comprehensive K–12 education, emphasizing academic excellence, character development, and community engagement, fostering well-rounded and responsible individuals."
+158,Climb Wyoming,Cheyenne,WY,United States,https://climbwyoming.org/,Education,"Climb Wyoming is one of the largest charities in Cheyenne that empowers women by offering job training, placement services, and support to achieve economic independence and self-sufficiency."
+159,"EVEN, Inc.",Los Angeles,CA,United States,https://www.linkedin.com/company/even-biz/,Education,"EVEN, Inc. is a charity in Los Angeles that focuses on enhancing accessibility and support for individuals with disabilities through innovative solutions and community engagement."
+160,Macon Regional Crime Stoppers Inc,Macon,GA,United States,https://crimestop.us/,Education,Helping reduce crime in Macon by encouraging community involvement and providing anonymous crime tip services. Their mission is to make Macon safer for everyone.
+161,Mass. Center For Native American Awareness (MCNAA),Boston,MA,United States,https://www.mcnaa.org/,Education,
+162,Mississippi First,Jackson,MS,United States,https://www.mississippifirst.org/,Education,Mississippi First is a Jackson nonprofit that advocates for education reform and works to improve the quality of education in Mississippi.
+163,Mots House Foundation Inc,Flint,MI,United States,https://www.mott.org/,Education,"Mots House Foundation preserves Detroit’s heritage and fosters environmental education, promoting sustainable community growth. It ranks among the largest environment protection nonprofits in Michigan."
+164,Rap Snacks Foundation Inc,Miami,FL,United States,https://www.rapsnacks.net/,Education,
+165,Saddleback College Foundation,Mission Viejo,CA,United States,https://www.saddleback.edu/,Education,"Saddleback is an education nonprofit in Viejo, California. They support student success through scholarships, grants, and programs that enhance educational opportunities and community engagement. Help empower future leaders today!"
+166,The New York Women's Foundation,New York,NY,United States,https://nywf.org/,Education,
+167,The Zoo In Forest Park & Education Center,Springfield,MA,United States,https://www.forestparkzoo.org/,Education,
+168,United Corpus Christi Chamber Of Commerce,Corpus Christi,TX,United States,https://unitedcorpuschristi.org/,Education,
+169,Upwardly Global,New York,NY,United States,https://www.upwardlyglobal.org/,Education,
+170,Algalita Marine Research And Education,Long Beach,CA,United States,https://algalita.org/,Education,
+171,"Books For Africa, Inc.",St. Paul,MN,United States,https://www.booksforafrica.org/,Education,"Based in St. Paul, Books For Africa, Inc., is a charity that distributes books to African students to improve literacy and education."
+172,Hawaii Community Foundation,Honolulu,HI,United States,https://www.hawaiicommunityfoundation.org/,Education,
+173,International Humanity Foundation,San Diego,CA,United States,https://ihfonline.org/,Education,"International Humanity Foundation is a non-profit in San Diego that Focuses on providing education, leadership, and support to underprivileged children and communities around the world."
+174,MIND Research Institute,Irvine,CA,United States,https://www.mindresearch.org/,Education,
+175,Rio Salado Youth Education Foundation,Phoenix,AZ,United States,https://www.riosalado.edu/,Education,
+176,The Denver Foundation,Denver,CO,United States,https://denverfoundation.org/,Education,
+177,The GOD'S CHILD Project,Bismarck,ND,United States,https://godschild.org/,Education,"A nonprofit in Bismarck, North Dakota, The GOD'S CHILD Project, supports impoverished children and families in Central America and the U.S. through education, healthcare, and community development programs."
+178,WAVE Educational Fund Inc,Milwaukee,WI,United States,https://waveedfund.org/,Education,
+179,A Special Blend Inc,Greensboro,NC,United States,https://www.aspecialblend.org/,Education,
+180,American School For The Deaf (ASD),Hartford,CT,United States,https://www.asd-1817.org/,Education,"American School for the Deaf (ASD) is a charity in Hartford that offers comprehensive education and support for deaf and hard-of-hearing students, fostering inclusivity and empowerment."
+181,BBB Charitable & Educational Fund,Canton,OH,United States,https://www.bbb.org/local/0282/bbbcharitableandeducationalfundinc/contact-us,Education,"BBB Charitable & Educational Fund is a nonprofit in Canton, focused on promoting trust in charities by providing education, resources, and accountability tools for donors, ensuring effective philanthropy, and enhancing the impact of charitable giving."
+182,Digital4Good,Antioch,CA,United States,https://www.icanhelp.net/,Education,"Digital 4 Good is a nonprofit in Antioch. Promotes positive digital citizenship among youth in Antioch, CA, through educational programs that encourage responsible technology use and empower students to make a social impact."
+183,DREAM Project,Boston,MA,United States,https://www.dominicandream.org/,Education,
+184,Global Youth Innovation Network,Washington,DC,United States,https://www.facebook.com/GYIN.ORG/,Education,
+185,Impacther,New York,NY,United States,https://www.impacther.org/,Education,
+186,Kurdish Professionals,Nashville,TN,United States,https://www.facebook.com/kurdishprofessionals/,Education,
+187,League Of Women Voters Of Wisconsin Inc,Appleton,WI,United States,https://my.lwv.org/wisconsin,Education,"League of Women Voters of Wisconsin advocates for fair elections, voter education, and civic engagement across Wisconsin, promoting democracy and informed voting."
+188,Moose Association,Springfield,IL,United States,https://www.mooseintl.org/,Education,
+189,Omaha Community Foundation,Omaha,NE,United States,https://omahafoundation.org/,Education,
+190,Orangewood Foundation,Santa Ana,CA,United States,https://orangewoodfoundation.org/,Education,
+191,"Renewal In Self Empowerment, Inc.",Philadelphia,PA,United States,https://ioby.org/project/renewal-self-inc,Education,"A non-profit in Philadelphia, Renewal in Self-Empowerment, Inc., focuses on personal development and empowerment, offering programs and resources to help individuals achieve self-sufficiency and growth."
+192,Rocky Mountain Raptor Program,Fort Collins,CO,United States,https://www.rmrp.org/,Education,
+193,Rocky Mountain Raptor Program,Fort Collins,CO,United States,https://www.rmrp.org/,Education,
+194,School The World,Boston,MA,United States,https://schooltheworld.org/,Education,
+195,Silent Warrior Foundation,Scottsdale,AZ,United States,https://silentwarriorfoundation.com/,Education,
+196,Texas Society Of Pathologists Educational Foundation,Austin,TX,United States,https://www.texpath.org/,Education,
+197,The Mensa Foundation,Houston,TX,United States,https://www.mensafoundation.org/what-we-do/scholarships/,Education,
+198,The Midwestern University Downers Grove Campus,Peoria,IL,United States,https://www.midwestern.edu/admissions/paying-college/scholarships,Education,
+199,The Midwestern University Glendale Campus,Glendale,AZ,United States,https://www.midwestern.edu/admissions/paying-college/scholarships,Education,
+200,The Nasdaq Entrepreneurial Center Inc,San Francisco,CA,United States,https://thecenter.nasdaq.org/,Education,
+201,The New York Foundling,Staten Island,NY,United States,https://www.nyfoundling.org/,Education,"The New York Foundling, a charity in Staten Island, provides vital support to children and families, focusing on foster care, mental health services, and family support in Staten Island."
+202,Think Together,Santa Ana,CA,United States,https://thinktogether.org/,Education,
+203,United Breast Cancer Foundation - Huntington,New York,NY,United States,https://www.ubcf.org/,Education,The goal of the United Breast Cancer Foundation is to improve the lives of Americans who are impacted by breast cancer. UBC also has educational grants.
+204,University Of Wyoming Foundation - (Laramie),Casper,WY,United States,https://www.uwyo.edu/foundation/,Education,
+205,Voter Registration Project Education Fund,Washington,DC,United States,https://www.theregistrationproject.org/,Education,
+206,YouthBuild USA,Boston,MA,United States,https://youthbuild.org/,Education,
+207,Bess The Book Bus Inc,Tampa,FL,United States,https://bessthebookbus.org/,Education,
+208,Bourbon Women Education Foundation Inc,Louisville,KY,United States,https://bourbonwomenfoundation.org/,Education,
+209,Bowling Green Area Chamberfoundation Inc,Bowling Green,KY,United States,https://www.bgchamber.com/,Education,
+210,Boys & Girls Clubs Of The Valley - Arizona,Phoenix,AZ,United States,https://www.bgcaz.org/,Education,
+211,BSC Foundation Scholarships,Bismarck,ND,United States,https://bismarckstate.edu/alumnifoundation/foundation/scholarships/all/,Education,"BSC Foundation is a Bismarck nonprofit that provides scholarships and financial assistance to students at Bismarck State College, supporting their educational goals through scholarships and grants to promote academic success."
+212,Center On Civic Engagement,Washington,DC,United States,https://www.civiced.org/,Education,
+213,College Possible,St. Paul,MN,United States,https://collegepossible.org/,Education,
+214,Colorado Succeeds,Denver,CO,United States,https://coloradosucceeds.org/,Education,
+215,Historic Fort Wayne Inc,Fort Wayne,IN,United States,https://oldfortwayne.org/,Education,
+216,La Casa De Amistad,South Bend,IN,United States,https://www.lacasadeamistad.org/,Education,
+217,Philadelphia Student Union,Philadelphia,PA,United States,https://www.phillystudentunion.org/,Education,"The Philadelphia Student Union, a non-profit organization, empowers young people to demand high-quality education and develop leadership skills through activism and organizing."
+218,Piecemakers Ministry,Austin,TX,United States,https://www.peacemakerministries.org/,Education,"Piecemakers Ministry is a non-profit in Austin that creates quilts and other handmade items to donate to those in need, providing comfort and support."
+219,Point Foundation,Los Angeles,CA,United States,https://pointfoundation.org/,Education,
+220,Professional Services Industry Inc,Baton Rouge,LA,United States,https://www.linkedin.com/company/professional-service-industries-inc--psi-/,Education,
+221,STRS Ohio,Columbus,OH,United States,https://www.strsoh.org/,Education,
+222,The Committee Of Seventy,Philadelphia,PA,United States,https://seventy.org/,Education,
+223,A Place Called Home,Los Angeles,CA,United States,https://apch.org/,Education,"Based in Los Angeles, A Place Called Home is a charity that offers educational, social, and emotional support to at-risk youth and families, including after-school programs and mentorship."
+224,Big Thought,Dallas,TX,United States,https://www.bigthought.org/,Education,"Based in Dallas, Big Thought is a charity that offers creative learning programs to close the opportunity gap for Dallas youth through arts, education, and community partnerships."
+225,BlueGreen Alliance,Washington,DC,United States,https://www.bluegreenalliance.org/,Education,
+226,BlueGreen Alliance,Minneapolis,MN,United States,https://www.bluegreenalliance.org/,Education,
+227,CAP Tulsa,Tulsa,OK,United States,https://captulsa.org/,Education,
+228,Caring For Cambodia,Austin,TX,United States,https://caringforcambodia.org/,Education,"A non-profit in Austin, Caring for Cambodia, enhances education for children in Cambodia by providing resources, training, and community support."
+229,Children's Scholarship Fund,New York,NY,United States,https://scholarshipfund.org/,Education,
+230,Civic Nebraska,Lincoln,NE,United States,https://civicnebraska.org/category/civic-education/,Education,
+231,Culinarians Helping Entrepreneurial Folks - Chef Inc,Denver,CO,United States,https://www.coloradogives.org/,Education,
+232,Daniels Fund,Denver,CO,United States,https://www.danielsfund.org/,Education,
+233,Lignite Energy Foundation,Bismarck,ND,United States,https://lignite.com/members/member-update/2494-2/,Education,"The Lignite Energy Foundation promotes the responsible development of lignite resources in North Dakota, funding research and education initiatives to support energy innovation and economic growth. It ranks among the largest nonprofits in Bismarck."
+234,LIVING CLASSROOMS FOUNDATION,Baltimore,MD,United States,https://livingclassrooms.org/,Education,
+235,NC Faith & Freedom Coalition,Concord,NC,United States,https://ncfaithandfreedom.com/,Education,
+236,Oregon Tradeswomen Inc,Portland,OR,United States,https://oregontradeswomen.org/,Education,
+237,Pakistani Women In Computing - PWiC,Seattle,WA,United States,https://pwic.org/,Education,
+238,"Salute 1st Global, Inc.",Charlotte,NC,United States,https://salute1st.com/,Education,"Salute 1st Global, Inc. is a non-profit based in Charlotte that supports military veterans and their families through various programs and services aimed at enhancing their quality of life."
+239,Severson Dells Educational Foundation,Rockford,IL,United States,https://www.seversondells.com/,Education,"Severson Dells Educational Foundation provides environmental education in Illinois, fostering nature appreciation and conservation through hands-on learning."
+240,The Alpha Gamma Rho Educational Foundation,Kansas City,MO,United States,https://www.alphagammarho.org/scholarships,Education,
+241,The North Dakota Champions Club,Grand Forks,ND,United States,https://undalumni.org/champions-club/index.html,Education,
+242,UND Alumni Association & Foundation,Grand Forks,ND,United States,https://undalumni.org/,Education,
+243,Up To Us Inc,New York,NY,United States,https://www.itsuptous.org/,Education,
+244,Woldumar Nature Association,Lansing,MI,United States,https://www.woldumar.org/,Education,"A charity based in Lansing, the Woldumar Nature Association is a charity that provides environmental education and outdoor experiences on its nature preserve."
+245,Women's Empowerment,Sacramento,CA,United States,https://womens-empowerment.org/,Education,"Women's Empowerment, a charity in Sacramento, helps women experiencing homelessness and poverty through job training, support services, and personal development programs."
+246,Womens Foodservice Forum,Dallas,TX,United States,https://www.wff.org/s/,Education,
+247,ACB Scholarship Program,Alexandria,VA,United States,https://www.acb.org/scholarships,Education,
+248,Alabama Realtors Foundation,Montgomery,AL,United States,https://www.alabamarealtors.com/member-services/alabama-realtors-foundation,Education,
+249,Artworks Trenton,Trenton,NJ,United States,https://artworkstrenton.org/,Education,"A non-profit organization, Artworks Trenton, promotes art and culture through exhibitions, classes, and community programs in Trenton."
+250,China Institute,New York,NY,United States,https://chinainstitute.org/,Education,
+251,Clare Swan Early Learning Center,Anchorage,AK,United States,https://citci.org/clare-swan-early-learning-center/,Education,
+252,Cook Inlet Tribal Council,Anchorage,AK,United States,https://citci.org/,Education,"Cook Inlet Tribal Council is a US-based non-profit organization that provides social, educational, and employment services to Alaska Native and American Indian people, promoting self-sufficiency and community well-being."
+253,Cook Inlet Tribal Council,Anchorage,AK,United States,https://citci.org/,Education,
+254,Cookie Cart,Minneapolis,MN,United States,https://cookiecart.org/,Education,
+255,Girls Build,Portland,OR,United States,https://girlsbuild.org/,Education,
+256,IDE,Denver,CO,United States,https://www.ideglobal.org/,Education,
+257,Keep Tampa Bay Beautiful,Miami,FL,United States,https://www.keeptampabaybeautiful.org/,Education,
+258,Learning Forward Foundation (Oxford Oh),Canton,OH,United States,https://foundation.learningforward.org/scholarships-and-grants/,Education,
+259,"People Taking Care Of People, Inc.",Houston,TX,United States,https://www.people-inc.org/,Education,"Based in Houston, People Taking Care of People, Inc. is a non-profit organization that assists individuals and families in need through various community support programs."
+260,Ramos-Blakely Foundation Inc,Brooklyn,NY,United States,https://www.theramosfoundation.org/,Education,
+261,School On Wheels,Los Angeles,CA,United States,https://schoolonwheels.org/,Education,
+262,Trenton Area Soup Kitchen (TASK),Trenton,NJ,United States,https://trentonsoupkitchen.org/,Education,"Trenton Area Soup Kitchen is a charity that provides food, social services, and educational programs to individuals and families in need."
+263,United Way Of Central Alabama,Birmingham,AL,United States,https://www.uwca.org/,Education,
+264,Wine Empowered Inc,Flushing,NY,United States,https://www.wine-empowered.com/,Education,"Wine Empowered is a nonprofit organization in Flushing that brings diversity to the wine business! They offer free education to women and minorities, empowering the next generation of wine pros. Cheers to knowledge and inclusivity!"
+265,Young Democratic Socialists Of America,New York,NY,United States,https://y.dsausa.org/,Education,
+266,YWCA South Florida,Miami,FL,United States,https://www.ywcasouthflorida.org/,Education,
+267,Baltimore Corps Inc,Baltimore,MD,United States,https://baltimorecorps.org/,Education,
+268,Bridge Mentor Initiative Inc,Greensboro,NC,United States,https://mentor-initiative.org/,Education,
+269,Brother To Brother,Detroit,MI,United States,https://www.lgbtdetroit.org/brothertobrother,Education,
+270,Building Biology Institute,Santa Fe,NM,United States,https://buildingbiologyinstitute.org/,Education,"An NGO in Santa Fe, Building Biology Institute, educates about and promotes healthy indoor environments by addressing environmental hazards and fostering sustainable building practices."
+271,Charity International Inc,Palm Coast,FL,United States,https://charityinternational.com/,Education,
+272,Diverse & Resilient,Milwaukee,WI,United States,https://www.diverseandresilient.org/,Education,
+273,Endeavors Youth And Community Center,Long Beach,CA,United States,https://endeavors.org/,Education,
+274,Foster Care To Success,Cleveland,OH,United States,https://www.fc2success.org/our-programs/,Education,
+275,Illinois Science And Technology Coalition,Chicago,IL,United States,https://resources.istcoalition.org/illinois-technology-foundation,Education,
+276,Junior Achievement Of Arizona,Tucson,AZ,United States,https://www.jaaz.org/,Education,
+277,Kids Making It Inc,Wilmington,NC,United States,https://www.kidsmakingit.org/,Education,
+278,Larkin Street Youth Services,San Francisco,CA,United States,https://larkinstreetyouth.org/,Education,
+279,Mary's Center,Washington,DC,United States,https://www.maryscenter.org/,Education,
+280,North Dakota's Gateway To Science,Bismarck,ND,United States,https://gatewaytoscience.org/,Education,North Dakota's Gateway to Science offers interactive science exhibits and educational programs to inspire STEM learning. It is a Bismarck charity.
+281,Our Wisconsin Revolution Inc,Madison,WI,United States,https://www.ourwisconsinrev.com/,Education,
+282,Plano Chamber Of Commerce,Plano,TX,United States,https://www.planochamber.org/,Education,
+283,RAFT (Resource Area For Teaching),San Jose,CA,United States,https://raft.net/,Education,"Based in San Jose, the Resource Area for Teaching is a charity that supplies teachers with donated materials and educational resources to enhance classroom learning and student engagement."
+284,Rainey Day Foundation,Seattle,WA,United States,https://www.raineyday.org/,Education,
+285,Seneca Family Of Agencies,Oakland,CA,United States,https://senecafoa.org/,Education,
+286,Sisters In Public Health,Houston,TX,United States,https://linktr.ee/SistersInPublicHealth,Education,
+287,Skills For Rhode Island's Future,Providence,RI,United States,https://skillsforri.com/,Education,"Skills for Rhode Island's Future is a charity in Providence, United States, that connects unemployed and underemployed Rhode Islanders with job opportunities and training programs to improve their economic prospects and workforce readiness."
+288,Small Business Majority,Washington,DC,United States,https://smallbusinessmajority.org/,Education,
+289,Sudanese Education Foundation,Phoenix,AZ,United States,https://stxef.org/,Education,
+290,The Folk School,Fairbanks,AK,United States,https://folk.school/,Education,"The Folk School is a nonprofit in Fairbanks that offers hands-on classes in crafts, woodworking, and outdoor skills, celebrating Fairbanks' natural and cultural heritage."
+291,The Maryland Book Bank Inc,Baltimore,MD,United States,https://www.mdbookbank.org/whoweare,Education,
+292,Tucson Values Teachers,Tucson,AZ,United States,https://tucsonvaluesteachers.org/,Education,
+293,Wings For Kids,Charleston,SC,United States,https://www.wingsforkids.org/,Education,
+294,Women's Foundation Of Arkansas,Little Rock,AR,United States,https://womensfoundationarkansas.org/,Education,"The Women's Foundation of Arkansas, a non-profit in Little Rock, supports women and girls in Arkansas through grants, advocacy, and programs focused on economic security, health, and leadership."
+295,Your Vote Is Imp Tucson Metro Chamber,Tucson,AZ,United States,https://tucsonchamber.org/government-affairs-alert/your-vote-is-important/,Education,
+296,"Youth Advocate Programs, Inc. - YAP",Atlantic City,NJ,United States,https://www.yapinc.org/,Education,
+297,Asian American Federation,New York,NY,United States,https://www.aafederation.org/,Education,
+298,Birmingham Education Foundation,Birmingham,AL,United States,https://www.edbirmingham.org/,Education,
+299,Birmingham Education Foundation,Birmingham,AL,United States,https://www.edbirmingham.org/,Education,
+300,Birmingham Education Foundation,Birmingham,AL,United States,https://www.edbirmingham.org/,Education,
+301,Breakthrough Project,Oakland,CA,United States,https://www.breakthroughcollaborative.org/,Education,
+302,Center For Women & Enterprises Inc,Boston,MA,United States,https://cweonline.org/,Education,
+303,Children's Home Society Of South Dakota,Sioux Falls,SD,United States,https://chssd.org/,Education,
+304,Coney Island Training The Youth Of New York Inc,Brooklyn,NY,United States,https://ymcanyc.org/locations/coney-island-ymca,Education,
+305,Cooperative For Education,Cincinnati,OH,United States,https://coeduc.org/,Education,
+306,Domestic Abuse Women's Network (DAWN),Kennewick,WA,United States,https://dawnrising.org/,Education,
+307,"Downtown Streets, Inc.",San Jose,CA,United States,https://www.streetsteam.org/,Education,"Downtown Streets, Inc., a charity in San Jose, supports homeless individuals by providing resources, job training, and opportunities for employment and community reintegration."
+308,Durham For All,Durham,NC,United States,https://durhamforall.org/,Education,
+309,EAST INITIATIVE,Little Rock,AR,United States,https://www.eastinitiative.org/,Education,
+310,Girls Who Invest Inc,New York,NY,United States,https://www.girlswhoinvest.org/,Education,
+311,Global Childrens Fund Inc,Washington,DC,United States,https://globalfundforchildren.org/awardsandfellowships/,Education,
+312,Global Childrens Fund Inc,Washington,DC,United States,https://globalfundforchildren.org/awardsandfellowships/,Education,
+313,Global Girls Glow,Los Angeles,CA,United States,https://globalgirlsglow.org/,Education,"Global Girls Glow, a non-profit in Los Angeles, provides mentorship and empowerment programs for young girls globally, focusing on leadership, education, and personal development."
+314,Goatlandia Farm Animal Sanctuary And Education Center,Santa Rosa,CA,United States,https://goatlandia.org/,Education,
+315,Goodwill Services,El Paso,TX,United States,https://goodwillep.org/,Education,
+316,Hillcrest Ministries Of Midamerica Inc,Kansas City,MO,United States,https://hillcrestkc.org/,Education,
+317,ICAN Improving Chandlers Area Neighborhoods,Chandler,AZ,United States,https://www.icanaz.org/,Education,
+318,Inspiring Minds,Youngstown,OH,United States,https://imyouth.org/inspiring-minds-youngstown/,Education,
+319,Irving Cares,Irving,TX,United States,https://irvingcares.org/,Education,
+320,Lakemary Center,Kansas City,KS,United States,https://lakemary.org/,Education,
+321,Langham Scholarship USA,Phoenix,AZ,United States,https://www.facebook.com/LanghamUSA,Education,
+322,Legacy Initiative,Chicago,IL,United States,https://legacyprojectchicago.org/,Education,
+323,Literacy Pittsburgh,Pittsburgh,PA,United States,http://www.literacypittsburgh.org/,Education,
+324,Local Usa 829 Apprenticeship And Training Fund,New York,NY,United States,https://www.usa829.org/About-Our-Union/Scenic-Apprenticeship/Scenic-Apprenticeship-NYC,Education,
+325,Minority Business Assistance Center,Akron,OH,United States,https://www.akronurbanleague.org/what-we-do/entrepreneurship/mbac-program/,Education,
+326,National Center For Youth Law,Oakland,CA,United States,https://youthlaw.org/,Education,
+327,National Council On Youth Leadership,Minneapolis,MN,United States,https://nylc.org/,Education,
+328,North Carolina Center-Nonprofits,Raleigh,NC,United States,https://www.ncnonprofits.org/,Education,
+329,Northside Achievement Zone,Minneapolis,MN,United States,https://www.northsideachievement.org/,Education,
+330,Open Democracy,Concord,NH,United States,https://www.opendemocracynh.org/,Education,"Open Democracy is a non-profit based in Concord that advocates for campaign finance reform and aims to reduce the influence of money in politics through grassroots activism, education, and legislative efforts to ensure fair and transparent elections."
+331,Oregon Truffle Festival,Eugene,OR,United States,https://oregontrufflefestival.org/,Education,
+332,Sacred Heart Center,Richmond,VA,United States,https://shcrichmond.org/,Education,
+333,Scholarship-AZ,Tucson,AZ,United States,https://scholarshipsaz.org/,Education,
+334,Second Chance Academy,Orlando,FL,United States,https://secondchanceofflorida.com/,Education,
+335,Sierra Nevada Journeys,Reno,NV,United States,https://www.sierranevadajourneys.org/,Education,
+336,Spy Hop Productions Inc,Salt Lake City,UT,United States,https://spyhop.org/,Education,
+337,Tennessee Valley Pharmacists Assoc Inc,Knoxville,TN,United States,https://tnpharm.org/,Education,
+338,Thats My Child,Montgomery,AL,United States,https://www.thatsmychildmgm.org/,Education,
+339,The Culverhouse College Of Business Scholarships,Florence,AL,United States,https://students.culverhouse.ua.edu/scholarships/,Education,
+340,Tools & Tiaras Inc,Jamaica,NY,United States,https://www.toolsandtiaras.org/,Education,
+341,Unique Twist,Columbus,OH,United States,https://www.linkedin.com/in/tanaya-candella-6b83a16a/,Education,"Based in Columbus, Unique Twist is a charity that delivers creative arts programs and workshops, fostering creativity and self-expression in the Columbus community."
+342,"Workshops For Warriors, Inc.",San Diego,CA,United States,https://wfw.org/,Education,"Workshops for Warriors, Inc. is a charity in San Diego that trains and certifies veterans in advanced manufacturing skills, facilitating their transition to civilian jobs and addressing the skills gap in the industry."
+343,Youthlinc,Salt Lake City,UT,United States,https://www.youthlinc.org/,Education,
+344,9th West Farmers Market - PM,Salt Lake City,UT,United States,https://9thwestfarmersmarket.org/,Education,
+345,Allied Forces Inc,Brooklyn,NY,United States,https://alliedforcesfoundation.org/,Education,
+346,American Indian Services,Provo,UT,United States,https://www.americanindianservices.org/,Education,
+347,Beacon Group Inc,Tucson,AZ,United States,https://beacongroup.org/,Education,
+348,Bell Policy Center,Denver,CO,United States,https://www.bellpolicy.org/,Education,
+349,Big Friendly Enterprises Inc,Oklahoma City,OK,United States,https://www.thebigfriendly.com/,Education,
+350,Blackfeet Nation Stock Growers Association Agriculture Science Scholarship,Bismarck,ND,United States,https://nativeamericanagriculturefund.org/grant/,Education,"Blackfeet Nation Stock Growers is an agricultural charity organization in Bismarck. It supports students pursuing agriculture-related degrees from the Blackfeet Nation, promoting education and sustainability in agricultural practices."
+351,Brattleboro Area Chamber Of Commerce Foundation Inc,Brattleboro,VT,United States,https://www.brattleborochamber.org/,Education,
+352,Business Council For Peace - Bpeace,Winston-Salem,NC,United States,https://www.bpeace.org/,Education,
+353,CADC - Central Arkansas Development Council (Benton),Fayetteville,AR,United States,https://www.cadc.com/,Education,
+354,Chicago For Christ Inc,Chicago,IL,United States,https://www.facebook.com/ChicagoForJesus/,Education,
+355,Children Now,Sacramento,CA,United States,https://www.childrennow.org/,Education,"Based in Sacramento, United States, Children Now is a non-profit that advocates for policies and programs that improve the well-being, education, and health of children in California, ensuring their voices are heard."
+356,Children Of Uganda - (Charles Town),Wheeling,WV,United States,https://childrenofuganda.org/,Education,"Children of Uganda is one of the top nonprofits in Charles Town, West Virginia, that provides education, health care, and support for orphaned and vulnerable children in Uganda."
+357,Communities In Schools Of Central Texas,Austin,TX,United States,https://ciscentraltexas.org/,Education,"A charity in Austin, Communities in Schools of Central Texas, supports at-risk students through mentoring, tutoring, and counseling to help them stay in school and succeed."
+358,Community Foundation For Mississippi,Jackson,MS,United States,https://formississippi.org/about/,Education,
+359,Crayons To Classrooms,Dayton,OH,United States,https://www.crayonstoclassrooms.org/,Education,
+360,Cristo Rey Work Study Program,Houston,TX,United States,https://www.cristoreyjesuit.org/work-study/the-school-that-works,Education,"A charity in Houston, the Cristo Rey Work Study Program, offers students from underserved communities a college-prep education combined with professional work experience."
+361,Delaware State Education Association,Dover,DE,United States,https://www.dsea.org/,Education,"A Dover-based charity, the Delaware State Education Association, advocates for educators and students, promoting high-quality public education through support, resources, and policy initiatives."
+362,Denver Scholarship Foundation,Denver,CO,United States,https://denverscholarship.org/,Education,
+363,Door Of Victory Equine Ranch Inc,Milwaukee,WI,United States,https://www.victoryequineservices.net/,Education,
+364,Dream Builders 4 Equity,St. Louis,MO,United States,https://www.dreambuilders4equity.org/,Education,
+365,Engaging Creative Minds,Charleston,SC,United States,https://engagingcreativeminds.org/,Education,
+366,Faith Driven Entrepreneur,Dallas,TX,United States,https://www.faithdrivenentrepreneur.org/,Education,
+367,Free 2 Teach Foundation,Huntsville,AL,United States,https://free2teach.org/,Education,
+368,Friends Of Spannocchia,Portland,ME,United States,https://www.spannocchia.org/,Education,
+369,Gen-Z For Change,Washington,DC,United States,https://www.genzforchange.org/,Education,
+370,Growing Real Opportunities To Work-Harvest Of Urban Business Inc,Gainesville,FL,United States,https://www.grow-hub.org/,Education,
+371,Hospitality Project Inc,New York,NY,United States,https://projecthospitality.org/,Education,
+372,Houston Democratic Socialists Of America Inc,Houston,TX,United States,https://houstondsa.org/,Education,
+373,"Impact Africa Network, Inc.",San Jose,CA,United States,https://impactafrica.network/,Education,"Impact Africa Network, Inc. is a non-profit organization in San Jose that supports development projects in Africa, including health, education, and economic empowerment initiatives."
+374,Irvine Public Schools Foundation,Irvine,CA,United States,https://ipsf.net/,Education,
+375,Journey House,Milwaukee,WI,United States,http://www.journeyhouse.org/,Education,
+376,Kusanya Cafe Inc,Chicago,IL,United States,https://www.kusanyacafe.org/,Education,
+377,Mississippi Votes,Jackson,MS,United States,https://msvotes.org/,Education,
+378,Native Agriculture Education Fellowship Program,Bismarck,ND,United States,https://nativeamericanagriculturefund.org/grant/naaf-agriculture-scholarship-fund/,Education,"The Native Agriculture Education Fellowship Program enhances agricultural education and leadership skills among Native American youth, fostering community engagement and sustainable practices in agriculture."
+379,Native American Agriculture Fund,Fayetteville,AR,United States,https://nativeamericanagriculturefund.org/contact/,Education,
+380,North American Indian Center Of Boston,Springfield,MA,United States,http://www.naicob.org/,Education,
+381,Nursing Program Scholarship UOR,Rochester,NY,United States,https://son.rochester.edu/academics/accelerated-nursing-programs/,Education,
+382,Ohio Christian Alliance Educational Fund,Akron,OH,United States,https://ohioca.org/,Education,
+383,Our Voice Our Vote Arizona,Phoenix,AZ,United States,https://www.ourvoiceourvote.us/,Education,
+384,Potions & Pixels,Charlotte,NC,United States,https://www.potionsandpixels.com/,Education,Potions & Pixels is a non-profit organization based in Charlotte that promotes community through gaming and interactive experiences.
+385,Reno Rodeo Foundation,Reno,NV,United States,https://www.renorodeofoundation.org/,Education,
+386,Safer Foundation,Chicago,IL,United States,https://saferfoundation.org/,Education,
+387,Shoals Scholar Dollars Foundation Inc,Florence,AL,United States,https://www.shoalsscholardollars.com/about-us.html,Education,
+388,Southwest Mobile County Chamber Foundation,Mobile,AL,United States,https://www.swmcchamber.com/tall-scholarship-program/,Education,
+389,Spread The Word Nevada,Henderson,NV,United States,https://spreadthewordnevada.org/,Education,
+390,Sunflower Bakery Inc,Rockville,MD,United States,https://www.sunflowerbakery.org/,Education,
+391,The Akiptan Scholarship,Bismarck,ND,United States,https://nativeamericanagriculturefund.org/grant/the-akiptan-scholarship/,Education,
+392,The Arc Of Central Alabama,Birmingham,AL,United States,https://www.arcofcentralalabama.org/,Education,"The Arc of Central Alabama supports individuals with intellectual and developmental disabilities through residential services, employment programs, and advocacy efforts."
+393,The Center For Political Education,San Francisco,CA,United States,https://politicaleducation.org/,Education,
+394,The Saturday Light Brigade,Pittsburgh,PA,United States,https://slbradio.org/,Education,
+395,Trade Institute Of Pittsburgh,Pittsburgh,PA,United States,https://tipgh.org/,Education,
+396,Transformative Justice Coalition,Washington,DC,United States,https://tjcoalition.org/,Education,
+397,"United Way Of Southern West Virginia, Inc. - (Beckley)",Huntington,WV,United States,https://unitedwayswv.org/,Education,"United Way of Southern West Virginia is one of the largest nonprofits in Beckley that empowers communities by funding education, health, and financial stability programs, serving Beckley and surrounding areas."
+398,Urban League Of Rochester Economic Development Corporation,Rochester,NY,United States,https://www.urbanleagueroc.org/ulredc,Education,
+399,We Vote,Oakland,CA,United States,https://www.wevote.us/,Education,
+400,Youth Financial League,Richmond,VA,United States,https://www.jlrichmond.org/,Education,
+401,Afrilink Entrepreneurs International Incorporated,Providence,RI,United States,https://afrilink.org/,Education,
+402,American Association Of Human Resources Inc,Flushing,NY,United States,https://humanresources.org/,Education,
+403,Anchor Center For Blind Children,Denver,CO,United States,https://www.anchorcenter.org/,Education,
+404,Animal Science Education Foundation,Fargo,ND,United States,https://ndsufoundation.com/news/2023/09/faculty-endowment-in-animal-science-launched,Education,
+405,Aptly,Columbia,SC,United States,https://aptly.co/p/home,Education,"Aptly, a non-profit in Columbia, promotes social justice and community engagement through various initiatives and programs."
+406,Arizona Christian School Tuition Organization Inc,Chandler,AZ,United States,https://acsto.org/,Education,
+407,AZCEND,Chandler,AZ,United States,https://azcend.org/,Education,
+408,Big Heroes,Brownsville,TX,United States,https://www.bigherotx.org/,Education,
+409,"BiG Heroes, Inc.",Brownsville,TX,United States,https://www.bigherotx.org/,Education,"Based in Brownsville, BiG Heroes, Inc. is a non-profit that provides support and resources for individuals with disabilities and their families, emphasizing faith-based community involvement and personal empowerment."
+410,Center For The Future Of Arizona,Scottsdale,AZ,United States,https://www.arizonafuture.org/,Education,
+411,Chef De Cuisine Association Of San Diego Education Foundation Inc,San Diego,CA,United States,https://www.sdchefsfoundation.org/,Education,
+412,Comprenew,Grand Rapids,MI,United States,https://comprenew.org/,Education,
+413,Council For Certification In Volunteer Administration,York,PA,United States,https://cvacert.org/,Education,
+414,Crossroads Career Services Inc,Greenville,SC,United States,https://crossroadscareer.org/,Education,
+415,Cynthia Kordecki Scholarship ND,Bismarck,ND,United States,https://www.ndarchaeology.com/scholarship,Education,
+416,Disability Rights Mississippi,Jackson,MS,United States,http://www.drms.ms/,Education,"Disability Rights Mississippi, a charity in Jackson, advocates for the rights of people with disabilities, providing legal assistance, policy advocacy, and public education to ensure equal opportunities and treatment."
+417,Donlin Gold Kuskokwim Educational Foundation,Anchorage,AK,United States,https://kuskokwim.com/dgkef/,Education,
+418,Dream Factory Inc,Louisville,KY,United States,https://www.dreamfactoryinc.org/,Education,
+419,Dress For Success-Washington Dc,Washington,DC,United States,https://washingtondc.dressforsuccess.org/,Education,
+420,Economic Development Partnership Of Alabama Foundation Inc,Birmingham,AL,United States,https://edpa.org/startup-innovation/,Education,
+421,Female Founders Fund,New York,NY,United States,https://femalefoundersfund.com/,Education,
+422,Foundation 2 Crisis Services,Cedar Rapids,IA,United States,https://foundation2.org/services/fosteringhighereducation/,Education,
+423,Foundation For Lincoln Public Schools,Lincoln,NE,United States,https://www.foundationforlps.org/,Education,
+424,Foundation For Students Rising Above,San Francisco,CA,United States,https://studentsrisingabove.org/,Education,
+425,Fundamental Learning Center Inc,Wichita,KS,United States,https://www.funlearn.org/,Education,
+426,Georgia Industry Foundation For Training Inc,Atlanta,GA,United States,https://iecatlantaga.org/gift/,Education,
+427,Glassroots Inc,Newark,NJ,United States,https://glassroots.org/,Education,
+428,"Goodwill Of Western And Northern Connecticut, Inc.",Bridgeport,CT,United States,https://www.gwct.org/,Education,"Goodwill of Western and Northern Connecticut, Inc. offers employment training, job placement, and community programs for individuals with disabilities and other barriers to employment."
+429,Grace Outside Inc,York,PA,United States,https://graceinstitute.org/,Education,
+430,"Hands Across The Sea, Inc.",Boston,MA,United States,https://handsacrossthesea.org/,Education,
+431,Higher Education User Group Inc,Gilbert,AZ,United States,https://www.heug.org/,Education,
+432,Honor Society Foundation,Las Vegas,NV,United States,https://honorsocietyfoundation.org/,Education,
+433,Horizons National (Westport),Bridgeport,CT,United States,https://www.horizonsnational.org/,Education,
+434,"Housing & Education Alliance, Inc.",Tampa,FL,United States,https://www.heausa.org/,Education,
+435,Impact Works,Austin,TX,United States,https://www.impactaustin.org/,Education,
+436,Innovate Birmingham,Birmingham,AL,United States,https://www.facebook.com/InnovateBirmingham/,Education,
+437,Innovate Mississippi,Jackson,MS,United States,https://www.innovate.ms/,Education,
+438,Inspire Kids Montessori Sto Inc,Chandler,AZ,United States,https://inspirekidsmontessori.com/,Education,
+439,Intern With The Refugee Education Center,Lansing,MI,United States,https://refugeeeducationcenter.org/internships,Education,
+440,Isb Network Foundation Inc,Scottsdale,AZ,United States,https://isbnetwork.com/about-us/,Education,
+441,Isles,Trenton,NJ,United States,https://isles.org/,Education,
+442,"Jack And The Bean, Inc.",Huntington,WV,United States,https://jack-and-the-bean.com/,Education,"Jack and the Bean, Inc. is a non-profit based in Huntington. It focuses on promoting sustainable agriculture and food security through urban farming initiatives, community gardens, and educational programs."
+443,Jane Addams Resource Corporation,Chicago,IL,United States,https://www.jane-addams.org/,Education,
+444,Jews For Entrepreneurship Organization Inc,San Francisco,CA,United States,https://www.facebook.com/groups/143307866703/,Education,
+445,JFE Network,San Francisco,CA,United States,https://www.jfenetwork.com/,Education,
+446,La Casa De Esperanza - Waukesha,Green Bay,WI,United States,https://www.lacasadeesperanza.org/,Education,
+447,Latino Sin Fronteras Inc,Newark,NJ,United States,https://www.latinossinfronterasmx.com/,Education,
+448,"Leadership Kentucky Foundation, Inc.",Frankfort,KY,United States,https://www.leadershipky.org/,Education,"A Frankfort charity, Leadership Kentucky Foundation, Inc., develops leaders through educational programs, fostering civic engagement and leadership skills across the state."
+449,Leadership South Dakota,Pierre,SD,United States,https://leadershipsouthdakota.com/,Education,A nonprofit in Pierre. Fostering leadership skills and community engagement among South Dakota's emerging leaders. Offering programs and networking opportunities to empower individuals to make a positive impact in their communities.
+450,League Of Women Voters Of South Carolina Incorporated,Columbia,SC,United States,https://my.lwv.org/south-carolina-state,Education,
+451,League Of Women Voters Of Utah,Salt Lake City,UT,United States,https://www.lwvutah.org/,Education,
+452,Make A Difference - Helping End Poverty Through Education,Boise,ID,United States,https://www.gomadnow.org/,Education,
+453,Make A Difference Inc.,Boise,ID,United States,https://www.gomadnow.org/,Education,
+454,Make A Difference Now,Boise,ID,United States,https://www.gomadnow.org/,Education,
+455,Make Way For Books,Tucson,AZ,United States,https://makewayforbooks.org/,Education,
+456,Manners Of The Heart,Baton Rouge,LA,United States,https://mannersoftheheart.org/,Education,
+457,Memphis Interfaith Coalition For Acton And Hope,Memphis,TN,United States,https://www.micahmemphis.org/,Education,
+458,"Mercy Learning Center Of Bridgeport, Inc.",Bridgeport,CT,United States,https://www.mercylearningcenter.org/,Education,
+459,Miss Alaska Scholarship Foundation,Anchorage,AK,United States,https://miss-alaska.org/,Education,
+460,Nevada Partners Inc,North Las Vegas,NV,United States,https://nvpartners.org/,Education,
+461,NH Center For Nonprofits,Concord,NH,United States,https://www.nhnonprofits.org/,Education,
+462,North Carolina Asian Americans Together,Raleigh,NC,United States,https://ncaatogether.org/,Education,
+463,Northeast Indian Works Inc,Fort Wayne,IN,United States,https://neinworks.org/,Education,
+464,Notre Dame Place Inc,Dallas,TX,United States,https://www.notredameschool.org/,Education,
+465,Oregon League Of Minority Voters,Portland,OR,United States,https://minorityvoters.org/,Education,
+466,Our Lady Of America Ministries Inc,Cincinnati,OH,United States,https://ourladyofamerica.com/,Education,
+467,Path Forward,New York,NY,United States,https://pathforward.org/,Education,
+468,Pennsylvania Women Work,Pittsburgh,PA,United States,https://www.pawomenwork.org/,Education,
+469,People Helping People - Utah,Salt Lake City,UT,United States,https://www.phputah.org/,Education,
+470,Portland Housing Center,Portland,OR,United States,https://portlandhousingcenter.org/,Education,
+471,"Project Compassion, NFP",Belleville,IL,United States,https://projectcompassionnfp.org/,Education,
+472,Project GRAD Akron,Akron,OH,United States,https://projectgradakron.org/,Education,
+473,"Rainbow Village, Inc.",Atlanta,GA,United States,https://rainbowvillage.org/,Education,"Rainbow Village, Inc. is a charity in Atlanta that provides transitional housing, counseling, and support services to homeless families with children, empowering them to achieve stability and self-sufficiency."
+474,Reel Stories Teen Filmmaking Inc,Brooklyn,NY,United States,https://www.reelworks.org/,Education,
+475,Renaissance Jax,Jacksonville,FL,United States,https://www.renaissancejax.org/,Education,
+476,Rockford Promise,Rockford,IL,United States,https://rockfordpromise.org/,Education,
+477,"Rural Alaska Community Action Program, Inc. (RurAL CAP)",Anchorage,AK,United States,https://ruralcap.org/,Education,
+478,"Sales & Marketing Education Foundation, Inc.",Tallahassee,FL,United States,https://salesfoundation.org/,Education,"Sales & Marketing Education Foundation, Inc., an NGO in Tallahassee, enhances sales and marketing education through scholarships, training programs, and industry partnerships."
+479,Santa Fe Community Foundation,Santa Fe,NM,United States,https://www.santafecf.org/,Education,
+480,Scholars Strategy Network,Boston,MA,United States,https://scholars.org/,Education,
+481,Scs Sustainable Community Solutions Inc,Oakland,CA,United States,https://www.scsglobalservices.com/,Education,
+482,Smart Data Learning Inc,Plano,TX,United States,https://smartdatalearning.com/,Education,
+483,StepUp Wilmington,Wilmington,NC,United States,https://www.stepupwilmington.org/,Education,
+484,Susan B Lindahl Memorial Scholarship,Anchorage,AK,United States,https://paos.org/page/Scholarship,Education,
+485,Tck Providence Inc,Winston-Salem,NC,United States,https://www.providencews.org/,Education,
+486,The Arc Of Larimer County Inc,Fort Collins,CO,United States,https://thearcoflarimercounty.org/,Education,
+487,The Elizabeth Bowers Zambia Education Fund,Salem,OR,United States,https://ebzef.org/,Education,"The Elizabeth Bowers Zambia Education Fund is a non-profit based in Salem that empowers Zambian students through scholarships, school supplies, and infrastructure projects, focusing on increasing educational opportunities for girls."
+488,The Hope Venture,Lincoln,NE,United States,https://thehopeventure.org/,Education,
+489,The Lift Garage,Minneapolis,MN,United States,https://www.theliftgarage.org/,Education,
+490,The New School,Fayetteville,AR,United States,https://www.thenewschool.org/,Education,
+491,The Open Doors Adult Literacy Program,Minneapolis,MN,United States,https://www.literacymn.org/OpenDoorCollective,Education,
+492,The Public Education Foundation,Las Vegas,NV,United States,https://thepef.org/apply-for-scholarships/,Education,
+493,The T O Y Foundation Inc,Decatur,GA,United States,https://toyfoundation.org/,Education,
+494,TomTod Ideas,Canton,OH,United States,https://www.tomtodideas.org/,Education,
+495,University Of Arizona College Of Education,Tucson,AZ,United States,https://coe.arizona.edu/available-scholarships,Education,
+496,Upsilon Eta Omega Service Foundation,Birmingham,AL,United States,https://upsilonetaomega.com/,Education,
+497,Urban Native Collective,Cincinnati,OH,United States,https://urbannativecollective.org/,Education,
+498,Vickery Trading Company Inc,Dallas,TX,United States,https://vickerytrading.org/,Education,
+499,Virginia G. Piper Charitable Trust,Phoenix,AZ,United States,https://pipertrust.org/,Education,
+500,Waldorf School Of Baltimore,Baltimore,MD,United States,https://www.waldorfschoolofbaltimore.org/,Education,
+501,Wecycle Atlanta Inc,Atlanta,GA,United States,https://wecycleatlanta.org/,Education,
+502,Women S Debate Institute,San Francisco,CA,United States,https://www.womensdebateinstitute.org/,Education,
+503,"""I Have A Dream"" Foundation",New York,NY,United States,https://www.ihaveadreamfoundation.org/,Education,
+504,Abilis,Stamford,CT,United States,https://www.abilis.us/,Education,
+505,Academy Of Craft Training,Birmingham,AL,United States,https://www.academyofcrafttraining.org/act-birmingham/,Education,
+506,Ace Atlanta,Atlanta,GA,United States,https://www.theaceatlanta.com/,Education,
+507,African Community Education,Worcester,MA,United States,http://www.africancommunityeducation.org/,Education,
+508,Alabaster Jar Project,San Diego,CA,United States,https://www.alabasterjarproject.org/,Education,
+509,Alaska Joint Electrical Apprenticeship And Training Trust,Anchorage,AK,United States,https://alaskaelectricalapprenticeship.org/,Education,
+510,American Aerospace Technical Academy Inc,Los Angeles,CA,United States,https://www.aatatraining.org/,Education,
+511,American Foundation For Educational Excellence,Fairfax,VA,United States,https://foundationforeducation.org/,Education,
+512,American Success Corporation,Los Angeles,CA,United States,https://americasucceeds.org/,Education,
+513,Arctic Education Foundation,Anchorage,AK,United States,https://arcticed.com/,Education,
+514,Arizona Online Pharmacy Tech Association,Phoenix,AZ,United States,https://azpharmacy.org/,Education,
+515,Assistance League Las Vegas,Las Vegas,NV,United States,https://www.assistanceleague.org/las-vegas/,Education,
+516,Association For Women In Technology -Austin,Austin,TX,United States,https://awtaustin.org/,Education,
+517,Au Sable Institute,Grand Rapids,MI,United States,https://www.ausable.org/,Education,
+518,Austin Partners In Education,Austin,TX,United States,https://austinpartners.org/,Education,
+519,Avixa Foundation Inc,Fairfax,VA,United States,https://www.avixa.org/avixa-foundation,Education,
+520,Aws Foundation Inc,Fort Wayne,IN,United States,https://www.awsfoundation.org/,Education,
+521,B & L Community Development Corporation,Baltimore,MD,United States,https://www.baltimoredevelopment.com/,Education,
+522,Baja Educational Initiative,Chula Vista,CA,United States,https://www.bajaed.org/,Education,
+523,Baton Rouge Youth Coalition Inc,Baton Rouge,LA,United States,https://thebryc.org/,Education,
+524,Better Basics,Birmingham,AL,United States,https://www.betterbasics.org/,Education,
+525,"Better Basics, Inc.",Birmingham,AL,United States,https://www.betterbasics.org/,Education,
+526,"Beyond Our Walls, Inc.  (BOWs)",Charleston,SC,United States,https://www.beyondourwalls.org/,Education,
+527,Beyond The Spectrum Inc. (Autism),Sarasota,FL,United States,https://www.beyondthespectrum.org/,Education,"Beyond the Spectrum Inc. is an NGO that provides autism-specific programs, services, and support for individuals and families, including therapy, education, and recreational activities, in the Sarasota area."
+528,Bioversity Inc,Cambridge,MA,United States,https://bioversityma.org/,Education,
+529,Blessings Three65,Columbus,GA,United States,https://www.facebook.com/BlessingsThree65/,Education,
+530,Boardroom Project,San Antonio,TX,United States,https://www.boardroomproject.org/,Education,
+531,Book'em,Nashville,TN,United States,https://bookem-kids.org/,Education,
+532,Brady Social Enterprises Inc,Syracuse,NY,United States,https://www.bradymarket.org/,Education,
+533,BronxConnect,Bronx,NY,United States,https://bronxconnect.org/,Education,
+534,Brookline Teen Outreach,Pittsburgh,PA,United States,https://www.brooklineteenoutreach.org/,Education,
+535,Calista Education And Culture Inc,Anchorage,AK,United States,http://www.calistaeducation.org/,Education,
+536,Camelback High School Alumni Association,Phoenix,AZ,United States,https://www.facebook.com/camelbackhighschoolalumni/,Education,
+537,Camp New Life Inc,Wilmington,NC,United States,https://www.newlifecamp.org/,Education,
+538,Central Scholarship,Baltimore,MD,United States,https://central-scholarship.org/,Education,
+539,Champions For Life Foundation,Shreveport,LA,United States,https://www.championsforlife.ca/,Education,
+540,Champions Of Education Awards,Glendale,AZ,United States,https://schoolconnectaz.org/school-connect-awards/,Education,
+541,Chandler Education Foundation,Gilbert,AZ,United States,https://www.chandleredfoundation.org/what-we-do/scholarships/overview.html,Education,
+542,Charleston Promise Neighborhood,Charleston,SC,United States,http://www.charlestonpromise.org/,Education,
+543,Chicago Center For Arts And Technology Inc,Chicago,IL,United States,https://chicat.org/,Education,
+544,CHILD International,Santa Ana,CA,United States,https://www.child-international.org/contact/,Education,
+545,Coastal Harvest,Columbus,GA,United States,https://coastalharvest.us/,Education,
+546,Codeboxx Foundation,St. Petersburg,FL,United States,https://www.codeboxxfoundation.org/,Education,
+547,Collab Lab,Portland,OR,United States,https://the-collab-lab.codes/,Education,
+548,Community Workshop And Training Center - CWTC,Peoria,IL,United States,https://www.cwtc.org/,Education,
+549,Contra Costa Child Care Council,Concord,CA,United States,https://www.cocokids.org/,Education,
+550,Cortney's Place,Scottsdale,AZ,United States,https://cortneysplace.org/,Education,
+551,Council For Drug-Free Youth (CDFY),Jefferson City,MO,United States,https://jccdfy.org/,Education,"The Council for Drug-Free Youth, a charity in Jefferson City, promotes drug-free lifestyles and provides prevention programs for youth in the community."
+552,Creative Alliance Of New Orleans,New Orleans,LA,United States,https://cano-la.org/,Education,
+553,Creatives Only,Wilmington,DE,United States,https://www.facebook.com/CreativeDistrictWilm/,Education,
+554,Curleys House Of Style Inc,Miami,FL,United States,https://www.facebook.com/p/Curleys-House-of-Style-Inc-Hope-Relief-Food-Bank-100067398154922/,Education,
+555,Dayton Sewing Collaborative,Dayton,OH,United States,https://www.daytonsewing.org/,Education,
+556,Dennis Aikoriogie Foundation,Buffalo,NY,United States,https://dennisaikoriogiefoundation.org/,Education,
+557,Denver Design Incubator,Denver,CO,United States,https://www.denverdesignincubator.com/,Education,
+558,Drive Change Inc,Brooklyn,NY,United States,https://www.drivechangenyc.org/,Education,
+559,Educate Uganda,Omaha,NE,United States,http://www.educateuganda.org/,Education,
+560,Education Foundation Osceola County,Kissimmee,FL,United States,https://www.foundationosceola.org/,Education,
+561,Educational Programs Inspiring Communities Inc,Houston,TX,United States,https://heartprogram.org/,Education,
+562,Encourage Me Im Young Inc,Detroit,MI,United States,https://www.emiyworld.com/,Education,
+563,Envisionleadgrow Inc,Norfolk,VA,United States,https://envisionleadgrow.org/,Education,
+564,EVERYBODY WINS-IOWA INC,Des Moines,IA,United States,https://everybodywinsiowa.org/,Education,
+565,Exodus Transitional Community,New York,NY,United States,https://www.etcny.org/,Education,
+566,First Step Staffing,Atlanta,GA,United States,https://www.firststepstaffing.com/,Education,
+567,Food Dreams A Jean-Georges Foundation,New York,NY,United States,http://www.fooddreams.org/,Education,
+568,Foundation For Junior Achievement,Lincoln,NE,United States,https://lincoln.ja.org/,Education,
+569,Friendly House Of Davenport Iowa,Davenport,IA,United States,https://www.friendlyhouseiowa.org/,Education,
+570,Friends Of The Children Of Haiti,Peoria,IL,United States,https://fotcoh.org/,Education,
+571,Future Farmers Of America,Salt Lake City,UT,United States,https://www.utahffa.org/,Education,
+572,Galapagos Rockford Charter School NFP Inc,Rockford,IL,United States,https://www.galapagoscharter.org/,Education,
+573,"Geo Pontes, Inc.",San Jose,CA,United States,https://www.linkedin.com/in/barry-del-buono-7a76497/,Education,"A charity in San Jose, Geo Pontes, Inc., focuses on community development and cross-cultural exchanges to enhance understanding and collaboration."
+574,GirlSpring,Birmingham,AL,United States,https://www.girlspring.com/,Education,
+575,Goodwill Industries Of Lubbock Contract Services Inc,Lubbock,TX,United States,https://goodwillnwtexas.org/,Education,
+576,Greater Michigan Ua Local 190 Joint Training Committee,Ann Arbor,MI,United States,https://ua190.org/,Education,
+577,Greencorps Chicago,Chicago,IL,United States,https://greencorpschicago.org/,Education,
+578,Haiti Nursing Foundation,Ann Arbor,MI,United States,https://www.haitinursing.org/,Education,
+579,Havenly,New Haven,CT,United States,https://havenlynhv.org/,Education,
+580,Heart Of Illinois United Way,Peoria,IL,United States,https://www.hoiunitedway.org/,Education,
+581,Heart Of Oregon Corps Inc,Bend,OR,United States,https://heartoforegon.org/,Education,
+582,Heartfelt Tidbits Inc,Cincinnati,OH,United States,https://www.heartfelttidbits.com/,Education,
+583,Hhplift,Chicago,IL,United States,https://hhplift.com/,Education,
+584,Homeaid Atlanta Inc,Atlanta,GA,United States,https://www.homeaidatlanta.org/,Education,
+585,Hope Builders Career Connection,Santa Ana,CA,United States,https://tsjhopebuilders.org/,Education,
+586,Hospitality Industry Training And Education Fund,Los Angeles,CA,United States,https://lahta.org/,Education,
+587,Houston In Action Network,Houston,TX,United States,https://www.houstoninaction.org/,Education,
+588,"Huntsville AL Alumnae Chapter Of Delta Sigma Theta Sorority, Inc.",Huntsville,AL,United States,https://dsthuntsville.org/,Education,
+589,Huntsville Madison County Auburn Club Foundation,Huntsville,AL,United States,https://www.huntsvilleauburnclub.com/aboutscholarships,Education,
+590,Hustle Usa,Phoenix,AZ,United States,https://hustleusa.org/,Education,
+591,I Have Dream Foundation,Los Angeles,CA,United States,https://www.ihadla.org/,Education,
+592,Icouldbe Org Inc,New York,NY,United States,https://www.facebook.com/icouldbe.org/,Education,
+593,Indiana Center For Middle East Peace,Fort Wayne,IN,United States,https://indianacmep.org/,Education,
+594,Institute For Better Education,Tucson,AZ,United States,https://ibescholarships.org/,Education,
+595,Irving Schools Foundation,Irving,TX,United States,https://irvingschoolsfoundation.org/,Education,
+596,Jb Flips Savannah Youth Program Inc,Savannah,GA,United States,https://www.facebook.com/JBFlipSavannahSummerYouthEntrepreneurprogram/,Education,
+597,Jennifer Ann's Group,Atlanta,GA,United States,https://jenniferann.org,Education,"Jennifer Ann's Group is a public charity based in Atlanta working to prevent teen dating violence. 'Gaming Against Violence' is their award-winning program which produces pro-social video games that engage, educate, and empower young people worldwide."
+598,Junior Achievement,Birmingham,AL,United States,https://alabama.ja.org/,Education,
+599,Latinosunited,Greenville,SC,United States,https://www.facebook.com/LatinosUnitedUS/,Education,
+600,Leaders Of Excellence Inc,Birmingham,AL,United States,https://www.leadersofexcellence.org/,Education,
+601,Leading Educators Inc,New Orleans,LA,United States,https://leadingeducators.org/,Education,
+602,League Of Women Voters Of Tallahassee,Tallahassee,FL,United States,https://www.lwvtallahassee.org/,Education,
+603,Literacy Action Of Central Arkansas,Little Rock,AR,United States,https://www.literacyactionar.org/,Education,
+604,Little Read Wagon,Norman,OK,United States,https://www.littlereadwagonok.com/,Education,
+605,Los Angeles Chapter Of The National Black Mba Association,Los Angeles,CA,United States,https://www.labmba.org/scholarships,Education,
+606,Lucy Js Bakery Inc,Memphis,TN,United States,https://www.lucyjbakery.com/,Education,
+607,Maine Citizens For Clean Elections,Portland,ME,United States,https://www.mainecleanelections.org/,Education,
+608,Mayo,Columbus,GA,United States,https://www.mayoclinic.org/,Education,
+609,Medical Education Cooperation With Cuba,Oakland,CA,United States,https://medicc.org/,Education,
+610,Mental Health America Of Los Angeles - MHALA,Los Angeles,CA,United States,https://www.mhala.org/,Education,
+611,Mercy Education Project,Detroit,MI,United States,https://www.mercyed.net/,Education,
+612,Metropolitan Savannah Hispanic Chamber Of Commerce Foundation,Savannah,GA,United States,https://www.msavhcc.org/,Education,
+613,Michigan Legislative Black Caucus Civic Trust,Lansing,MI,United States,https://michiganlbc.org/,Education,
+614,Mississippi Alliance Of Nonprofits And Philanthropy,Jackson,MS,United States,https://alliancems.org/,Education,
+615,My Sisters Charities,Chandler,AZ,United States,https://www.mysisterscharities.org/,Education,
+616,Nail & Skin Bar Institute Inc,Memphis,TN,United States,https://www.thenailandskinbar.com/,Education,
+617,National Defense Transportation Association,Tucson,AZ,United States,https://www.ndtahq.com/foundation/,Education,
+618,National Institute For Metalworking Skills Inc,Fairfax,VA,United States,https://www.nims-skills.org/,Education,
+619,National Scholastic Chess Foundation,New York,NY,United States,https://nscfchess.org/scholarships/,Education,
+620,NeighborGood Partners,Dover,DE,United States,https://www.neighborgoodpartners.org/,Education,"NeighborGood Partners is a charity in Dover that provides affordable housing, financial counseling, and community development programs to support low-income families and revitalize neighborhoods."
+621,Neighborhood Land Power Project,Philadelphia,PA,United States,https://neighborhoodland.org/,Education,
+622,New Braunfels Community Foundation,San Antonio,TX,United States,https://nbcommunityfoundation.org/grants-scholarships/,Education,
+623,New Bridge Cleveland,Cleveland,OH,United States,https://newbridgecleveland.org/,Education,"New Bridge Cleveland is a charity that offers art therapy, adult education, and workforce development programs to empower individuals and strengthen the community."
+624,Nisqually River Foundation,Olympia,WA,United States,https://nisquallyriver.org/,Education,
+625,North County School Business Partnership Inc,St. Louis,MO,United States,https://northstlouiscounty.com/,Education,
+626,North Dakota Community Foundation (NDCF),Bismarck,ND,United States,https://www.ndcf.net/,Education,"The North Dakota Community Foundation, a charity in Bismarck, enhances the quality of life for North Dakotans by supporting charitable organizations and initiatives."
+627,Nyc Hospitality Alliance Impact Foundation Inc,New York,NY,United States,https://www.thenycalliance.org/,Education,
+628,Opportunity Junction,Antioch,CA,United States,https://www.opportunityjunction.org/,Education,
+629,Oregon Construction Trades Foundation,Portland,OR,United States,https://www.oregonbuildingtrades.com/,Education,
+630,Orlando Entrepreneurship,Orlando,FL,United States,https://www.orlandoentrepreneurs.org/,Education,
+631,Philadelphia Education Fund,Philadelphia,PA,United States,https://philaedfund.org/,Education,
+632,"Playground Digital Arts And Design Workshop, Inc.",Tallahassee,FL,United States,https://playground-sf.org/tech-design-workshop-mar-2024/,Education,"Playground Digital Arts and Design Workshop, Inc., a charity in Tallahassee, offers digital arts and design workshops for youth to foster creativity and technical skills."
+633,Power Of The Dream Inc,Raleigh,NC,United States,https://www.linkedin.com/in/anna-cunningham-4671a96/,Education,
+634,Princes Of Zion Center Inc,Montgomery,AL,United States,https://www.princessofzion.org/main.html,Education,
+635,Project Include,San Francisco,CA,United States,https://projectinclude.org/,Education,
+636,Project Rebuild,Canton,OH,United States,https://projectrebuild.org/,Education,
+637,Prospect Kc,Kansas City,MO,United States,https://www.theprospectkc.org/,Education,
+638,Provision Vocational Training Center,Philadelphia,PA,United States,https://sparcphilly.org/sparc_services/vocational-training.html,Education,
+639,Real Estate Ambassadors Institute,Tulsa,OK,United States,https://www.realestateambassadors.org/Home,Education,
+640,Refill Jackson Initiative,Jackson,MS,United States,https://refilljackson.org/,Education,
+641,Reshoring Initiative,Sarasota,FL,United States,https://www.reshorenow.org/,Education,
+642,Rockville Science Center Inc,Rockville,MD,United States,https://www.rockvillesciencecenter.org/,Education,
+643,SAFE Family Services Center (Sylacauga),Florence,AL,United States,https://www.safefamilyservicescenter.com/,Education,
+644,Sandy Area Chamber Young Entrepreneurs Academy,Sandy,UT,United States,https://www.sandyoregonchamber.org/,Education,
+645,School Of India For Languages And Culture,St. Paul,MN,United States,https://sites.google.com/silcmn.com/silcminnesota,Education,
+646,Single Moms Empowerment Intl Inc,Bronx,NY,United States,https://empoweringsinglemomsinc.org/,Education,
+647,Skillpoint Alliance,Austin,TX,United States,https://skillpointalliance.org/,Education,
+648,Southern Maine Workers Center,Portland,ME,United States,https://www.maineworkers.org/,Education,
+649,Stand Up Alaska Inc,Anchorage,AK,United States,https://standupalaska.org/,Education,
+650,Steamfitters Local Union No 449 Joint Apprenticeship & Training,Pittsburgh,PA,United States,https://ua449.com/,Education,
+651,Stream Foundation,Dallas,TX,United States,https://www.thestreamfoundation.org/,Education,
+652,Strengthening Health Institute,Philadelphia,PA,United States,https://www.facebook.com/strengthenhealth/,Education,
+653,Td Jakes Foundation,Dallas,TX,United States,https://ils.tdjfoundation.org/,Education,
+654,Teaching & Learning Collaborative,Columbus,OH,United States,http://www.teachinglearningcollaborative.org/,Education,"A charity in Columbus, Teaching & Learning Collaborative, enhances STEM education by providing resources, professional development, and support for educators."
+655,Teenworks Inc,Indianapolis,IN,United States,https://www.teenworks.org/,Education,
+656,The Aleut Foundation,Anchorage,AK,United States,https://thealeutfoundation.org/,Education,
+657,The Arc Of Ventura County,Oxnard,CA,United States,https://www.arcvc.org/,Education,
+658,The Chandler Education Foundation,Gilbert,AZ,United States,https://www.chandleredfoundation.org/what-we-do/scholarships/overview.html,Education,
+659,The CIRI Foundation,Anchorage,AK,United States,https://thecirifoundation.org/,Education,
+660,The Evoluer House,Philadelphia,PA,United States,https://www.evoluerhouse.org/,Education,
+661,The Grove,Santa Fe,NM,United States,https://thegrovesantafe.com/index.html,Education,
+662,The Harrelson Center,Wilmington,NC,United States,https://harrelsoncenter.org/,Education,
+663,The Kennedy Collective (Trumbull),Stamford,CT,United States,https://www.thekennedycollective.org/,Education,
+664,The Literacy Center,Allentown,PA,United States,https://theliteracycenter-lv.org/,Education,
+665,The Los Angeles City College Foundation Scholarships,Los Angeles,CA,United States,https://laccfoundation.org/apply-for-scholarships/,Education,
+666,The Maryland Lgbt Foundation Inc,Baltimore,MD,United States,https://mdlgbt.org/mdlgbt-foundation/,Education,
+667,The Shirley Ware Education Center Health Care Workers Union Local,Oakland,CA,United States,https://theedfund.org/about/shirley-ware-education-center/,Education,
+668,The Uhuru Foundation,Richmond,VA,United States,https://www.theuhurufoundation.org/,Education,
+669,TigerMountain Foundation,Phoenix,AZ,United States,https://tigermountainfoundation.org/,Education,
+670,Training Fund For The Associated Air Balance Council,Washington,DC,United States,https://www.aabc.com/,Education,
+671,Tucson Jazz Music Foundation,Tucson,AZ,United States,https://tjmfdn.org/scholarships/,Education,
+672,U.S. Association For Small Business And Entrepreneurship,Peoria,IL,United States,https://www.usasbe.org/,Education,
+673,Unitarian Universalist Justice Ministry Of California,Sacramento,CA,United States,https://uujmca.org/,Education,
+674,United Returning Citizens - URC,Youngstown,OH,United States,https://unitedreturningcitizens.org/,Education,
+675,United Way Of Central Illinois,Springfield,IL,United States,https://www.uwcil.org/,Education,
+676,United Women In Business Foundation Inc,New York,NY,United States,https://www.uwibfoundation.org/,Education,
+677,University Of Wisconsin Foundation,Madison,WI,United States,https://www.supportuw.org/,Education,
+678,Vermont Troopers Foundation Inc,Montpelier,VT,United States,https://www.vermonttroopers.com/about/scholarships,Education,
+679,Washington Interfaith Network,Washington,DC,United States,https://www.windc.org/,Education,
+680,West African Vocational Schools,Fresno,CA,United States,https://www.wavschools.org/,Education,
+681,West Coast Fundamentals Inc,Santa Rosa,CA,United States,https://www.westcoastdiesels.com/,Education,
+682,West Contra Costa Public Education Fund,Riverside,CA,United States,https://www.edfundwest.org/what-we-do/scholarships/,Education,
+683,Wilson Brown Foundation,Augusta,GA,United States,https://watson-brown.org/scholarship/,Education,
+684,Women's Fund Of Hawai'i,Honolulu,HI,United States,https://womensfundhawaii.org/,Education,"A non-profit organization in Honolulu, the Women's Fund of Hawai'i, supports innovative programs that empower women and girls in Hawaii, focusing on areas such as economic security, education, and health."
+685,World Unity Network Inc,Aurora,CO,United States,https://worldunityinc.org/,Education,
+686,Young Leaders Council Inc,Nashville,TN,United States,https://www.youngleaderscouncil.org/,Education,
+687,2 Hands 2 Employ,Los Angeles,CA,United States,https://www.2hands2employ.org/,Education,
+688,365 New Beginnings,Nashville,TN,United States,https://www.thenewbeginningscenter.org/,Education,
+689,99 Tartans Alumni Angels,New York,NY,United States,https://www.99tartans.com/,Education,
+690,A Philip Randolph Institute Fort Wayne Chapter Inc,Fort Wayne,IN,United States,https://www.apri.org/,Education,
+691,A Trace Of Hope Inc,St. Petersburg,FL,United States,https://www.traceofhope.org/,Education,
+692,Academy Of Dover Charter School,Dover,DE,United States,https://aodcharter.org/,Education,"The Academy of Dover Charter School is a non-profit organization that offers a comprehensive K–6 education with a focus on academic excellence, character development, and community engagement."
+693,Action Communities,Flint,MI,United States,https://www.facebook.com/communityactiongroup/,Education,
+694,Africa Classroom Connection,Minneapolis,MN,United States,https://www.africaclassroomconnection.org/,Education,
+695,African-American-Minority Student Leadership Confrence,Fairbanks,AK,United States,https://www.aaylc-co.org/,Education,
+696,Alabama Center For Architecture,Birmingham,AL,United States,https://www.alcfa.org/scholarships,Education,
+697,Alabama Rural Coalition For The Homeless,Florence,AL,United States,https://www.archconnection.org/,Education,
+698,Alaska Appentriceship And Training Coordinators Association Inc,Anchorage,AK,United States,https://aatca.org/,Education,
+699,Alaska Council Of School Administrators (ACSA),Juneau,AK,United States,https://alaskaacsa.org/,Education,"A non-profit in Juneau, the Alaska Council of School Administrators supports and advocates for school administrators across Alaska, focusing on education policy and professional development."
+700,Alex Kirk Foundation Inc,Rio Rancho,NM,United States,https://www.alexkirkfoundation.com/,Education,
+701,All Aboard Washington,Seattle,WA,United States,https://www.aawa.us/,Education,
+702,Alpha Tau Omega Foundation Of North Dakota State University,Fargo,ND,United States,https://ato.org/foundation/foundation-scholarships/,Education,
+703,Alpha Upsilon Lambda Educational Foundation,Montgomery,AL,United States,https://www.aulalpha.com/scholarship-program,Education,
+704,Alternativ Project,Colorado Springs,CO,United States,https://www.alternativproject.org/,Education,
+705,Amada Womens Initiative,Houston,TX,United States,https://www.instagram.com/shop_amada/,Education,
+706,Americom Works,Rochester,NY,United States,https://americom.org/,Education,
+707,Anaheim Community Foundation,Anaheim,CA,United States,https://anaheimcf.org/about/,Education,
+708,Anchor Room Coffeehouse Inc,St. Louis,MO,United States,https://anchor-stl.com/,Education,
+709,Anchor Town Sports Foundation Inc,Anchorage,AK,United States,https://www.anchortownsports.com/,Education,
+710,Arizona Career Pathways,Phoenix,AZ,United States,https://arizonacareerpathways.org/,Education,
+711,Arizona Leadership Foundation Inc,Scottsdale,AZ,United States,https://arizonaleader.org/applications/,Education,
+712,Asian American Midwest Progressives,Chicago,IL,United States,https://www.aamprogressives.org/,Education,
+713,Asian Economic Development Association,St. Paul,MN,United States,https://www.aedamn.org/,Education,
+714,Assistance League Of Albuquerque,Albuquerque,NM,United States,https://www.assistanceleague.org/albuquerque/,Education,
+715,Assistance League Of Reno-Sparks,Reno,NV,United States,https://www.assistanceleague.org/reno-sparks/,Education,
+716,Associated Builders & Contractors Of Southern California Inc Merit,Anaheim,CA,United States,https://abcsocal.org/,Education,
+717,Associated Builders And Contractors Craft Training Trust Of Alaska,Anchorage,AK,United States,https://www.facebook.com/ABCAlaska/,Education,
+718,Association For The Education Of Young Children,Juneau,AK,United States,http://www.aeyc-sea.org/index.html,Education,
+719,Association Of Notre Dame Clubs Inc,Los Angeles,CA,United States,https://ndcla.com/page/scholarship,Education,
+720,Austin Free-Net,Austin,TX,United States,https://www.austinfree.net/,Education,
+721,Backpack Project Mn,Minneapolis,MN,United States,http://backpackprojectmn.com/,Education,
+722,Bcc Evolution,Aurora,CO,United States,https://www.bccevolution.org/,Education,"BCC Evolution is a non-profit organization in the United States that promotes mental health awareness, education, and suicide prevention through community events and advocacy initiatives."
+723,Be Well Cafe Corp,St. Louis,MO,United States,https://bewellcafe.apiaryatthepark.com/,Education,
+724,Beauti Of Hope,Brentwood,TN,United States,https://thebeautyofhopecollection.com/,Education,
+725,"Big Bend Area Health Education Center, Inc.",Tallahassee,FL,United States,https://bigbendahec.org/,Education,"Big Bend Area Health Education Center, Inc. is a charity in Tallahassee that improves healthcare access and outcomes by providing training, education, and support to healthcare professionals and communities in underserved areas of the Big Bend region."
+726,Bigger Than Sneakers,Cincinnati,OH,United States,https://www.biggerthansneakers.org/,Education,
+727,Bison Children's Scholarship Fund Inc,Buffalo,NY,United States,https://bisonfund.com/,Education,
+728,Black Wall Street Charm City,Baltimore,MD,United States,https://www.bwscc.org/,Education,
+729,Blp Partnership Inc,San Francisco,CA,United States,https://www.breakthroughsf.org/blp/,Education,
+730,Blue Foundation Inc,Norfolk,VA,United States,https://www.bluefoundation.blue/,Education,
