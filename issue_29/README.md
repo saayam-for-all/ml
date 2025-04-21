@@ -16,3 +16,13 @@
 - Easier **local testing and reproducibility**
 
 ---
+
+```bash
++---------------------+       +---------------------------+
+| Local Docker Image  | ----> | Amazon ECR (Container Repo) |
++---------------------+       +---------------------------+
+                                          |
+                                          v
+                                +--------------------+
+                                | AWS Lambda (Image) |
+                                +--------------------+
