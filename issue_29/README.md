@@ -31,12 +31,17 @@
 
 ## Once the lambda is containerized and pushed to ECR, it can be deployed from the ECR image.
 ```bash
-Sampple Code
+Sample Code
 
 aws lambda create-function \
     --function-name provide_func_name \
     --package-type Image \
     --code ImageUri=<ecr_image_uri> \
     --role give_the_required_iam_role
+
+```
+## References
+- [Deploy Lambda functions with container images](https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/deploy-lambda-functions-with-container-images.html)
+- [Deploy Python Lambda functions with container images](https://docs.aws.amazon.com/lambda/latest/dg/python-image.html)
 
 
