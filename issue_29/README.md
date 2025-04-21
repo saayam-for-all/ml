@@ -1,5 +1,5 @@
 # Containerizing Lambda Function
-## This Doc provides a step by step process that can be followed to containerize the Lambda Fucntions
+## This Doc provides a step by step process that can be followed to containerize the Lambda Functions
 
 ---
 
@@ -17,12 +17,26 @@
 
 ---
 
+## High level Steps
+- Create the logic code that contains the handler class for lambda function
+- Define dependencies in the requirements.txt
+- Create the Docker file, inside docker file make sure to define
+  - Commands to install dependencies
+  - Add the function code
+  - set the handler function
+  - any other required dependency jars/libraries installation
+- Create an amazon ECR registry repo
+  - To deploy a containerized Lambda, you must upload the image to Amazon ECR (Elastic Container Registry) first. That’s the only way AWS Lambda can pull your container image.
+- Authenticate Docker ot ECR, tag the Docker image to ECR and push the image to ECR
+
+## Once the lambda is containerized and pushed to ECR, it can be deployed from the ECR image.
 ```bash
-+---------------------+       +---------------------------+
-| Local Docker Image  | ----> | Amazon ECR (Container Repo) |
-+---------------------+       +---------------------------+
-                                          |
-                                          v
-                                +--------------------+
-                                | AWS Lambda (Image) |
-                                +--------------------+
+Sampple Code
+
+aws lambda create-function \
+    --function-name provide_func_name \
+    --package-type Image \
+    --code ImageUri=<ecr_image_uri> \
+    --role give_the_required_iam_role
+
+
