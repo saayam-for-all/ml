@@ -1,0 +1,6 @@
+word2number
+requests
+bs4
+pandas
+selenium
+webdriver-manager
