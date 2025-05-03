@@ -1,10 +1,10 @@
 import requests
 import json
 
-API_URL = "https://api.charitynavigator.org/graphql"  # Replace with actual endpoint if different
+API_URL = "https://api.charitynavigator.org/graphql"  
 HEADERS = {
     "Content-Type": "application/json",
-    # "Authorization": "Bearer YOUR_API_KEY",  # Uncomment if the API requires auth
+    # "Authorization": "Bearer YOUR_API_KEY",  # replace with your api key
 }
 
 QUERY = """
@@ -57,7 +57,7 @@ def fetch_nonprofits():
             print(f"{org['name']} - {org['city']}, {org['state']} ({org['zip']})")
             print(f"URL: {org['organization_url']}")
             print(f"Category: {org.get('cause')}")
-            print(f"Phone: N/A")  # Not provided in this query
+            print(f"Phone: N/A") 
             print(f"Address: {org.get('street', '')} {org.get('street2', '')}")
             print(f"Description: {org.get('mission')}")
             print("-" * 60)
