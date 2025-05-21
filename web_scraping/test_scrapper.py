@@ -134,9 +134,9 @@ def extract_json_ld_data(script_tag, data):
 def scrape_phone_numbers(soup, data):
     phone_container = soup.find('a', href=lambda x: x and x.startswith('tel:'))
     if phone_container:
-        phone_val = phone_container.get_text(strip=True)
-        if phone_val:
-            data["Phone Number"] = phone_val
+        phone_no = phone_container.get_text(strip=True)
+        if phone_no:
+            data["Phone Number"] = phone_no
         else:
             data["Phone Number"] = "N/A"
     else:
