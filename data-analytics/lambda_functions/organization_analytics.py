@@ -177,5 +177,130 @@ def is_undefined_column_error(exc):
     return "does not exist" in str(exc).lower()
 
 
+def fetch_summary(cursor, filters):
+    """Returns headline KPI counts for the filtered organizations set.
+    total_contributors is best-effort: NULL when is_contributor doesn't exist
+    on the target DB yet (see is_undefined_column_error).
+    """
+    where_clause, params = build_common_where(filters, alias="o")
+    where_sql = f"WHERE {where_clause}" if where_clause else ""
+
+    query_with_contributor = f"""
+        SELECT
+            COUNT(*) AS total_organizations,
+            COUNT(*) FILTER (WHERE o.is_collaborator = TRUE) AS total_collaborators,
+            COUNT(*) FILTER (WHERE o.is_contributor = TRUE) AS total_contributors,
+            AVG(o.org_rating) AS average_org_rating
+        FROM {ORGANIZATIONS_TABLE} o
+        {where_sql}
+    """
+
+    try:
+        cursor.execute(query_with_contributor, params)
+        row = cursor.fetchone()
+    except Exception as exc:
+        if not is_undefined_column_error(exc):
+            raise
+        cursor.connection.rollback()
+        query_without_contributor = f"""
+            SELECT
+                COUNT(*) AS total_organizations,
+                COUNT(*) FILTER (WHERE o.is_collaborator = TRUE) AS total_collaborators,
+                NULL AS total_contributors,
+                AVG(o.org_rating) AS average_org_rating
+            FROM {ORGANIZATIONS_TABLE} o
+            {where_sql}
+        """
+        cursor.execute(query_without_contributor, params)
+        row = cursor.fetchone()
+
+    return {
+        "total_organizations": row["total_organizations"],
+        "total_collaborators": row["total_collaborators"],
+        "total_contributors": row["total_contributors"],
+        "average_org_rating": (
+            float(row["average_org_rating"]) if row["average_org_rating"] is not None else None
+        ),
+    }
+
+
+def fetch_growth_trend(cursor, filters):
+    """Returns cumulative running totals of organizations/collaborators per
+    period, using a window SUM() over the per-period counts.
+    """
+    period_unit, date_format = get_grouping(filters["group_by"])
+    where_clause, params = build_common_where(filters, alias="o")
+    where_sql = f"WHERE {where_clause}" if where_clause else ""
+
+    inner_query = f"""
+        SELECT
+            TO_CHAR(DATE_TRUNC(%s, o.created_at), %s) AS period,
+            DATE_TRUNC(%s, o.created_at) AS period_sort,
+            COUNT(*) AS organizations_in_period,
+            COUNT(*) FILTER (WHERE o.is_collaborator = TRUE) AS collaborators_in_period
+        FROM {ORGANIZATIONS_TABLE} o
+        {where_sql}
+        GROUP BY period, period_sort
+    """
+
+    query = f"""
+        SELECT
+            period,
+            SUM(organizations_in_period) OVER (ORDER BY period_sort) AS total_organizations,
+            SUM(collaborators_in_period) OVER (ORDER BY period_sort) AS total_collaborators
+        FROM ({inner_query}) AS periods
+        ORDER BY period_sort
+    """
+
+    query_params = [period_unit, date_format, period_unit] + list(params)
+    cursor.execute(query, query_params)
+    rows = cursor.fetchall()
+
+    return [
+        {
+            "period": row["period"],
+            "total_organizations": row["total_organizations"],
+            "total_collaborators": row["total_collaborators"],
+        }
+        for row in rows
+    ]
+
+
+def fetch_organizations_by_location(cursor, filters):
+    """Returns a state-level breakdown of the filtered organizations, with
+    each state's share of the total filtered organization count.
+    """
+    where_clause, params = build_common_where(filters, alias="o")
+    where_sql = f"WHERE {where_clause}" if where_clause else ""
+
+    query = f"""
+        SELECT
+            s.state_id,
+            s.state_name,
+            COUNT(o.org_id) AS organization_count,
+            ROUND(
+                COUNT(o.org_id) * 100.0 / NULLIF(SUM(COUNT(o.org_id)) OVER (), 0), 2
+            ) AS percentage
+        FROM {ORGANIZATIONS_TABLE} o
+        LEFT JOIN {STATES_TABLE} s ON s.state_id = o.state_id
+        {where_sql}
+        GROUP BY s.state_id, s.state_name
+        ORDER BY organization_count DESC
+    """
+
+    cursor.execute(query, params)
+    rows = cursor.fetchall()
+
+    return [
+        {
+            "state_id": row["state_id"],
+            "state_name": row["state_name"],
+            "organization_count": row["organization_count"],
+            "percentage": float(row["percentage"]) if row["percentage"] is not None else 0.0,
+        }
+        for row in rows
+    ]
+
+
 if __name__ == "__main__":
     print("helpers loaded")
