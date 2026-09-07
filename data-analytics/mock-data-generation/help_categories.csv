@@ -1,0 +1,31 @@
+cat_id,cat_name,cat_desc,last_updated_at
+1,HOUSING_ASSISTANCE,Help related to housing assistance,2025-10-30 07:08:05
+1.1,HOUSING_ASSISTANCE_GENERAL,General housing assistance requests,2026-07-16 14:45:26
+2,FOOD_SUPPORT,Help related to food support,2025-11-12 12:20:24
+2.1,FOOD_SUPPORT_GENERAL,General food support requests,2026-05-02 18:44:31
+3,MEDICAL_HEALTH,Help related to medical & health,2026-03-18 18:39:48
+3.1,MEDICAL_HEALTH_GENERAL,General medical & health requests,2025-02-17 22:57:11
+4,EMPLOYMENT_JOB_TRAINING,Help related to employment & job training,2026-01-02 01:16:30
+4.1,EMPLOYMENT_JOB_TRAINING_GENERAL,General employment & job training requests,2026-05-15 15:47:30
+5,EDUCATION_TUTORING,Help related to education & tutoring,2025-11-28 10:22:49
+5.1,EDUCATION_TUTORING_GENERAL,General education & tutoring requests,2025-07-15 04:03:56
+6,TRANSPORTATION,Help related to transportation,2025-02-18 15:36:17
+6.1,TRANSPORTATION_GENERAL,General transportation requests,2026-02-06 13:51:16
+7,CHILDCARE,Help related to childcare,2025-07-06 05:28:32
+7.1,CHILDCARE_GENERAL,General childcare requests,2026-01-02 03:43:47
+8,ELDER_CARE,Help related to elder care,2025-09-16 21:50:15
+8.1,ELDER_CARE_GENERAL,General elder care requests,2026-02-24 02:29:43
+9,DISASTER_RELIEF,Help related to disaster relief,2025-08-02 14:26:02
+9.1,DISASTER_RELIEF_GENERAL,General disaster relief requests,2025-01-26 17:38:38
+10,MENTAL_HEALTH_SUPPORT,Help related to mental health support,2026-06-13 15:19:01
+10.1,MENTAL_HEALTH_SUPPORT_GENERAL,General mental health support requests,2025-08-03 05:11:46
+11,LEGAL_AID,Help related to legal aid,2026-08-30 11:31:51
+11.1,LEGAL_AID_GENERAL,General legal aid requests,2025-06-16 19:42:12
+12,FINANCIAL_COUNSELING,Help related to financial counseling,2026-08-19 11:14:52
+12.1,FINANCIAL_COUNSELING_GENERAL,General financial counseling requests,2026-07-30 22:48:56
+13,CLOTHING_DONATIONS,Help related to clothing donations,2025-02-15 14:17:16
+13.1,CLOTHING_DONATIONS_GENERAL,General clothing donations requests,2026-01-23 08:31:35
+14,HOME_REPAIR,Help related to home repair,2025-08-09 17:59:04
+14.1,HOME_REPAIR_GENERAL,General home repair requests,2026-05-02 17:58:55
+15,LANGUAGE_TRANSLATION,Help related to language translation,2026-02-17 19:30:18
+15.1,LANGUAGE_TRANSLATION_GENERAL,General language translation requests,2026-08-02 22:03:04
