@@ -20,10 +20,14 @@ run some checks at the end (no orphan FKs, no duplicate PKs, etc).
 
 ## Row counts
 
-Default is 100 users, 40 orgs, ~50% of users become volunteers. If you need more rows
-just change the numbers at the top of generate_mock_data.py (NUM_USERS, NUM_ORGANIZATIONS,
-VOLUNTEER_FRACTION, MAX_SKILLS_PER_USER). Everything else scales off of NUM_USERS
-automatically.
+Default is 400 users, 400 orgs, ~50% of users become volunteers, ~7 extra cities per
+state (gets cities.csv to ~400 too). Countries/states/help_categories stay small on
+purpose since those are basically fixed reference lists (only 50 real US states etc) -
+padding them out with fake states didn't seem worth it just to hit a row count.
+
+If you need different numbers just change NUM_USERS, NUM_ORGANIZATIONS,
+VOLUNTEER_FRACTION, MAX_SKILLS_PER_USER, NUM_EXTRA_CITIES_PER_STATE at the top of
+generate_mock_data.py. Everything else scales off of NUM_USERS automatically.
 
 ## How the tables connect
 

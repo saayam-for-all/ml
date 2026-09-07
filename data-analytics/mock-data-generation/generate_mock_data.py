@@ -27,11 +27,14 @@ from utils import (
 )
 
 # CONFIG - change row counts here
-NUM_EXTRA_CITIES_PER_STATE = 1   # extra synthetic city per state on top of the real ones
-NUM_USERS = 100
-NUM_ORGANIZATIONS = 40
+# bumped these up to match the issue's suggested ~400 rows/file. states/countries/
+# help_categories stay small on purpose - there are only 50 real US states etc,
+# no point faking more of those just to hit a number
+NUM_EXTRA_CITIES_PER_STATE = 7    # extra synthetic city per state on top of the real ones
+NUM_USERS = 400
+NUM_ORGANIZATIONS = 400
 VOLUNTEER_FRACTION = 0.5          # % of users that also get a volunteer_details row
-MAX_SKILLS_PER_USER = 3
+MAX_SKILLS_PER_USER = 4
 
 OUTPUT_DIR = os.path.dirname(os.path.abspath(__file__))
 DATE_WINDOW_START = datetime(2025, 1, 1)
