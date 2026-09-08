@@ -256,11 +256,13 @@ def fetch_growth_trend(cursor, filters):
     cursor.execute(query, query_params)
     rows = cursor.fetchall()
 
+    # SUM() over a COUNT(*) comes back as numeric -> Decimal, which would be
+    # serialized as a JSON string; cast to int so the response stays numeric.
     return [
         {
             "period": row["period"],
-            "total_organizations": row["total_organizations"],
-            "total_collaborators": row["total_collaborators"],
+            "total_organizations": int(row["total_organizations"]),
+            "total_collaborators": int(row["total_collaborators"]),
         }
         for row in rows
     ]
