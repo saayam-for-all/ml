@@ -219,7 +219,8 @@ def fetch_summary(cursor, filters):
         "total_collaborators": row["total_collaborators"],
         "total_contributors": row["total_contributors"],
         "average_org_rating": (
-            float(row["average_org_rating"]) if row["average_org_rating"] is not None else None
+            round(float(row["average_org_rating"]), 2)
+            if row["average_org_rating"] is not None else None
         ),
     }
 
