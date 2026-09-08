@@ -1,34 +1,34 @@
 """
-Organization Analytics API — Issue #228
+Organization Analytics API — Issue #228 (rewrite to match finalized dashboard
+requirements, see PR #278 / #251 for the reference response shape)
 
-Provides two dashboards for the Saayam Organization Dashboard, built against
-virginia_dev_saayam_rdbms.organizations (joined with .state / .country for
-location breakdowns):
+Single combined endpoint (POST /analytics/organizations) returning all
+Organization Dashboard sections in one response:
 
-  1. Organization Overview  (dashboard_type="overview")
-  2. Organization Performance (dashboard_type="performance")
+  - summary                          (4 KPI cards)
+  - growth_trend                     (cumulative orgs + collaborators by period)
+  - organizations_by_location        (state breakdown, with nested cities + %)
+  - organizations_by_size            (small / medium / large)
+  - collaborator_vs_contributor      (counts + percentages)
+  - rating_distribution              (counts for ratings 1-5)
+  - organization_type_distribution   (for-profit vs non-profit, per period)
 
-Follows the same conventions as the existing analytics lambdas in this folder
-(volunteer_application_analytics.py, kpi_api_analytics.py): a SCHEMA_NAME
-constant, RealDictCursor, a build_response() helper, and per-metric fetch_*
-functions that fail soft (return an empty/zero-value shape rather than raising)
-so one broken metric doesn't 500 the whole dashboard.
+Filters (per finalized spec):
+  time_filter: 7D | 30D | 1Y | ALL | CUSTOM   (CUSTOM needs start_date/end_date)
+  group_by: daily | weekly | monthly | yearly
+  region: "ALL", a state name, or a state_id
+  organization_type: "ALL" | "for_profit" | "non_profit"
 
-LOCAL DEV NOTE (per issue #228 — "test locally using a local PostgreSQL
-connection, do not deploy to AWS"): get_db_connection() reads a DATABASE_URL
-from the environment (same variable already in data-engineering/.env.example)
-rather than pulling credentials from AWS SSM like the production lambdas do.
-Swap this for the SSM-based get_db_config() pattern used elsewhere in this
-folder before this goes anywhere near AWS.
+LOCAL DEV NOTE (per issue #228): get_db_connection() reads DATABASE_URL from
+the environment rather than pulling credentials from AWS SSM like the
+production lambdas do — matches the issue's "test locally, do not deploy to
+AWS" instruction.
 
-SCHEMA GAP: the issue asks for "contributor" vs "non-contributor" org counts
-and a "top contributor organizations" list, but
-https://github.com/saayam-for-all/database/blob/main/ddl/Tables/ddl_organizations.sql
-has no is_contributor (or equivalent) column — only is_collaborator. Every
-contributor-related field below is wired up but intentionally returns a
-zero/empty value with a comment pointing here. Flag this with Sana Desai
-(issue author) / your reviewer before merging: either the DDL needs a new
-column, or "contributor" maps to an existing concept under a different name.
+SCHEMA COMPATIBILITY: virginia_dev_saayam_rdbms.organizations does not have an
+is_contributor column yet (only is_collaborator exists). Rather than hardcode
+a zero, has_contributor_column() checks information_schema.columns once per
+request and only includes real contributor counts if the column is actually
+there — so this keeps working with no code change once the column is added.
 """
 
 import json
@@ -41,20 +41,12 @@ SCHEMA_NAME = "virginia_dev_saayam_rdbms"
 ORGANIZATIONS = f"{SCHEMA_NAME}.organizations"
 STATE = f"{SCHEMA_NAME}.state"
 
-TOP_N_DEFAULT = 10
-
 
 # --------------------------------------------------------------------------
-# Connection
+# Connection / response helpers
 # --------------------------------------------------------------------------
 
 def get_db_connection():
-    """
-    Local-dev connection: reads DATABASE_URL from the environment
-    (see data-engineering/.env.example). For production this should be
-    swapped for the boto3/SSM pattern used in volunteer_application_analytics.py
-    and kpi_api_analytics.py — not done here per the issue's "local only" note.
-    """
     database_url = os.environ.get("DATABASE_URL")
     if not database_url:
         raise RuntimeError(
@@ -94,6 +86,21 @@ def parse_event_body(event):
 
 
 # --------------------------------------------------------------------------
+# Schema compatibility check
+# --------------------------------------------------------------------------
+
+def has_contributor_column(cursor):
+    cursor.execute(
+        """
+        SELECT 1 FROM information_schema.columns
+        WHERE table_schema = %s AND table_name = 'organizations' AND column_name = 'is_contributor'
+        """,
+        (SCHEMA_NAME,),
+    )
+    return cursor.fetchone() is not None
+
+
+# --------------------------------------------------------------------------
 # Shared filter helpers
 # --------------------------------------------------------------------------
 
@@ -108,7 +115,6 @@ def get_grouping(group_by):
 
 
 def build_time_filter(time_filter, start_date=None, end_date=None, column="o.created_at"):
-    """Returns (where_clause_fragment, params) for the given time_filter."""
     if time_filter == "CUSTOM" and start_date and end_date:
         return f"AND {column} BETWEEN %s AND %s", (start_date, end_date)
     if time_filter == "7D":
@@ -121,289 +127,247 @@ def build_time_filter(time_filter, start_date=None, end_date=None, column="o.cre
     return "", ()
 
 
-def build_common_filters(filters):
-    """
-    Shared WHERE-clause fragments for org_type / org_size / state_id /
-    city_name / org_rating / is_collaborator, applied on top of the time
-    filter. is_contributor is accepted but ignored — see SCHEMA GAP note
-    at the top of this file.
-    """
-    clauses = []
-    params = []
+def build_region_filter(region):
+    """region can be "ALL"/None (no filter), a state_id (e.g. "CA"), or a
+    state name (e.g. "California")."""
+    if not region or region == "ALL":
+        return "", []
+    if len(region) <= 3:
+        return "AND s.state_id = %s", [region]
+    return "AND s.state_name = %s", [region]
 
-    if filters.get("org_type"):
-        clauses.append("o.org_type = %s")
-        params.append(filters["org_type"])
 
-    if filters.get("org_size"):
-        clauses.append("o.org_size = %s")
-        params.append(filters["org_size"])
+def build_org_type_filter(organization_type):
+    if not organization_type or organization_type == "ALL":
+        return "", []
+    return "AND o.org_type = %s", [organization_type]
 
-    if filters.get("state_id"):
-        clauses.append("o.state_id = %s")
-        params.append(filters["state_id"])
 
-    if filters.get("city_name"):
-        clauses.append("o.city_name = %s")
-        params.append(filters["city_name"])
-
-    if filters.get("org_rating"):
-        clauses.append("o.org_rating = %s")
-        params.append(filters["org_rating"])
-
-    if filters.get("is_collaborator") is not None:
-        clauses.append("o.is_collaborator = %s")
-        params.append(filters["is_collaborator"])
-
-    where_fragment = (" AND " + " AND ".join(clauses)) if clauses else ""
-    return where_fragment, params
+def build_filters(filters):
+    """Combines region + organization_type into one WHERE fragment/param list,
+    applied on top of the time filter across every query below."""
+    region_where, region_params = build_region_filter(filters.get("region"))
+    type_where, type_params = build_org_type_filter(filters.get("organization_type"))
+    return f"{region_where} {type_where}", [*region_params, *type_params]
 
 
 # --------------------------------------------------------------------------
-# Dashboard 1: Organization Overview
+# Metric fetchers
 # --------------------------------------------------------------------------
 
-def fetch_overview_summary(cursor, time_where, time_params, common_where, common_params):
+def fetch_summary(cursor, has_contributor, time_where, time_params, filter_where, filter_params):
+    contributor_expr = "COUNT(*) FILTER (WHERE o.is_contributor IS TRUE)" if has_contributor else "0"
     query = f"""
         SELECT
             COUNT(*) AS total_organizations,
-            COUNT(*) FILTER (WHERE o.org_type = 'non_profit') AS non_profit_organizations,
-            COUNT(*) FILTER (WHERE o.org_type = 'for_profit') AS for_profit_organizations,
-            COUNT(*) FILTER (WHERE o.is_collaborator IS TRUE) AS collaborator_organizations,
-            COUNT(*) FILTER (WHERE o.is_collaborator IS NOT TRUE) AS non_collaborator_organizations
+            COUNT(*) FILTER (WHERE o.is_collaborator IS TRUE) AS total_collaborators,
+            {contributor_expr} AS total_contributors,
+            ROUND(AVG(o.org_rating)::numeric, 2) AS average_org_rating
         FROM {ORGANIZATIONS} o
-        WHERE 1=1 {time_where} {common_where}
+        LEFT JOIN {STATE} s ON o.state_id = s.state_id
+        WHERE 1=1 {time_where} {filter_where}
     """
-    cursor.execute(query, (*time_params, *common_params))
+    cursor.execute(query, (*time_params, *filter_params))
     row = cursor.fetchone() or {}
     return {
         "total_organizations": int(row.get("total_organizations") or 0),
-        "non_profit_organizations": int(row.get("non_profit_organizations") or 0),
-        "for_profit_organizations": int(row.get("for_profit_organizations") or 0),
-        "collaborator_organizations": int(row.get("collaborator_organizations") or 0),
-        "non_collaborator_organizations": int(row.get("non_collaborator_organizations") or 0),
-        # SCHEMA GAP: no is_contributor column on organizations. See file header.
-        "contributor_organizations": 0,
-        "non_contributor_organizations": 0,
+        "total_collaborators": int(row.get("total_collaborators") or 0),
+        "total_contributors": int(row.get("total_contributors") or 0),
+        "average_org_rating": float(row["average_org_rating"]) if row.get("average_org_rating") is not None else 0.0,
     }
 
 
-def fetch_organization_activity_trend(cursor, group_by, time_where, time_params, common_where, common_params):
+def fetch_growth_trend(cursor, group_by, time_where, time_params, filter_where, filter_params):
+    period, date_format = get_grouping(group_by)
+    query = f"""
+        WITH periods AS (
+            SELECT TO_CHAR(DATE_TRUNC('{period}', o.created_at), '{date_format}') AS period,
+                   COUNT(*) AS new_organizations,
+                   COUNT(*) FILTER (WHERE o.is_collaborator IS TRUE) AS new_collaborators
+            FROM {ORGANIZATIONS} o
+            LEFT JOIN {STATE} s ON o.state_id = s.state_id
+            WHERE o.created_at IS NOT NULL {time_where} {filter_where}
+            GROUP BY 1
+        )
+        SELECT period,
+               SUM(new_organizations) OVER (ORDER BY period) AS total_organizations,
+               SUM(new_collaborators) OVER (ORDER BY period) AS total_collaborators
+        FROM periods
+        ORDER BY period
+    """
+    cursor.execute(query, (*time_params, *filter_params))
+    return [
+        {
+            "period": row["period"],
+            "total_organizations": int(row["total_organizations"]),
+            "total_collaborators": int(row["total_collaborators"]),
+        }
+        for row in cursor.fetchall()
+    ]
+
+
+def fetch_organizations_by_location(cursor, total_organizations, time_where, time_params, filter_where, filter_params):
+    state_query = f"""
+        SELECT s.state_id, COALESCE(s.state_name, 'Unknown') AS state_name, COUNT(*) AS organization_count
+        FROM {ORGANIZATIONS} o
+        LEFT JOIN {STATE} s ON o.state_id = s.state_id
+        WHERE 1=1 {time_where} {filter_where}
+        GROUP BY s.state_id, s.state_name
+        ORDER BY organization_count DESC
+    """
+    cursor.execute(state_query, (*time_params, *filter_params))
+    states = cursor.fetchall()
+
+    city_query = f"""
+        SELECT s.state_id, COALESCE(o.city_name, 'Unknown') AS city_name, COUNT(*) AS organization_count
+        FROM {ORGANIZATIONS} o
+        LEFT JOIN {STATE} s ON o.state_id = s.state_id
+        WHERE 1=1 {time_where} {filter_where}
+        GROUP BY s.state_id, o.city_name
+        ORDER BY s.state_id, organization_count DESC
+    """
+    cursor.execute(city_query, (*time_params, *filter_params))
+
+    cities_by_state = {}
+    for row in cursor.fetchall():
+        cities_by_state.setdefault(row["state_id"], []).append(
+            {"city_name": row["city_name"], "organization_count": int(row["organization_count"])}
+        )
+
+    result = []
+    for row in states:
+        count = int(row["organization_count"])
+        percentage = round((count / total_organizations) * 100, 1) if total_organizations else 0.0
+        result.append({
+            "state_id": row["state_id"],
+            "state_name": row["state_name"],
+            "organization_count": count,
+            "percentage": percentage,
+            "cities": cities_by_state.get(row["state_id"], []),
+        })
+    return result
+
+
+def fetch_organizations_by_size(cursor, time_where, time_params, filter_where, filter_params):
+    query = f"""
+        SELECT COALESCE(o.org_size::text, 'unknown') AS org_size, COUNT(*) AS organization_count
+        FROM {ORGANIZATIONS} o
+        LEFT JOIN {STATE} s ON o.state_id = s.state_id
+        WHERE 1=1 {time_where} {filter_where}
+        GROUP BY 1
+        ORDER BY organization_count DESC
+    """
+    cursor.execute(query, (*time_params, *filter_params))
+    return [{"org_size": row["org_size"], "organization_count": int(row["organization_count"])} for row in cursor.fetchall()]
+
+
+def fetch_collaborator_vs_contributor(cursor, has_contributor, total_organizations, time_where, time_params, filter_where, filter_params):
+    contributor_expr = "COUNT(*) FILTER (WHERE o.is_contributor IS TRUE)" if has_contributor else "0"
+    query = f"""
+        SELECT
+            COUNT(*) FILTER (WHERE o.is_collaborator IS TRUE) AS collaborator_count,
+            {contributor_expr} AS contributor_count
+        FROM {ORGANIZATIONS} o
+        LEFT JOIN {STATE} s ON o.state_id = s.state_id
+        WHERE 1=1 {time_where} {filter_where}
+    """
+    cursor.execute(query, (*time_params, *filter_params))
+    row = cursor.fetchone() or {}
+    collaborator_count = int(row.get("collaborator_count") or 0)
+    contributor_count = int(row.get("contributor_count") or 0)
+
+    def pct(count):
+        return round((count / total_organizations) * 100, 1) if total_organizations else 0.0
+
+    return [
+        {"type": "collaborator", "organization_count": collaborator_count, "percentage": pct(collaborator_count)},
+        {"type": "contributor", "organization_count": contributor_count, "percentage": pct(contributor_count)},
+    ]
+
+
+def fetch_rating_distribution(cursor, time_where, time_params, filter_where, filter_params):
+    query = f"""
+        SELECT o.org_rating AS rating, COUNT(*) AS organization_count
+        FROM {ORGANIZATIONS} o
+        LEFT JOIN {STATE} s ON o.state_id = s.state_id
+        WHERE o.org_rating IS NOT NULL {time_where} {filter_where}
+        GROUP BY 1
+        ORDER BY 1
+    """
+    cursor.execute(query, (*time_params, *filter_params))
+    return [{"rating": int(row["rating"]), "organization_count": int(row["organization_count"])} for row in cursor.fetchall()]
+
+
+def fetch_organization_type_distribution(cursor, group_by, time_where, time_params, filter_where, filter_params):
     period, date_format = get_grouping(group_by)
     query = f"""
         SELECT TO_CHAR(DATE_TRUNC('{period}', o.created_at), '{date_format}') AS period,
-               COUNT(*) AS count
-        FROM {ORGANIZATIONS} o
-        WHERE o.created_at IS NOT NULL {time_where} {common_where}
-        GROUP BY 1
-        ORDER BY 1
-    """
-    cursor.execute(query, (*time_params, *common_params))
-    return [{"period": row["period"], "count": int(row["count"])} for row in cursor.fetchall()]
-
-
-def fetch_organizations_by_type(cursor, time_where, time_params, common_where, common_params):
-    query = f"""
-        SELECT COALESCE(o.org_type::text, 'unknown') AS org_type, COUNT(*) AS count
-        FROM {ORGANIZATIONS} o
-        WHERE 1=1 {time_where} {common_where}
-        GROUP BY 1
-        ORDER BY count DESC
-    """
-    cursor.execute(query, (*time_params, *common_params))
-    return [{"org_type": row["org_type"], "count": int(row["count"])} for row in cursor.fetchall()]
-
-
-def fetch_organizations_by_size(cursor, time_where, time_params, common_where, common_params):
-    query = f"""
-        SELECT COALESCE(o.org_size::text, 'unknown') AS org_size, COUNT(*) AS count
-        FROM {ORGANIZATIONS} o
-        WHERE 1=1 {time_where} {common_where}
-        GROUP BY 1
-        ORDER BY count DESC
-    """
-    cursor.execute(query, (*time_params, *common_params))
-    return [{"org_size": row["org_size"], "count": int(row["count"])} for row in cursor.fetchall()]
-
-
-def fetch_organizations_by_location(cursor, time_where, time_params, common_where, common_params):
-    state_query = f"""
-        SELECT COALESCE(s.state_name, 'Unknown') AS state, COUNT(*) AS count
+               COUNT(*) FILTER (WHERE o.org_type = 'for_profit') AS for_profit,
+               COUNT(*) FILTER (WHERE o.org_type = 'non_profit') AS non_profit,
+               COUNT(*) AS total
         FROM {ORGANIZATIONS} o
         LEFT JOIN {STATE} s ON o.state_id = s.state_id
-        WHERE 1=1 {time_where} {common_where}
-        GROUP BY 1
-        ORDER BY count DESC
-    """
-    cursor.execute(state_query, (*time_params, *common_params))
-    by_state = [{"state": row["state"], "count": int(row["count"])} for row in cursor.fetchall()]
-
-    city_query = f"""
-        SELECT COALESCE(o.city_name, 'Unknown') AS city, COUNT(*) AS count
-        FROM {ORGANIZATIONS} o
-        WHERE 1=1 {time_where} {common_where}
-        GROUP BY 1
-        ORDER BY count DESC
-    """
-    cursor.execute(city_query, (*time_params, *common_params))
-    by_city = [{"city": row["city"], "count": int(row["count"])} for row in cursor.fetchall()]
-
-    return {"by_state": by_state, "by_city": by_city}
-
-
-def fetch_collaborator_distribution(cursor, time_where, time_params, common_where, common_params):
-    query = f"""
-        SELECT o.is_collaborator, COUNT(*) AS count
-        FROM {ORGANIZATIONS} o
-        WHERE 1=1 {time_where} {common_where}
-        GROUP BY 1
-    """
-    cursor.execute(query, (*time_params, *common_params))
-    return [
-        {"is_collaborator": bool(row["is_collaborator"]) if row["is_collaborator"] is not None else False,
-         "count": int(row["count"])}
-        for row in cursor.fetchall()
-    ]
-
-
-def get_organization_overview(cursor, filters):
-    time_where, time_params = build_time_filter(
-        filters.get("time_filter", "30D"), filters.get("start_date"), filters.get("end_date")
-    )
-    common_where, common_params = build_common_filters(filters)
-    group_by = filters.get("group_by", "monthly")
-
-    return {
-        "summary": fetch_overview_summary(cursor, time_where, time_params, common_where, common_params),
-        "organization_activity_trend": fetch_organization_activity_trend(
-            cursor, group_by, time_where, time_params, common_where, common_params
-        ),
-        "organizations_by_type": fetch_organizations_by_type(cursor, time_where, time_params, common_where, common_params),
-        "organizations_by_size": fetch_organizations_by_size(cursor, time_where, time_params, common_where, common_params),
-        "organizations_by_location": fetch_organizations_by_location(cursor, time_where, time_params, common_where, common_params),
-        "collaborator_distribution": fetch_collaborator_distribution(cursor, time_where, time_params, common_where, common_params),
-        # SCHEMA GAP: no is_contributor column. See file header.
-        "contributor_distribution": [],
-    }
-
-
-# --------------------------------------------------------------------------
-# Dashboard 2: Organization Performance
-# --------------------------------------------------------------------------
-
-def fetch_performance_summary(cursor, time_where, time_params, common_where, common_params):
-    query = f"""
-        SELECT
-            ROUND(AVG(o.org_rating)::numeric, 2) AS average_rating,
-            COUNT(*) FILTER (WHERE o.org_rating IS NOT NULL) AS rated_organizations,
-            COUNT(*) FILTER (WHERE o.org_rating IS NULL) AS unrated_organizations,
-            COUNT(*) FILTER (WHERE o.org_rating = 5) AS five_star_organizations
-        FROM {ORGANIZATIONS} o
-        WHERE 1=1 {time_where} {common_where}
-    """
-    cursor.execute(query, (*time_params, *common_params))
-    row = cursor.fetchone() or {}
-    return {
-        "average_rating": float(row["average_rating"]) if row.get("average_rating") is not None else 0.0,
-        "rated_organizations": int(row.get("rated_organizations") or 0),
-        "unrated_organizations": int(row.get("unrated_organizations") or 0),
-        "five_star_organizations": int(row.get("five_star_organizations") or 0),
-    }
-
-
-def fetch_rating_distribution(cursor, time_where, time_params, common_where, common_params):
-    query = f"""
-        SELECT o.org_rating AS rating, COUNT(*) AS count
-        FROM {ORGANIZATIONS} o
-        WHERE o.org_rating IS NOT NULL {time_where} {common_where}
+        WHERE o.created_at IS NOT NULL {time_where} {filter_where}
         GROUP BY 1
         ORDER BY 1
     """
-    cursor.execute(query, (*time_params, *common_params))
-    return [{"rating": int(row["rating"]), "count": int(row["count"])} for row in cursor.fetchall()]
-
-
-def fetch_top_rated_organizations(cursor, time_where, time_params, common_where, common_params, limit=TOP_N_DEFAULT):
-    query = f"""
-        SELECT o.org_id, o.org_name, o.org_rating, o.org_type::text AS org_type, o.org_size::text AS org_size
-        FROM {ORGANIZATIONS} o
-        WHERE o.org_rating IS NOT NULL {time_where} {common_where}
-        ORDER BY o.org_rating DESC, o.org_name ASC
-        LIMIT %s
-    """
-    cursor.execute(query, (*time_params, *common_params, limit))
-    return [dict(row) for row in cursor.fetchall()]
-
-
-def fetch_top_collaborator_organizations(cursor, time_where, time_params, common_where, common_params, limit=TOP_N_DEFAULT):
-    query = f"""
-        SELECT o.org_id, o.org_name, o.org_rating, o.org_type::text AS org_type
-        FROM {ORGANIZATIONS} o
-        WHERE o.is_collaborator IS TRUE {time_where} {common_where}
-        ORDER BY o.org_rating DESC NULLS LAST, o.org_name ASC
-        LIMIT %s
-    """
-    cursor.execute(query, (*time_params, *common_params, limit))
-    return [dict(row) for row in cursor.fetchall()]
-
-
-def fetch_ratings_by_organization_type(cursor, time_where, time_params, common_where, common_params):
-    query = f"""
-        SELECT COALESCE(o.org_type::text, 'unknown') AS org_type,
-               ROUND(AVG(o.org_rating)::numeric, 2) AS average_rating,
-               COUNT(*) AS count
-        FROM {ORGANIZATIONS} o
-        WHERE 1=1 {time_where} {common_where}
-        GROUP BY 1
-        ORDER BY average_rating DESC NULLS LAST
-    """
-    cursor.execute(query, (*time_params, *common_params))
+    cursor.execute(query, (*time_params, *filter_params))
     return [
         {
-            "org_type": row["org_type"],
-            "average_rating": float(row["average_rating"]) if row["average_rating"] is not None else 0.0,
-            "count": int(row["count"]),
+            "period": row["period"],
+            "for_profit": int(row["for_profit"]),
+            "non_profit": int(row["non_profit"]),
+            "total": int(row["total"]),
         }
         for row in cursor.fetchall()
     ]
 
 
-def fetch_ratings_by_organization_size(cursor, time_where, time_params, common_where, common_params):
-    query = f"""
-        SELECT COALESCE(o.org_size::text, 'unknown') AS org_size,
-               ROUND(AVG(o.org_rating)::numeric, 2) AS average_rating,
-               COUNT(*) AS count
-        FROM {ORGANIZATIONS} o
-        WHERE 1=1 {time_where} {common_where}
-        GROUP BY 1
-        ORDER BY average_rating DESC NULLS LAST
-    """
-    cursor.execute(query, (*time_params, *common_params))
-    return [
-        {
-            "org_size": row["org_size"],
-            "average_rating": float(row["average_rating"]) if row["average_rating"] is not None else 0.0,
-            "count": int(row["count"]),
-        }
-        for row in cursor.fetchall()
-    ]
+# --------------------------------------------------------------------------
+# Combined dashboard
+# --------------------------------------------------------------------------
 
-
-def get_organization_performance(cursor, filters):
+def get_organization_dashboard(cursor, filters):
     time_where, time_params = build_time_filter(
         filters.get("time_filter", "30D"), filters.get("start_date"), filters.get("end_date")
     )
-    common_where, common_params = build_common_filters(filters)
+    filter_where, filter_params = build_filters(filters)
+    group_by = filters.get("group_by", "monthly")
+
+    has_contributor = has_contributor_column(cursor)
+
+    summary = fetch_summary(cursor, has_contributor, time_where, time_params, filter_where, filter_params)
+    total_organizations = summary["total_organizations"]
 
     return {
-        "summary": fetch_performance_summary(cursor, time_where, time_params, common_where, common_params),
-        "rating_distribution": fetch_rating_distribution(cursor, time_where, time_params, common_where, common_params),
-        "top_rated_organizations": fetch_top_rated_organizations(cursor, time_where, time_params, common_where, common_params),
-        "top_collaborator_organizations": fetch_top_collaborator_organizations(cursor, time_where, time_params, common_where, common_params),
-        # SCHEMA GAP: no is_contributor column. See file header.
-        "top_contributor_organizations": [],
-        "ratings_by_organization_type": fetch_ratings_by_organization_type(cursor, time_where, time_params, common_where, common_params),
-        "ratings_by_organization_size": fetch_ratings_by_organization_size(cursor, time_where, time_params, common_where, common_params),
+        "summary": summary,
+        "growth_trend": fetch_growth_trend(cursor, group_by, time_where, time_params, filter_where, filter_params),
+        "organizations_by_location": fetch_organizations_by_location(
+            cursor, total_organizations, time_where, time_params, filter_where, filter_params
+        ),
+        "organizations_by_size": fetch_organizations_by_size(cursor, time_where, time_params, filter_where, filter_params),
+        "collaborator_vs_contributor": fetch_collaborator_vs_contributor(
+            cursor, has_contributor, total_organizations, time_where, time_params, filter_where, filter_params
+        ),
+        "rating_distribution": fetch_rating_distribution(cursor, time_where, time_params, filter_where, filter_params),
+        "organization_type_distribution": fetch_organization_type_distribution(
+            cursor, group_by, time_where, time_params, filter_where, filter_params
+        ),
+    }
+
+
+def empty_dashboard():
+    return {
+        "summary": {
+            "total_organizations": 0, "total_collaborators": 0,
+            "total_contributors": 0, "average_org_rating": 0.0,
+        },
+        "growth_trend": [],
+        "organizations_by_location": [],
+        "organizations_by_size": [],
+        "collaborator_vs_contributor": [],
+        "rating_distribution": [],
+        "organization_type_distribution": [],
     }
 
 
@@ -411,50 +375,20 @@ def get_organization_performance(cursor, filters):
 # Lambda entrypoint
 # --------------------------------------------------------------------------
 
-def empty_overview():
-    return {
-        "summary": {
-            "total_organizations": 0, "non_profit_organizations": 0, "for_profit_organizations": 0,
-            "collaborator_organizations": 0, "non_collaborator_organizations": 0,
-            "contributor_organizations": 0, "non_contributor_organizations": 0,
-        },
-        "organization_activity_trend": [], "organizations_by_type": [], "organizations_by_size": [],
-        "organizations_by_location": {"by_state": [], "by_city": []},
-        "collaborator_distribution": [], "contributor_distribution": [],
-    }
-
-
-def empty_performance():
-    return {
-        "summary": {"average_rating": 0.0, "rated_organizations": 0, "unrated_organizations": 0, "five_star_organizations": 0},
-        "rating_distribution": [], "top_rated_organizations": [], "top_collaborator_organizations": [],
-        "top_contributor_organizations": [], "ratings_by_organization_type": [], "ratings_by_organization_size": [],
-    }
-
-
 def lambda_handler(event, context):
     conn = None
     cursor = None
-
     filters = parse_event_body(event)
-    dashboard_type = filters.get("dashboard_type", "overview")
 
     try:
         conn = get_db_connection()
         cursor = conn.cursor(cursor_factory=RealDictCursor)
-
-        if dashboard_type == "performance":
-            body = {"organization_performance": get_organization_performance(cursor, filters)}
-        else:
-            body = {"organization_overview": get_organization_overview(cursor, filters)}
-
+        body = get_organization_dashboard(cursor, filters)
         return build_response(200, body)
 
     except Exception as e:
         print(f"ERROR in organization_analytics.lambda_handler: {e}")
-        fallback = {"organization_performance": empty_performance()} if dashboard_type == "performance" \
-            else {"organization_overview": empty_overview()}
-        return build_response(500, fallback)
+        return build_response(500, empty_dashboard())
 
     finally:
         if cursor:
@@ -464,8 +398,13 @@ def lambda_handler(event, context):
 
 
 if __name__ == "__main__":
-    # Local smoke test — requires DATABASE_URL set (see .env / README_local_testing.md)
-    print("=== organization_overview ===")
-    print(json.dumps(lambda_handler({"dashboard_type": "overview", "time_filter": "ALL"}, None), indent=2))
-    print("\n=== organization_performance ===")
-    print(json.dumps(lambda_handler({"dashboard_type": "performance", "time_filter": "ALL"}, None), indent=2))
+    # Local smoke test — requires DATABASE_URL set
+    sample_filters = {
+        "time_filter": "ALL",
+        "start_date": None,
+        "end_date": None,
+        "group_by": "monthly",
+        "region": "ALL",
+        "organization_type": "ALL",
+    }
+    print(json.dumps(lambda_handler(sample_filters, None), indent=2))
