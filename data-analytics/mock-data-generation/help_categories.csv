@@ -1,0 +1,19 @@
+cat_id,cat_name,cat_desc,last_updated_at
+1,FOOD,Food assistance and distribution,2026-07-04 09:24:57
+1.1,FOOD_DISTRIBUTION,Distributing food to those in need,2026-03-07 00:32:38
+1.2,FOOD_DONATION,Collecting food donations,2026-04-02 10:47:55
+2,SHELTER,Housing and shelter assistance,2025-12-23 16:01:18
+2.1,TEMPORARY_HOUSING,Short-term housing support,2026-04-10 15:22:03
+2.2,HOME_REPAIR,Minor home repair assistance,2026-07-03 15:53:09
+3,EDUCATION,Educational support,2025-09-06 18:04:12
+3.1,TUTORING,One-on-one or group tutoring,2026-06-07 21:38:53
+3.2,MENTORSHIP,Long-term mentorship programs,2025-12-26 13:46:44
+4,HEALTHCARE,Healthcare-related assistance,2026-02-05 04:04:20
+4.1,MEDICAL_ASSISTANCE,Help accessing medical care,2026-01-31 09:22:29
+4.2,MENTAL_HEALTH_SUPPORT,Mental health support services,2026-01-09 05:37:58
+5,TRANSPORTATION,Transportation assistance,2026-03-06 09:53:08
+6,LEGAL_AID,Legal aid and advocacy,2026-06-14 03:08:14
+7,EMPLOYMENT,Job search and employment support,2026-02-02 05:35:41
+8,ELDERLY_CARE,Care and companionship for the elderly,2026-03-25 09:57:04
+9,DISASTER_RELIEF,Emergency and disaster relief,2025-11-06 12:02:15
+10,FINANCIAL_ASSISTANCE,Short-term financial assistance,2026-01-18 04:15:45
