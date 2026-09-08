@@ -547,13 +547,63 @@ def lambda_handler(event, context):
 
 
 if __name__ == "__main__":
-    sample_payloads = [
-        {},
-        {"time_filter": "1Y", "group_by": "monthly"},
+    # Local manual testing against a real PostgreSQL instance -- these are the
+    # "Sample Payloads for Local PR Testing" from issue #228, in order. Load the
+    # local data first (see scripts/load_local_data.py) and export PGHOST,
+    # PGPORT, PGDATABASE, PGUSER and PGPASSWORD, then run:
+    #     python data-analytics/lambda_functions/organization_analytics.py
+    SAMPLE_PAYLOADS = [
+        ("Standard Test", {
+            "time_filter": "30D",
+            "start_date": None,
+            "end_date": None,
+            "group_by": "daily",
+            "region": "ALL",
+            "organization_type": "ALL"
+        }),
+        ("Last 12 Months", {
+            "time_filter": "1Y",
+            "start_date": None,
+            "end_date": None,
+            "group_by": "monthly",
+            "region": "ALL",
+            "organization_type": "ALL"
+        }),
+        ("Filter by Region", {
+            "time_filter": "1Y",
+            "start_date": None,
+            "end_date": None,
+            "group_by": "monthly",
+            "region": "California",
+            "organization_type": "ALL"
+        }),
+        ("Filter by Organization Type", {
+            "time_filter": "1Y",
+            "start_date": None,
+            "end_date": None,
+            "group_by": "monthly",
+            "region": "ALL",
+            "organization_type": "non_profit"
+        }),
+        ("Custom Date Range", {
+            "time_filter": "CUSTOM",
+            "start_date": "2026-01-01",
+            "end_date": "2026-06-30",
+            "group_by": "monthly",
+            "region": "ALL",
+            "organization_type": "ALL"
+        }),
     ]
 
-    for sample_payload in sample_payloads:
-        sample_event = {"body": json.dumps(sample_payload)}
-        sample_response = lambda_handler(sample_event, None)
-        print(f"--- filters: {sample_payload} ---")
+    for index, (sample_name, sample_payload) in enumerate(SAMPLE_PAYLOADS, start=1):
+        print("=" * 79)
+        print(f"SAMPLE {index}: {sample_name}")
+        print("=" * 79)
+        print("Request:")
+        print(json.dumps(sample_payload, indent=2))
+
+        sample_response = lambda_handler({"body": json.dumps(sample_payload)}, None)
+
+        print(f"\nResponse (statusCode {sample_response['statusCode']}):")
         print(json.dumps(json.loads(sample_response["body"]), indent=2))
+        print()
