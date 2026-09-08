@@ -179,15 +179,9 @@ def generate_cities_data(
             if len(cities) >= count:
                 break
 
-    # Repeat verified city anchors with distinct surrogate keys at larger counts.
-    # Keeping the city name/centroid/ZIP together avoids inventing geography.
-    anchors = list(cities)
-    if not anchors:
+    # Lookup rows represent distinct places; do not pad them to an entity count.
+    if not cities:
         raise ValueError("No supported city anchors match the state lookup")
-    while len(cities) < count:
-        row = dict(random.choice(anchors))
-        row["city_id"] = len(cities) + 1
-        cities.append(row)
 
     return cities
 
@@ -322,7 +316,7 @@ def generate_volunteer_details_data(
 
     # Select subset or all users as volunteers
     target_count = min(count, len(users_list))
-    selected_indices = list(range(target_count))
+    selected_indices = random.sample(range(len(users_list)), target_count)
 
     days_options = [
         ["Monday", "Wednesday", "Friday"],
@@ -438,8 +432,7 @@ def generate_user_locations_data(
     user_locations = []
     target_count = min(count, len(user_geo_metadata))
 
-    for idx in range(target_count):
-        geo = user_geo_metadata[idx]
+    for geo in random.sample(user_geo_metadata, target_count):
         uid = geo["user_id"]
 
         lat = geo["lat"]
@@ -567,6 +560,11 @@ def generate_organizations_data(
     return orgs
 
 
+def subset_count(total: int, fraction: float) -> int:
+    """Round down a requested subset, retaining one row for positive fractions."""
+    return max(1, int(total * fraction)) if fraction > 0 else 0
+
+
 def main() -> None:
     """Generate, validate, and publish CSV fixtures from command-line options."""
     parser = argparse.ArgumentParser(description=__doc__)
@@ -594,7 +592,22 @@ def main() -> None:
         default=str(DEFAULT_LOOKUP),
         help="Directory containing source lookup CSV files",
     )
+    parser.add_argument(
+        "--volunteer-fraction",
+        type=float,
+        default=0.6,
+        help="Fraction of users with volunteer records, 0..1 (default: 0.6)",
+    )
+    parser.add_argument(
+        "--user-location-fraction",
+        type=float,
+        default=0.8,
+        help="Fraction of users with tracked locations, 0..1 (default: 0.8)",
+    )
     args = parser.parse_args()
+    for name in ("volunteer_fraction", "user_location_fraction"):
+        if not 0 <= getattr(args, name) <= 1:
+            parser.error(f"--{name.replace('_', '-')} must be between 0 and 1")
 
     set_seed(args.seed)
     output_dir = os.path.abspath(args.output_dir)
@@ -673,7 +686,7 @@ def main() -> None:
 
     # 5. Generate Volunteer Details
     volunteer_details, volunteer_geo_map = generate_volunteer_details_data(
-        users, user_geo_metadata, args.count
+        users, user_geo_metadata, subset_count(args.count, args.volunteer_fraction)
     )
     print(f"[5/10] Generated {len(volunteer_details)} volunteer_details")
 
@@ -694,7 +707,9 @@ def main() -> None:
     print(f"[8/10] Generated {len(volunteer_locations)} volunteer_locations")
 
     # 9. Generate User Locations
-    user_locations = generate_user_locations_data(user_geo_metadata, args.count)
+    user_locations = generate_user_locations_data(
+        user_geo_metadata, subset_count(args.count, args.user_location_fraction)
+    )
     print(f"[9/10] Generated {len(user_locations)} user_locations")
 
     # 10. Generate Organizations

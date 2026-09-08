@@ -21,21 +21,24 @@ import verification. These are dated snapshots, not live database introspection.
 
 | CSV | Default rows | Primary key | Foreign keys |
 | --- | ---: | --- | --- |
-| countries.csv | 242 | country_id | — |
-| states.csv | 5,045 | state_id | country_id → countries |
-| cities.csv | 400 | city_id | state_id → states |
-| users.csv | 400 | user_id | country_id → countries; state_id → states; user_status_id → user_status; language_1/2/3 → supporting_languages |
-| volunteer_details.csv | 400 | user_id | user_id → users |
-| help_categories.csv | 80 | cat_id | — |
-| user_skills.csv | 400 | user_id, cat_id | user_id → users; cat_id → help_categories |
-| user_locations.csv | 400 | user_id | user_id → users |
-| volunteer_locations.csv | 400 | user_id | user_id → volunteer_details |
-| organizations.csv | 400 | org_id | state_id → states |
+| countries.csv | 242 | country_id | â€” |
+| states.csv | 5,045 | state_id | country_id â†’ countries |
+| cities.csv | 63 | city_id | state_id â†’ states |
+| users.csv | 400 | user_id | country_id â†’ countries; state_id â†’ states; user_status_id â†’ user_status; language_1/2/3 â†’ supporting_languages |
+| volunteer_details.csv | 240 | user_id | user_id â†’ users |
+| help_categories.csv | 80 | cat_id | â€” |
+| user_skills.csv | 400 | user_id, cat_id | user_id â†’ users; cat_id â†’ help_categories |
+| user_locations.csv | 320 | user_id | user_id â†’ users |
+| volunteer_locations.csv | 240 | user_id | user_id â†’ volunteer_details |
+| organizations.csv | 400 | org_id | state_id â†’ states |
 
 Lookup counts reflect the checked-in source files and can change when those sources change.
-`--count` controls the other seven tables; it does not resize countries, states, or categories.
-All generated users are volunteers in this fixture. Skills are sampled as unique user/category
-pairs and need not cover every user.
+`--count` controls users, organizations, and user-skill mappings. Cities are limited
+to `min(count, 63)` distinct curated places with the bundled lookup snapshot.
+Volunteer and tracked-user records are reproducible random subsets, rather than
+only the first user IDs. Default subset fractions are 60% and 80%, respectively.
+Each volunteer has exactly one volunteer-location record. Skills are sampled as
+unique user/category pairs and need not cover every user.
 
 ## Requirements and generation
 
@@ -60,6 +63,17 @@ It must contain nonempty `country.csv`, `state.csv`, `help_categories.csv`,
 `supporting_languages.csv`, and `user_status.csv`. Missing or invalid lookup data causes
 failure rather than fallback IDs. Language and status IDs come from these files.
 
+To adjust the volunteer and tracked-user populations:
+
+```bash
+python data-analytics/mock-data-generation/generate_mock_data.py --count 400 --volunteer-fraction 0.5 --user-location-fraction 0.75
+```
+
+Both fractions accept values from 0 to 1. Sizes are rounded down; a positive fraction
+keeps at least one row for small datasets. Zero creates valid header-only optional
+CSVs, enabling empty-volunteer or untracked-user dashboard scenarios. Use `1` for
+both fractions when testing a population where every user volunteers and is tracked.
+
 Before importing into an existing local schema, seed matching `supporting_languages` and
 `user_status` records. They are prerequisites outside the ten-table deliverable.
 Empty CSV cells represent SQL NULL with PostgreSQL `COPY ... FORMAT csv` defaults.
@@ -67,11 +81,10 @@ Empty CSV cells represent SQL NULL with PostgreSQL `COPY ... FORMAT csv` default
 ## Geographic coverage and scaling
 
 City anchors preserve state, country, ZIP, time zone, and centroid relationships.
-For counts above the anchor pool, city records repeat verified city names and centroids
-with distinct surrogate IDs. This scales row volume, not geographic coverage; it does
-not represent hundreds of distinct cities. Add a verified anchor to `SEEDED_CITIES` in `geography.py` to
-expand coverage. Users and location records receive small coordinate offsets around
-these anchors. Validation checks proximity, not administrative boundary polygons.
+Cities are bounded reference data: larger entity counts do not pad the city table
+with duplicate place names. Add a verified anchor to `SEEDED_CITIES` in `geography.py`
+to expand coverage. Users and location records receive small coordinate offsets
+around those anchors. Validation checks proximity, not administrative boundaries.
 
 Native `users.last_location` uses `(latitude, longitude)` as documented by the schema.
 PostGIS locations use `POINT(longitude latitude)` in WGS84. User IDs follow
@@ -94,7 +107,8 @@ The validator enforces the fixture conventions as well as SQL constraints, so it
 not intended as a general validator for arbitrary production exports.
 
 Regression tests cover counts 1, 400, and 1,000; deterministic output; bad CLI arguments;
-duplicate location keys; malformed CSVs; and deliberately corrupted fields and relations.
+duplicate location keys and city names; malformed CSVs; empty/partial/full subsets;
+invalid fractions; and deliberately corrupted fields and relations.
 
 ## Code layout and style
 

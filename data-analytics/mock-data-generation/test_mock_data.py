@@ -11,6 +11,7 @@ import unittest
 from collections.abc import Callable
 from pathlib import Path
 
+from geography import SEEDED_CITIES
 from schema import BASE, DEFAULT_LOOKUP, EXPECTED_HEADERS
 from validate_mock_data import validate_dataset
 
@@ -66,16 +67,20 @@ class MockDataTests(unittest.TestCase):
             with self.subTest(count=count):
                 self.assertEqual(self.generate(count).returncode, 0)
                 self.assertTrue(self.valid())
-                for filename in EXPECTED_HEADERS:
-                    if filename not in (
-                        "countries.csv",
-                        "states.csv",
-                        "help_categories.csv",
-                    ):
-                        with (self.output / filename).open(
-                            encoding="utf-8", newline=""
-                        ) as f:
-                            self.assertEqual(sum(1 for _ in csv.DictReader(f)), count)
+                expected_counts = {
+                    "users.csv": count,
+                    "organizations.csv": count,
+                    "user_skills.csv": count,
+                    "cities.csv": min(count, len(SEEDED_CITIES)),
+                    "volunteer_details.csv": max(1, int(count * 0.6)),
+                    "volunteer_locations.csv": max(1, int(count * 0.6)),
+                    "user_locations.csv": max(1, int(count * 0.8)),
+                }
+                for filename, expected in expected_counts.items():
+                    with (self.output / filename).open(
+                        encoding="utf-8", newline=""
+                    ) as f:
+                        self.assertEqual(sum(1 for _ in csv.DictReader(f)), expected)
         before = {p.name: p.read_bytes() for p in self.output.glob("*.csv")}
         self.assertEqual(self.generate(1000).returncode, 0)
         self.assertEqual(
@@ -162,30 +167,61 @@ class MockDataTests(unittest.TestCase):
             before, {p.name: p.read_bytes() for p in self.output.glob("*.csv")}
         )
 
-    def test_rejects_corrupt_repeated_city(self) -> None:
-        """Check every city row even when several share a name and state."""
-        self.assertEqual(self.generate(400).returncode, 0)
-        with (self.output / "cities.csv").open(encoding="utf-8", newline="") as file:
-            rows = list(csv.DictReader(file))
-        repeated = next(
-            row
-            for row in rows
-            if sum(
-                (r["state_id"], r["city_name"]) == (row["state_id"], row["city_name"])
-                for r in rows
-            )
-            > 1
+    def test_rejects_duplicate_city_lookup(self) -> None:
+        """Reject repeated state/city pairs even when their primary keys differ."""
+        self.mutate(
+            "cities.csv", lambda rows: rows.append(dict(rows[0], city_id="99999"))
         )
-        target_id = repeated["city_id"]
-
-        def corrupt(rows: list[dict]) -> None:
-            """Move only the first occurrence away from its verified centroid."""
-            for row in rows:
-                if row["city_id"] == target_id:
-                    row["longitude"] = "0"
-
-        self.mutate("cities.csv", corrupt)
         self.assertFalse(self.valid())
+
+    def test_configurable_subsets(self) -> None:
+        """Exercise empty, partial, and complete subsets with valid references."""
+        for fraction in (0, 0.25, 1):
+            with self.subTest(fraction=fraction):
+                result = self.generate(
+                    100,
+                    "--volunteer-fraction",
+                    str(fraction),
+                    "--user-location-fraction",
+                    str(fraction),
+                )
+                self.assertEqual(result.returncode, 0, result.stderr)
+                self.assertTrue(self.valid())
+                for filename in (
+                    "volunteer_details.csv",
+                    "volunteer_locations.csv",
+                    "user_locations.csv",
+                ):
+                    with (self.output / filename).open(
+                        encoding="utf-8", newline=""
+                    ) as file:
+                        self.assertEqual(
+                            sum(1 for _ in csv.DictReader(file)), int(100 * fraction)
+                        )
+
+    def test_location_requires_volunteer_record(self) -> None:
+        """Reject a location for a real user who has no volunteer profile."""
+        with (self.output / "users.csv").open(encoding="utf-8", newline="") as file:
+            users = {row["user_id"] for row in csv.DictReader(file)}
+        with (self.output / "volunteer_details.csv").open(
+            encoding="utf-8", newline=""
+        ) as file:
+            volunteers = {row["user_id"] for row in csv.DictReader(file)}
+        nonvolunteer = sorted(users - volunteers)[0]
+        self.mutate(
+            "volunteer_locations.csv",
+            lambda rows: rows[0].update(user_id=nonvolunteer),
+        )
+        with contextlib.redirect_stdout(io.StringIO()) as output:
+            self.assertFalse(validate_dataset(self.output))
+        self.assertIn("orphan user_id", output.getvalue())
+
+    def test_rejects_invalid_fractions(self) -> None:
+        """Reject out-of-range and nonfinite subset fractions at the CLI."""
+        for option in ("--volunteer-fraction", "--user-location-fraction"):
+            for value in ("-0.1", "1.1", "nan", "inf"):
+                with self.subTest(option=option, value=value):
+                    self.assertNotEqual(self.generate(100, option, value).returncode, 0)
 
     def test_rejects_truncated_csv(self) -> None:
         """Report short CSV rows instead of crashing or accepting them."""

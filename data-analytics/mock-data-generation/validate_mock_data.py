@@ -112,7 +112,13 @@ def load_dataset(data_dir: Path, lookup_dir: Path, errors: list[str]) -> dict:
             headers, rows = read_csv_data(Path(data_dir) / filename)
             if headers != list(columns):
                 raise ValueError("headers do not match schema column order")
-            if not rows:
+            # Zero-sized optional subsets still require a valid header-only CSV.
+            optional = {
+                "volunteer_details.csv",
+                "volunteer_locations.csv",
+                "user_locations.csv",
+            }
+            if not rows and filename not in optional:
                 raise ValueError("fixture table is empty")
             if any(None in r or any(v is None for v in r.values()) for r in rows):
                 raise ValueError("row has missing or extra CSV fields")
@@ -285,6 +291,8 @@ def validate_geography(data: dict, errors: list[str]) -> None:
     states = {r["state_id"]: r for r in data["states"]}
     countries = {r["country_id"]: r for r in data["countries"]}
     cities = {(r["state_id"], r["city_name"]): r for r in data["cities"]}
+    if len(cities) != len(data["cities"]):
+        errors.append("cities.csv: duplicate state/city lookup entries")
     users = {r["user_id"]: r for r in data["users"]}
     for table in (
         "cities",
