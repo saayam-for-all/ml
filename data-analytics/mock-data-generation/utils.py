@@ -40,8 +40,8 @@ MISSIONS = (
     "Clothing and essentials distribution for new arrivals.",
     "Elder support, errands, and community connection.",
 )
-ORG_TYPES = ("Non-Profit", "For-profit")
-ORG_SIZES = ("Small", "Medium", "Large")
+ORG_TYPES = ("non_profit", "for_profit")
+ORG_SIZES = ("small", "medium", "large")
 ORG_SOURCES = ("manual", "genai")
 LANGUAGES = ("English", "Spanish", "Hindi", "French", "Arabic")
 TIMEZONES = (
@@ -137,6 +137,45 @@ GEO_SEEDS = (
         "time_zone": "America/Toronto",
     },
 )
+
+
+def geo_profile(index: int) -> Dict[str, Any]:
+    """Return a coherent country/state/city profile for 1-based row index.
+
+    The first profiles reuse public centroids. Later rows get unique mock
+    geography so a synthetic state is not paired with an unrelated real city.
+    """
+    if index < 1:
+        raise ValueError("geo_profile index must be >= 1")
+    if index <= len(GEO_SEEDS):
+        return dict(GEO_SEEDS[index - 1])
+    lat = -42.0 + (index % 25) * 0.31
+    lon = 12.0 + ((index // 25) % 40) * 0.37
+    return {
+        "country_name": f"MOCK_COUNTRY_{index:03d}",
+        "country_code": f"M{index:03d}"[:6],
+        "phone_code": str(100 + (index % 800))[:5],
+        "is_eu_member": index % 9 == 0,
+        "state_name": f"MOCK_STATE_{index:03d}",
+        "state_code": f"S{index:03d}"[:6],
+        "city_name": f"Mock City {index:03d}"[:30],
+        "lat": round(lat, 6),
+        "lon": round(lon, 6),
+        "zip_code": f"{10000 + index % 89999}",
+        "time_zone": TIMEZONES[index % len(TIMEZONES)],
+    }
+
+
+def pg_point(lon: float, lat: float) -> str:
+    """Serialize a native PostgreSQL point as (lon,lat)."""
+    return f"({lon:.6f},{lat:.6f})"
+
+
+def parse_pg_point(value: str) -> tuple[float, float]:
+    match = re.fullmatch(r"\(\s*([-\d.]+)\s*,\s*([-\d.]+)\s*\)", (value or "").strip())
+    if not match:
+        raise ValueError(f"Not a PostgreSQL point: {value!r}")
+    return float(match.group(1)), float(match.group(2))
 
 
 def set_seed(seed: int = DEFAULT_SEED) -> None:

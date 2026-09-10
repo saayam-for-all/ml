@@ -23,7 +23,7 @@ Do not use these files as production data. Names, emails, phones, and IDs are in
 
 `help_categories.csv` is copied from the official lookup (`database/lookup_tables/help_categories.csv`) so `cat_id` values stay aligned with the live category tree. That table is bounded by unique category IDs (about 80 rows), not the `--rows` count.
 
-`organizations.csv` includes both schema names (`size`, `rating`) and dashboard names (`org_size`, `org_rating`, `is_collaborator`, `is_contributor`) plus the issue-required `state_id` foreign key.
+Column names follow the current Virginia DDL in `saayam-for-all/database` (`ddl/Tables/`). `organizations.csv` uses `state_id`, `org_size`, `org_rating`, and `is_collaborator`. `org_type` is `non_profit`/`for_profit` and `org_size` is `small`/`medium`/`large`. `users.last_location` is a native PostgreSQL point `(lon,lat)`, not PostGIS EWKT. `user_skills` timestamps are `created_at`/`last_updated_at`.
 
 ## Python dependencies
 
@@ -78,10 +78,11 @@ user_skills.user_id
 help_categories.cat_id
     ↑
 user_skills.cat_id
-organizations.cat_id
 ```
 
-Geographic chain: country → state → city → ZIP / `curr_loc` / `prev_loc`. Location points are EWKT (`SRID=4326;POINT(lon lat)`) near the user’s city centroid.
+Geographic chain: country → state → city → ZIP / `curr_loc` / `prev_loc`. Location-table points are EWKT (`SRID=4326;POINT(lon lat)`) near the user’s city centroid. `users.last_location` uses PostgreSQL point `(lon,lat)`.
+
+Each generated row after the six public seed cities gets its own mock country/state/city/ZIP/timezone instead of inheriting an unrelated real centroid.
 
 `states.country_id` is always populated (schema `NOT NULL`).
 
@@ -94,11 +95,12 @@ Geographic chain: country → state → city → ZIP / `curr_loc` / `prev_loc`. 
 The generator validates after writing:
 
 - unique primary keys
+- CSV headers match the table column contract (name and order)
 - foreign keys (no orphans)
 - `created_*` ≤ `last_updated_*` / `last_update_date`
 - mock emails/phones
 - volunteer locations only for `volunteer_details` users
-- coordinates near the assigned city
+- `curr_loc` and `prev_loc` both near the assigned city
 
 ```bash
 python generate_mock_data.py --validate-only
