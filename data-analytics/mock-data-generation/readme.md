@@ -23,6 +23,8 @@ Do not use these files as production data. Names, emails, phones, and IDs are in
 
 `help_categories.csv` is copied from the official lookup (`database/lookup_tables/help_categories.csv`) so `cat_id` values stay aligned with the live category tree. That table is bounded by unique category IDs (about 80 rows), not the `--rows` count.
 
+`organizations.csv` includes both schema names (`size`, `rating`) and dashboard names (`org_size`, `org_rating`, `is_collaborator`, `is_contributor`) plus the issue-required `state_id` foreign key.
+
 ## Python dependencies
 
 Python 3.10+ and the standard library only (`csv`, `json`, `argparse`, `unittest`). No extra packages.

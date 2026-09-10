@@ -52,6 +52,8 @@ class MockDataTests(unittest.TestCase):
         self.assertEqual(list(self.data["cities"][0]), gen.CITIES_FIELDS)
         self.assertEqual(list(self.data["countries"][0]), gen.COUNTRIES_FIELDS)
         self.assertIn("state_id", self.data["organizations"][0])
+        self.assertIn("size", self.data["organizations"][0])
+        self.assertIn("rating", self.data["organizations"][0])
         self.assertIn("lattitude", self.data["cities"][0])
 
     def test_validator_accepts_generated_data(self):
