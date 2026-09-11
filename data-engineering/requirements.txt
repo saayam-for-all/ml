@@ -2,7 +2,7 @@ blinker==1.8.2
 click==8.1.7
 colorama==0.4.6
 deep-translator==1.11.4
-fastapi==0.115.0
+fastapi==0.141.1
 Flask==3.0.3
 Flask-Scss==0.5
 Flask-SQLAlchemy==3.1.1
