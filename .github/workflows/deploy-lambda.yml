@@ -4,15 +4,13 @@ on:
   pull_request:
     branches:
       - main
-      - ci-workflow-mkapure
     paths:
       - 'data-engineering/**'
 
   push:
     branches:
       - main
-    paths:
-      - 'data-engineering/**'
+      - ci-workflow-mkapure
 
   workflow_dispatch:
     inputs:
