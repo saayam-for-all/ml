@@ -8,40 +8,11 @@ random.seed(42)
 
 ROW_COUNT = 400
 
-US_STATES = [
-    {"state_id": "AL", "state_name": "Alabama", "state_code": "US-AL", "cities": [("Birmingham", 33.5207, -86.8025), ("Montgomery", 32.3668, -86.3000), ("Huntsville", 34.7304, -86.5861)]},
-    {"state_id": "AK", "state_name": "Alaska", "state_code": "US-AK", "cities": [("Anchorage", 61.2181, -149.9003), ("Fairbanks", 64.8378, -147.7164)]},
-    {"state_id": "AZ", "state_name": "Arizona", "state_code": "US-AZ", "cities": [("Phoenix", 33.4484, -112.0740), ("Tucson", 32.2226, -110.9747), ("Mesa", 33.4152, -111.8315)]},
-    {"state_id": "CA", "state_name": "California", "state_code": "US-CA", "cities": [("Los Angeles", 34.0522, -118.2437), ("San Francisco", 37.7749, -122.4194), ("San Jose", 37.3382, -121.8863), ("San Diego", 32.7157, -117.1611)]},
-    {"state_id": "CO", "state_name": "Colorado", "state_code": "US-CO", "cities": [("Denver", 39.7392, -104.9903), ("Boulder", 40.0150, -105.2705)]},
-    {"state_id": "FL", "state_name": "Florida", "state_code": "US-FL", "cities": [("Miami", 25.7617, -80.1918), ("Orlando", 28.5383, -81.3792), ("Tampa", 27.9506, -82.4572)]},
-    {"state_id": "GA", "state_name": "Georgia", "state_code": "US-GA", "cities": [("Atlanta", 33.7490, -84.3880), ("Savannah", 32.0809, -81.0912), ("Augusta", 33.4735, -81.9748)]},
-    {"state_id": "IL", "state_name": "Illinois", "state_code": "US-IL", "cities": [("Chicago", 41.8781, -87.6298), ("Springfield", 39.7817, -89.6501), ("Naperville", 41.7508, -88.1535)]},
-    {"state_id": "NY", "state_name": "New York", "state_code": "US-NY", "cities": [("New York City", 40.7128, -74.0060), ("Buffalo", 42.8864, -78.8784), ("Albany", 42.6526, -73.7562)]},
-    {"state_id": "TX", "state_name": "Texas", "state_code": "US-TX", "cities": [("Houston", 29.7604, -95.3698), ("Dallas", 32.7767, -96.7970), ("Austin", 30.2672, -97.7431), ("San Antonio", 29.4241, -98.4936)]},
-    {"state_id": "VA", "state_name": "Virginia", "state_code": "US-VA", "cities": [("Richmond", 37.5407, -77.4360), ("Virginia Beach", 36.8529, -75.9780), ("Norfolk", 36.8508, -76.2859), ("Charlottesville", 38.0293, -78.4767)]},
-    {"state_id": "WA", "state_name": "Washington", "state_code": "US-WA", "cities": [("Seattle", 47.6062, -122.3321), ("Tacoma", 47.2529, -122.4443), ("Spokane", 47.6588, -117.4260)]},
-    {"state_id": "OH", "state_name": "Ohio", "state_code": "US-OH", "cities": [("Columbus", 39.9612, -82.9988), ("Cleveland", 41.4993, -81.6944), ("Cincinnati", 39.1031, -84.5120)]},
-    {"state_id": "PA", "state_name": "Pennsylvania", "state_code": "US-PA", "cities": [("Philadelphia", 39.9526, -75.1652), ("Pittsburgh", 40.4406, -79.9959), ("Allentown", 40.6084, -75.4902)]},
-    {"state_id": "NC", "state_name": "North Carolina", "state_code": "US-NC", "cities": [("Charlotte", 35.2271, -80.8431), ("Raleigh", 35.7796, -78.6382), ("Durham", 35.9940, -78.8986)]},
-]
+def load_geographic_data():
+    geo_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "geographic_data.json")
+    with open(geo_path, "r", encoding="utf-8") as f:
+        return json.load(f)
 
-INDIA_STATES = [
-    {"state_id": "MH", "state_name": "Maharashtra", "state_code": "IN-MH", "cities": [("Mumbai", 19.0760, 72.8777), ("Pune", 18.5204, 73.8567)]},
-    {"state_id": "KA", "state_name": "Karnataka", "state_code": "IN-KA", "cities": [("Bangalore", 12.9716, 77.5946), ("Mysore", 12.2958, 76.6394)]},
-    {"state_id": "DL", "state_name": "Delhi", "state_code": "IN-DL", "cities": [("New Delhi", 28.6139, 77.2090)]},
-    {"state_id": "TN", "state_name": "Tamil Nadu", "state_code": "IN-TN", "cities": [("Chennai", 13.0827, 80.2707), ("Coimbatore", 11.0168, 76.9558)]},
-]
-
-UK_STATES = [
-    {"state_id": "ENG", "state_name": "England", "state_code": "GB-ENG", "cities": [("London", 51.5074, -0.1278), ("Manchester", 53.4808, -2.2426)]},
-]
-
-COUNTRIES = [
-    {"country_id": 1, "country_name": "UNITED_STATES", "phone_code": "1", "country_code": "USA", "is_eu_member": False, "states": US_STATES},
-    {"country_id": 2, "country_name": "INDIA", "phone_code": "91", "country_code": "IND", "is_eu_member": False, "states": INDIA_STATES},
-    {"country_id": 3, "country_name": "UNITED_KINGDOM", "phone_code": "44", "country_code": "GBR", "is_eu_member": False, "states": UK_STATES},
-]
 
 HELP_CATEGORIES = [
     ("0.0.0.0.0", "GENERAL_CATEGORY", "GENERAL_CATEGORY_DESC"),
@@ -163,7 +134,7 @@ def write_csv_file(filepath, rows, fieldnames):
         writer.writerows(rows)
 
 
-def generate_countries():
+def generate_countries(COUNTRIES):
     rows = []
     for c in COUNTRIES:
         rows.append({
@@ -177,7 +148,7 @@ def generate_countries():
     return rows
 
 
-def generate_states():
+def generate_states(COUNTRIES):
     rows = []
     for c in COUNTRIES:
         for s in c["states"]:
@@ -191,7 +162,7 @@ def generate_states():
     return rows
 
 
-def generate_cities(states_data):
+def generate_cities(COUNTRIES):
     rows = []
     city_id = 1
     for c in COUNTRIES:
@@ -222,16 +193,11 @@ def generate_help_categories():
     return rows
 
 
-def generate_users(count, all_states):
+def generate_users(count, all_states, state_to_country):
     rows = []
     for i in range(1, count + 1):
         state = random.choice(all_states)
-        country_id = None
-        for c in COUNTRIES:
-            for s in c["states"]:
-                if s["state_id"] == state["state_id"]:
-                    country_id = c["country_id"]
-                    break
+        country_id = state_to_country.get(state["state_id"])
 
         city_data = random.choice(state["cities"])
         city_name = city_data[0]
@@ -409,22 +375,44 @@ def generate_organizations(count, all_states):
 def main():
     output_dir = os.path.dirname(os.path.abspath(__file__))
 
+    geo = load_geographic_data()
+    COUNTRIES = geo["countries"]
+    states_data = geo["states"]
+    
     all_states = []
+    country_states_map = {}
+    for s in states_data:
+        cid = s["country_id"]
+        state_obj = {
+            "state_id": s["id"],
+            "state_name": s["name"],
+            "state_code": s["code"],
+            "cities": [(c[0], c[1], c[2]) for c in s["cities"]],
+        }
+        all_states.append(state_obj)
+        if cid not in country_states_map:
+            country_states_map[cid] = []
+        country_states_map[cid].append(state_obj)
+    
     for c in COUNTRIES:
-        all_states.extend(c["states"])
+        c["states"] = country_states_map.get(c["country_id"], [])
+    
+    state_to_country = {}
+    for s in states_data:
+        state_to_country[s["id"]] = s["country_id"]
 
     print("Generating countries...")
-    countries = generate_countries()
+    countries = generate_countries(COUNTRIES)
     write_csv_file(os.path.join(output_dir, "countries.csv"), countries,
                    ["country_id", "country_name", "phone_code", "country_code", "last_updated_at", "is_eu_member"])
 
     print("Generating states...")
-    states = generate_states()
+    states = generate_states(COUNTRIES)
     write_csv_file(os.path.join(output_dir, "states.csv"), states,
                    ["state_id", "country_id", "state_name", "state_code", "last_updated_at"])
 
     print("Generating cities...")
-    cities = generate_cities(states)
+    cities = generate_cities(COUNTRIES)
     write_csv_file(os.path.join(output_dir, "cities.csv"), cities,
                    ["city_id", "state_id", "city_name", "lattitude", "longitude", "last_updated_at"])
 
@@ -434,7 +422,7 @@ def main():
                    ["cat_id", "cat_name", "cat_desc", "last_updated_at"])
 
     print(f"Generating {ROW_COUNT} users...")
-    users = generate_users(ROW_COUNT, all_states)
+    users = generate_users(ROW_COUNT, all_states, state_to_country)
     users_lookup = {u["user_id"]: u for u in users}
     users_csv = [{k: v for k, v in u.items() if not k.startswith("_")} for u in users]
     write_csv_file(os.path.join(output_dir, "users.csv"), users_csv,
