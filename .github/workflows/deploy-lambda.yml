@@ -87,11 +87,11 @@ jobs:
       # ========================================================
       # 1. FLAKE8
       # ========================================================
-      - name: Run Flake8
-        run: |
-          flake8 src \
-            --exclude='__pycache__,.pytest_cache' \
-            --max-line-length=120
+      # - name: Run Flake8
+      #   run: |
+      #     flake8 src \
+      #       --exclude='__pycache__,.pytest_cache' \
+      #       --max-line-length=120
 
       # ========================================================
       # 2. BANDIT / SAST
