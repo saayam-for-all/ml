@@ -23,7 +23,7 @@ python-dotenv==1.2.2
 python-multipart==0.0.31
 pytest==9.0.3
 pytz==2024.1
-requests==2.32.3
+requests==2.33.0
 six==1.16.0
 SQLAlchemy==2.0.32
 typing_extensions==4.12.2
