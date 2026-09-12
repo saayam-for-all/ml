@@ -6,6 +6,7 @@ import os
 # from huggingface_hub import InferenceClient
 from groq import Groq
 
+# from dotenv import load_dotenv
 import boto3
 
 
@@ -56,8 +57,8 @@ def lambda_handler(event, context):
 
     # ---- Keyword detection ----
     profane_words = lookup("profane_words")
-    depressive_words = lookup("depressive_suicidal_terms")
-    threatening_words = lookup("threatening_language")
+    # depressive_words = lookup("depressive_suicidal_terms")
+    # threatening_words = lookup("threatening_language")
 
     conn.close()
 
@@ -69,7 +70,6 @@ def lambda_handler(event, context):
             raise ValueError("API Key not found. Please check your .env file.")
         # client = InferenceClient(api_key = api_key)
         client = Groq(api_key = api_key)
-
         response = client.chat.completions.create(
         model = "openai/gpt-oss-120b",
         messages = [
@@ -81,7 +81,8 @@ def lambda_handler(event, context):
                 Determine whether the text has depressive content, suicidal language, or threatening language.
 
                 Return it as a JSON object in the following format:
-
+                    "contains_profanity": contains_profanity,
+                    "1. profanity": profane_words,
                     "contains_depressive_content": contains_depressive_content,
                     "contains_suicidal_content": contains_suicidal_content,
                     "2. Depressive/Suicidal Content": depressive_suicidal_words,
@@ -97,10 +98,15 @@ def lambda_handler(event, context):
         llm_response = response.choices[0].message.content
         llm_response = llm_response.replace("```json", "").replace("```", "").strip()
         llm_dict = json.loads(llm_response)
+        profane_words_combined = list(set(profane_words + llm_dict["1. profanity"]))
+        llm_dict["contains_profanity"] = bool(profane_words_combined)
+        llm_dict["1. profanity"] = profane_words_combined
 
     except:
         llm_dict = { "status_code": 500,
                 "Error": "Invalid API key or issue with the model",
+                "contains_profanity": bool(profane_words),
+                "1. profanity": profane_words,
                 "contains_depressive_content": False,
                 "contains_suicidal_content": False,
                 "2. Depressive/Suicidal Content": [],
@@ -110,13 +116,8 @@ def lambda_handler(event, context):
                 }
 
     finally:
-        profanity_dict = {
-            "contains_profanity": bool(profane_words),
-            "1. profanity": profane_words
-            }
-
         # ---- Final Response ----
-        response_data = profanity_dict | llm_dict
+        response_data = llm_dict
 
         if not response_data["contains_profanity"] and not response_data["contains_depressive_content"] and not response_data["contains_suicidal_content"] and not response_data["contains_threatening_content"]:
             normal_dict = {"0. This is a normal request": []}
@@ -143,6 +144,6 @@ if __name__ == "__main__":
     "Te voy a buscar y lo vas a pagar muy caro."                    # Spanish Threat
     ]
     event = {
-        "body": "{ \"subject\": \"Hi\", \"description\": \"Get out of my way or you will regret.\" }"
+        "body": "{ \"subject\": \"Hi\", \"description\": \"Te voy a buscar y lo vas a pagar muy caro.\" }"
         }
     print(lambda_handler(event, ""))
