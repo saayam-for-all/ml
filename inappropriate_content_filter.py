@@ -1,114 +1,148 @@
 import json
-from flask import Flask, jsonify, request
-import pickle
 import sqlite3
 import string
-import inflect
-from googletrans import Translator
+import os
 
-app = Flask(__name__)
+# from huggingface_hub import InferenceClient
+from groq import Groq
 
-#app.config.from_object(config)
-#db.init_app(app)
+import boto3
 
-#with app.app_context():
-#        db.create_all()
 
-@app.route('/')
-def home():
-     return jsonify('Service is running')
 
-@app.route('/api/check_profanity', methods=['POST'])
-def check_profanity():
-    data = request.json
-    text = data['text']
+def lambda_handler(event, context):
+    body = json.loads(event['body'])
+    subject = body.get('subject')
+    description = body.get('description')
+    text = subject + " " + description
+
+    # Remove punctuation
     translator = str.maketrans('', '', string.punctuation)
-    text = text.translate(translator)
+    clean_text = text.translate(translator).lower()
+    input_words = clean_text.split()
 
-    # Make singular (this is a basic approach, may need refinement for complex cases)
-    text = text.lower()
-    input_words = text.split()
-
-    # Initialize the inflect engine
-    p = inflect.engine()
+    # ---- Singular form handling ----
     singular_words = ['ass', 'dumbass', 'piss']
-
-    for i, word, in enumerate(input_words):
-
+    for i, word in enumerate(input_words):
         if word in singular_words:
             continue
-
-        if word.endswith("ies"):  # e.g., "babies" -> "baby"
+        if word.endswith("ies"):
             input_words[i] = word[:-3] + "y"
-
-        elif word.endswith("es") and len(word) > 2:  # e.g., "boxes" -> "box"
+        elif word.endswith("es") and len(word) > 2:
             input_words[i] = word[:-2]
-
-        elif word.endswith("s") and len(word) > 1:  # e.g., "cats" -> "cat"
+        elif word.endswith("s") and len(word) > 1:
             input_words[i] = word[:-1]
 
-    # Connect to the database
-    conn = sqlite3.connect("profane_words.db")
+    # ---- Connect to SQLite DB ----
+    db_path = os.path.join(os.getcwd(), 'profane_words.db')
+
+    if not os.path.exists(db_path):
+        return {"statusCode": 500, "body": "Database file not found"}
+
+    conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
-    # Query for matching words
-    query = """
-        SELECT words
-        FROM profane_words
-        WHERE words IN ({})
-    """.format(",".join("?" for _ in input_words))  # Use placeholders for each word
+    # Integrity check
+    cursor.execute("PRAGMA integrity_check;")
+    if cursor.fetchone()[0] != "ok":
+        raise ValueError("Database integrity check failed.")
 
-    cursor.execute(query, input_words)
-    profanity = cursor.fetchall()
+    # ---- Helper function for table lookup ----
+    def lookup(table):
+        placeholders = ",".join("?" for _ in input_words)
+        query = f"SELECT words FROM {table} WHERE words IN ({placeholders})"
+        cursor.execute(query, input_words)
+        return [row[0] for row in cursor.fetchall()]
 
-    # Close the connection
+    # ---- Keyword detection ----
+    profane_words = lookup("profane_words")
+    depressive_words = lookup("depressive_suicidal_terms")
+    threatening_words = lookup("threatening_language")
+
     conn.close()
 
-    # Process results
-    profane_words = [row[0] for row in profanity]
-    contains_profanity = bool(profane_words)
+    try:
+        ssm = boto3.client('ssm', region_name='us-east-1')
+        api_key = ssm.get_parameter(Name = '/dev/saayam/GenAI/groq/key', WithDecryption = True)
 
-    res_body = {
-        "contains_profanity": contains_profanity,
-        "profanity": profane_words
-    }
-    http_res = {
-        "statusCode": 200,
-        "body": json.dumps(res_body)
-    }
+        if not api_key:
+            raise ValueError("API Key not found. Please check your .env file.")
+        # client = InferenceClient(api_key = api_key)
+        client = Groq(api_key = api_key)
 
-    return jsonify(http_res)
+        response = client.chat.completions.create(
+        model = "openai/gpt-oss-120b",
+        messages = [
+
+            {
+                "role": "user",
+                "content": f""" You are a multilingual moderation assistant.
+
+                Determine whether the text has depressive content, suicidal language, or threatening language.
+
+                Return it as a JSON object in the following format:
+
+                    "contains_depressive_content": contains_depressive_content,
+                    "contains_suicidal_content": contains_suicidal_content,
+                    "2. Depressive/Suicidal Content": depressive_suicidal_words,
+
+                    "contains_threatening_content": contains_threatening_content,
+                    "3. Threatening Content": threatening_words
+
+                Text: {clean_text}
+                """
+            }
+            ]
+        )
+        llm_response = response.choices[0].message.content
+        llm_response = llm_response.replace("```json", "").replace("```", "").strip()
+        llm_dict = json.loads(llm_response)
+
+    except:
+        llm_dict = { "status_code": 500,
+                "Error": "Invalid API key or issue with the model",
+                "contains_depressive_content": False,
+                "contains_suicidal_content": False,
+                "2. Depressive/Suicidal Content": [],
+
+                "contains_threatening_content": False,
+                "3. Threatening Content": []
+                }
+
+    finally:
+        profanity_dict = {
+            "contains_profanity": bool(profane_words),
+            "1. profanity": profane_words
+            }
+
+        # ---- Final Response ----
+        response_data = profanity_dict | llm_dict
+
+        if not response_data["contains_profanity"] and not response_data["contains_depressive_content"] and not response_data["contains_suicidal_content"] and not response_data["contains_threatening_content"]:
+            normal_dict = {"0. This is a normal request": []}
+            response_data = normal_dict | response_data
+
+        return {
+            "statusCode": 200,
+            "headers": {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": '*'
+            },
+            "body": json.dumps(response_data)
+            }
 
 
-# New API for language detection and translation
-@app.route('/api/translate', methods=['POST'])
-def translate_request_content():
-    data = request.get_json()
-    content = data.get('content', '')
-    http_res = {}
 
-    if not content:
-        http_res['status_code'] = 400
-        res_body = {"error": "No content provided"}
-        http_res['body'] = json.dumps(res_body)
-
-        return http_res
-
-    # Translate the text to English
-    translator = Translator()
-    translated = translator.translate(content, dest="en")
-    translated_content = translated.text
-
-    res_body = {
-        "original": content,
-        "translated": translated_content
+if __name__ == "__main__":
+    test_phrases = [
+    "I've been feeling down, and there is no hope.",                 # English Depressive
+    "Me siento increíblemente solo, vacío y que nada va a mejorar.", # Spanish Depressive
+    "I'm feeling very happy today.",                                 # English Happy (Normal)
+    "Hoy fui al supermercado y compré algunas frutas.",              # Spanish Normal
+    "Get out of my way or you will regret it.",                     # English Threat
+    "Te voy a buscar y lo vas a pagar muy caro."                    # Spanish Threat
+    ]
+    event = {
+        "body": "{ \"subject\": \"Hi\", \"description\": \"Get out of my way or you will regret.\" }"
         }
-
-    http_res['statusCode'] = 200
-    http_res['body'] = json.dumps(res_body)
-
-    return http_res
-
-# Run the application
-if __name__ in "main":
-    app.run(debug = True)
+    print(lambda_handler(event, ""))
